@@ -1,0 +1,22 @@
+{
+  "name": "qlwq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Levan-Du/QLWQ.git"
+  },
+  "author": "LevanDu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Levan-Du/QLWQ/issues"
+  },
+  "homepage": "https://github.com/Levan-Du/QLWQ#readme",
+  "dependencies": {
+    "snabbt.js": "^0.6.4"
+  }
+}
