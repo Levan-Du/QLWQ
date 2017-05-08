@@ -1,8 +1,7 @@
 .header,
 .nav,
 .content,
-.module,
-.footer {
+.module {
     width: 1280px;
     margin: auto;
 }
@@ -29,7 +28,6 @@
 .nav .nav-wrapper .nav-item {
     width: 20%;
 }
-
 
 .module {
     height: 180px;
@@ -60,7 +58,13 @@
 
 .footer {
     height: 200px;
-    width: 100%;
+    width: 100;
     margin-top: 50px;
     background: #ccc;
+}
+
+@media screen and (max-width: 1280px) {
+    .footer {
+        width: 1280px;
+    }
 }
