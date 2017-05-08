@@ -1,0 +1,66 @@
+.header,
+.nav,
+.content,
+.module,
+.footer {
+    width: 1280px;
+    margin: auto;
+}
+
+.header {
+    height: 40px;
+    background: #eee;
+}
+
+.nav {
+    background: rgba(0, 153, 153, 1);
+    background-image: url(../assets/imgs/barner-01.png);
+    -moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+}
+
+.nav .nav-wrapper {
+    width: 970px;
+    height: 470px;
+}
+
+.nav .nav-wrapper .nav-item {
+    width: 20%;
+}
+
+
+.module {
+    height: 180px;
+}
+
+.module-wrapper {
+    width: 800px;
+    margin: auto;
+}
+
+.module-wrapper .module-item {
+    float: left;
+    width: 100px;
+    margin: 0 50px;
+    text-align: center;
+}
+
+.module-wrapper .module-item img {
+    width: 51px;
+    height: 51px;
+    margin: 20px;
+}
+
+.module-wrapper .module-item p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.footer {
+    height: 200px;
+    width: 100%;
+    margin-top: 50px;
+    background: #ccc;
+}
