@@ -115,9 +115,3 @@
 .goods-image-wraper .btn-wrapper .btn-circle.checked {
     background: rgba(120, 180, 0, 1);
 }
-
-.footer {
-    height: 200px;
-    width: 100%;
-    background: #ccc;
-}

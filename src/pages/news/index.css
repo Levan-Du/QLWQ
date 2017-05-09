@@ -1,0 +1,128 @@
+.btn.btn-circle {
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin: 5px 20px;
+}
+
+.nav {
+    background-image: url(../../assets/imgs/barner-04.png);
+}
+
+.nav .nav-wrapper {
+    width: 970px;
+    height: 320px;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.news-scroll .news-item {
+    margin: 0 250px;
+    padding: 6px 20px;
+    border: solid 1px;
+}
+
+.news-scroll .news-item .icon-box {
+    float: left;
+}
+
+.news-scroll .news-item .text-box {
+    overflow: hidden;
+    height: 30px;
+    line-height: 30px;
+    padding-right: 50px;
+    text-align: center;
+}
+
+.news-scroll .news-item img {
+    width: 30px;
+    height: 30px;
+}
+
+.news-wrapper {
+    width: 1000px;
+    height: 450px;
+    margin: 30px auto;
+}
+
+.news-wrapper .tab {
+    margin-left: 2px;
+}
+
+.news-wrapper .tab .tab-content {
+    width: 100%;
+}
+
+.news-wrapper .tab .tab-content .news-list {
+    float: left;
+    width: 100%;
+    margin-right: -420px;
+    text-align: center;
+}
+
+.news-wrapper .tab .tab-content .news-list > * {
+    width: auto;
+    margin-right: 420px;
+}
+
+.news-wrapper .tab .tab-content .news-list .news-item {
+    margin: 20px;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: solid 1px #aaa;
+    text-align: center;
+}
+
+.news-wrapper .tab .tab-content .news-list .pager .btn {
+    float: left;
+    width: 50%;
+}
+
+.news-wrapper .tab .tab-content .news-show {
+    float: right;
+    width: 340px;
+    padding: 20px 40px;
+}
+
+.news-wrapper .tab .tab-content .news-show .down img {
+    width: 110px;
+    height: 110px;
+}
+
+.news-wrapper .tab .tab-content .news-show .down .down-item {
+    float: left;
+    width: 50%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.news-wrapper .tab .tab-content .news-show .down .down-item > * {
+    display: block;
+    margin: auto;
+}
+
+.news-wrapper .tab .tab-content .news-show .acti li {
+    margin: 10px 0;
+}
+
+.news-wrapper .tab .tab-content .news-show .acti li img {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.news-wrapper .tab-title {
+    padding: 10px 145px;
+}
+
+.news-wrapper .tab-title.first {
+    border-radius: 0 0 0 14px;
+}
+
+.news-wrapper .tab-title.last {
+    border-radius: 0 0 14px 0;
+}
+
+.module {
+    margin-top: 100px;
+}
