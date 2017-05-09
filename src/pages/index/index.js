@@ -1,6 +1,6 @@
-import './index.css';
 import '../../commons/common.css';
 import '../../commons/pages.css';
+import './index.css';
 import '../../commons/common';
 import carousel from '../../commons/carousel';
 

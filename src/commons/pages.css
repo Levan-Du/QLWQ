@@ -14,8 +14,8 @@
 .nav {
     background: rgba(0, 153, 153, 1);
     background-image: url(../assets/imgs/barner-01.png);
-    -moz-background-size: 100% 100%;
-    -webkit-background-size: 100% 100%;
+    /*-moz-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;*/
     background-size: 100% 100%;
     filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
 }

@@ -7,14 +7,14 @@ module.exports = {
     entry: {
         index: path.join(__dirname, 'src/pages/index/index.js'),
         games: path.join(__dirname, 'src/pages/games/index.js'),
-        games: path.join(__dirname, 'src/pages/news/index.js'),
-        games: path.join(__dirname, 'src/pages/mall/index.js'),
-        games: path.join(__dirname, 'src/pages/user/index.js')
+        news: path.join(__dirname, 'src/pages/news/index.js'),
+        mall: path.join(__dirname, 'src/pages/mall/index.js'),
+        user: path.join(__dirname, 'src/pages/user/index.js')
 
     },
     output: {
-        path: path.join(__dirname, 'dist/js'),
-        filename: '[name].js'
+        path: path.join(__dirname, 'dist'),
+        filename: 'js/[name].js'
     },
     module: {
         rules: [{
@@ -25,11 +25,11 @@ module.exports = {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
-                use: 'css-loader'
+                use: 'css-loader!postcss-loader'
             })
         }, {
-            test: /\.(png|jpg)$/,
-            use: 'url-loader'
+            test: /\.(png|jpg|svg)$/,
+            use: 'url-loader?limit=8192&name=/images/[hash:8].[name].[ext]'
         }]
     },
     plugins: [
@@ -38,38 +38,38 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
-            minChunks: 2 // 提取至少3个模块共有的部分
+            minChunks: 2 // 提取至少2个模块共有的部分
         }),
         new ExtractTextPlugin('css/[name].css?[contenthash]'),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/index/index.html'),
+            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/index/index.html'),
             filename: 'index.html',
             inject: true,
-            chunks: ['index', 'venders']
+            chunks: ['index', 'vendors']
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/news/index.html'),
+            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/news/index.html'),
             filename: 'news.html',
             inject: true,
-            chunks: ['news', 'venders']
+            chunks: ['news', 'vendors']
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/games/index.html'),
+            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/games/index.html'),
             filename: 'games.html',
             inject: true,
-            chunks: ['games', 'venders']
+            chunks: ['games', 'vendors']
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/mall/index.html'),
+            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/mall/index.html'),
             filename: 'mall.html',
             inject: true,
-            chunks: ['mall', 'venders']
+            chunks: ['mall', 'vendors']
         }),
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src/pages/user/index.html'),
+            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/user/index.html'),
             filename: 'user.html',
             inject: true,
-            chunks: ['user', 'venders']
+            chunks: ['user', 'vendors']
         })
     ],
     devServer: {

@@ -105,30 +105,30 @@ String.prototype.rtrim = function() {
 // }
 
 
-var dd = (function($) {
-    //var url = 'http://localhost:55555/api';
-    var url = 'http://192.168.1.250/api';
-    // var url = 'http://117.78.46.33:8057/api';
-    function doAjax(uri, method, data, succFunc, errFunc) {
-        var option = {
-            url: url + (uri.substring(0, 1) === '/' ? uri : '/' + uri),
-            method: method,
-            dataType: 'jsonp',
-            jsonp: 'jsonpcb',
-            success: succFunc,
-            error: errFunc
-        }
-        if (data) {
-            option['data'] = data;
-        }
-        $.ajax(option);
-    }
-    return {
-        Get: function(uri, data, succFunc, errFunc) {
-            doAjax(uri, 'GET', data, succFunc, errFunc);
-        },
-        Post: function(uri, data, succFunc, errFunc) {
-            doAjax(uri, 'POST', data, succFunc, errFunc);
-        }
-    }
-})(jQuery);
+// var dd = (function($) {
+//     //var url = 'http://localhost:55555/api';
+//     var url = 'http://192.168.1.250/api';
+//     // var url = 'http://117.78.46.33:8057/api';
+//     function doAjax(uri, method, data, succFunc, errFunc) {
+//         var option = {
+//             url: url + (uri.substring(0, 1) === '/' ? uri : '/' + uri),
+//             method: method,
+//             dataType: 'jsonp',
+//             jsonp: 'jsonpcb',
+//             success: succFunc,
+//             error: errFunc
+//         }
+//         if (data) {
+//             option['data'] = data;
+//         }
+//         $.ajax(option);
+//     }
+//     return {
+//         Get: function(uri, data, succFunc, errFunc) {
+//             doAjax(uri, 'GET', data, succFunc, errFunc);
+//         },
+//         Post: function(uri, data, succFunc, errFunc) {
+//             doAjax(uri, 'POST', data, succFunc, errFunc);
+//         }
+//     }
+// })($);
