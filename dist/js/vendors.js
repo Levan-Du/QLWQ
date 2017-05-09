@@ -10532,34 +10532,72 @@ String.prototype.rtrim = function () {
 // }
 
 
-// var dd = (function($) {
-//     //var url = 'http://localhost:55555/api';
-//     var url = 'http://192.168.1.250/api';
-//     // var url = 'http://117.78.46.33:8057/api';
-//     function doAjax(uri, method, data, succFunc, errFunc) {
-//         var option = {
-//             url: url + (uri.substring(0, 1) === '/' ? uri : '/' + uri),
-//             method: method,
-//             dataType: 'jsonp',
-//             jsonp: 'jsonpcb',
-//             success: succFunc,
-//             error: errFunc
-//         }
-//         if (data) {
-//             option['data'] = data;
-//         }
-//         $.ajax(option);
-//     }
-//     return {
-//         Get: function(uri, data, succFunc, errFunc) {
-//             doAjax(uri, 'GET', data, succFunc, errFunc);
-//         },
-//         Post: function(uri, data, succFunc, errFunc) {
-//             doAjax(uri, 'POST', data, succFunc, errFunc);
-//         }
-//     }
-// })($);
+var dd = function ($) {
+    //var url = 'http://localhost:55555/api';
+    var url = 'http://192.168.1.250/api';
+    // var url = 'http://117.78.46.33:8057/api';
+    function doAjax(uri, method, data, succFunc, errFunc) {
+        var option = {
+            url: url + (uri.substring(0, 1) === '/' ? uri : '/' + uri),
+            method: method,
+            dataType: 'jsonp',
+            jsonp: 'jsonpcb',
+            success: succFunc,
+            error: errFunc
+        };
+        if (data) {
+            option['data'] = data;
+        }
+        $.ajax(option);
+    }
+    return {
+        Get: function Get(uri, data, succFunc, errFunc) {
+            doAjax(uri, 'GET', data, succFunc, errFunc);
+        },
+        Post: function Post(uri, data, succFunc, errFunc) {
+            doAjax(uri, 'POST', data, succFunc, errFunc);
+        }
+    };
+}($);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/images/29078f37.barner-01.png";
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/images/b9e17b3d.barner-02.png";
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/images/bff8413f.barner-03.png";
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "/images/a604d4bf.barner-04.png";
 
 /***/ })
 /******/ ]);

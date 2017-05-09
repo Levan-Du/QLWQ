@@ -1,25 +1,27 @@
 ﻿var carousel = (imgEles, btnEles, long, callback) => {
     var i = 0,
-        imgEle = imgEles[i],
-        btnEle = btnEles[i];
+        imgEle = $(imgEles[i]),
+        btnEle = $(btnEles[i]);
 
     imgEle.fadeIn();
     btnEle.addClass('checked');
 
-    var start = () => {
+    var switchImg = (i) => {
+            imgEle.hide();
+            btnEle.removeClass('checked');
+            imgEle = $(imgEles[i]);
+            btnEle = $(btnEles[i]);
+            imgEle.fadeIn();
+            btnEle.addClass('checked');
+        },
+        start = () => {
             return setInterval(() => {
                 i++;
-
-                imgEle.fadeOut();
-                btnEle.removeClass('checked');
-                imgEle = imgEles[i];
-                imgEle = imgEles[i];
-                imgEle.fadeIn();
-                btnEle.addClass('checked');
-
                 if (i === 3) {
                     i = 0;
                 }
+
+                switchImg(i);
             }, long || 3000);
         },
         interval = start(),
@@ -29,6 +31,8 @@
 
     btnEles.mouseenter((e) => {
         stop();
+        i = btnEles.index(e.currentTarget);
+        switchImg(i);
     });
     btnEles.mouseleave((e) => {
         interval = start();

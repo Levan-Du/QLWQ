@@ -5,7 +5,7 @@
     margin: 6px 20px;
 }
 
-.nav .btn.btn-circle{    
+.nav .btn.btn-circle {
     opacity: .3;
 }
 
@@ -16,11 +16,10 @@
     right: 0;
     bottom: 0;
     margin: auto;
+    z-index: 100;
 }
 
-.nav .btn-wrapper .btn-circle.checked {
-    
-}
+.nav .btn-wrapper .btn-circle.checked {}
 
 .content {
     margin-top: 80px;
@@ -37,16 +36,25 @@
 }
 
 .news-wrapper .top > * {
-    float: left;
-    display: block;
-    height: 79px;
-    line-height: 79px;
-    margin-right: 20px;
+    vertical-align: middle;
+    padding-right: 20px;
 }
 
-.news-wrapper .top img.link {
+.news-wrapper .top img.icon-top {
+    width: 79px;
+    height: 79px;
+}
+
+.news-wrapper .top .jiantou span {
+    margin-right: -10px;
+    vertical-align: middle;
+}
+
+.news-wrapper .top .jiantou img {
     width: 28px;
     height: 20px;
+    margin-right: -20px;
+    vertical-align: middle;
 }
 
 .news-wrapper .top .title {

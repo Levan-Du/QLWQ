@@ -25,6 +25,11 @@ input {
 a {
     text-decoration: none;
     color: #555;
+    cursor: pointer;
+}
+
+a:hover {
+    color: blue;
 }
 
 ul,
@@ -68,6 +73,11 @@ li {
     background: rgba(204, 204, 204, 1);
     border: solid 1px #ccc;
     font-size: 20px;
+}
+
+.tab-title:hover {
+    cursor: pointer;
+    background: #eee;
 }
 
 .tab-title.first {
@@ -116,7 +126,7 @@ li {
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: -100;
+    z-index: 10;
     overflow: hidden;
 }
 
@@ -132,6 +142,7 @@ li {
     right: 0;
     top: 0;
     margin: auto;
+    z-index: 100;
 }
 
 .nav-item {
@@ -143,6 +154,11 @@ li {
     background: rgba(215, 215, 215, 1);
     border: solid 1px rgba(215, 215, 215, 1);
     font-size: 28px;
+}
+
+.nav-item:hover {
+    background: rgba(102, 204, 255, .9);
+    color: #eee;
 }
 
 .nav-item:first-child {
@@ -170,4 +186,8 @@ li {
     background: #ccc;
     opacity: .6;
     box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, .2);
+}
+
+.btn.btn-circle.checked {
+    background: #0f0;
 }

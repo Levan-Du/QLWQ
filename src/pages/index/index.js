@@ -6,13 +6,15 @@ import carousel from '../../commons/carousel';
 
 $((e) => {
     var imgs = ['barner-01.png', 'barner-02.png', 'barner-03.png'],
+        imgUrl = '',
         tmpl = imgs.map((el) => {
-            return $ `<img src="../../assets/imgs/${el}">`;
-        });
+            imgUrl = require(`../../assets/imgs/${el}`)
+            return '<img src="' + imgUrl + '">';
+        }).join('');
 
     $('#nav-img-box').append(tmpl);
 
     var imgEles = $('#nav-img-box img'),
-        btnEles = $('.btn-wrapper .btn');
-    carousel(imgEles, btnEles, 3000, null);
+        btnEles = $('.btn-wrapper .btn-circle');
+    carousel(imgEles, btnEles, 5000, null);
 });
