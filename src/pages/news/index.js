@@ -1,8 +1,8 @@
 import './index.css';
-import * from '../../commons/common.css';
-import snabbt from 'snabbt.js';
-import * from '../../commons/common';
+import '../../commons/common.css';
+import '../../commons/pages.css';
+import '../../commons/common';
 
-window.onload = (e) => {
+$((e) => {
 
-}
+});

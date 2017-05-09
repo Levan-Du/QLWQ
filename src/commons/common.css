@@ -106,10 +106,31 @@ li {
 
 .nav {
     position: relative;
+    height: 470px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
+.nav .img-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -100;
+    overflow: hidden;
+}
+
+.nav .img-box img {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
 .nav-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
     margin: auto;
 }
 
@@ -147,6 +168,6 @@ li {
     border: solid 1px #fff;
     border-radius: 50%;
     background: #ccc;
-    opacity: .3;
-    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, .3);
+    opacity: .6;
+    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, .2);
 }

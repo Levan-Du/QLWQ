@@ -2,7 +2,11 @@
     float: left;
     width: 22px;
     height: 22px;
-    margin: 5px 20px;
+    margin: 6px 20px;
+}
+
+.nav .btn.btn-circle{    
+    opacity: .3;
 }
 
 .nav .btn-wrapper {

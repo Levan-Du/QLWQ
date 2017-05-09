@@ -23,16 +23,16 @@ module.exports = {
             use: 'babel-loader'
         }, {
             test: /\.css$/,
-            use: {
+            use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: 'css-loader'
-            }
+            })
         }]
     },
     plugins: [
-        new webpack.providePlugin({
+        new webpack.ProvidePlugin({
             $: 'jquery'
-        }),        
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
             minChunks: 2 // 提取至少3个模块共有的部分
@@ -43,6 +43,30 @@ module.exports = {
             filename: 'index.html',
             inject: true,
             chunks: ['index', 'venders']
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/pages/news/index.html'),
+            filename: 'news.html',
+            inject: true,
+            chunks: ['news', 'venders']
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/pages/games/index.html'),
+            filename: 'games.html',
+            inject: true,
+            chunks: ['games', 'venders']
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/pages/mall/index.html'),
+            filename: 'mall.html',
+            inject: true,
+            chunks: ['mall', 'venders']
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/pages/user/index.html'),
+            filename: 'user.html',
+            inject: true,
+            chunks: ['user', 'venders']
         })
     ],
     devServer: {
