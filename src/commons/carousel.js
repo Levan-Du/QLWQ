@@ -1,4 +1,4 @@
-﻿var carousel = (imgEles, btnEles, long, callback) => {
+﻿var carousel = (imgEles, btnEles, long) => {
     var i = 0,
         imgEle = $(imgEles[i]),
         btnEle = $(btnEles[i]);

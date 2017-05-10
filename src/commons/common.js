@@ -1,64 +1,3 @@
-// export var getStyle = (element, css) => {
-//     if (getComputedStyle) {
-//         return getComputedStyle(element)[css];
-//     } else {
-//         return element.currentStyle[css];
-//     }
-// }
-
-// export var addEvent = (element, type, eventHandler) => {
-//     if (element.addEventListener) {
-//         element.addEventListener(type, eventHandler);
-//     } else if (element.attachEvent) {
-//         element.attachEvent('on' + type, eventHandler);
-//     } else {
-//         element[on + type] = eventHandler;
-//     }
-// }
-
-// JavaScript Document
-function getQueryString() {
-    var result = location.search.match(new RegExp('[\?\&][^\?\&]+=[^\?\&]+', 'g'));
-    if (!result) return {};
-    for (var i = 0; i < result.length; i++) {
-        result[i] = result[i].substring(1);
-    }
-    var oo = {};
-    for (var i in result) {
-        var ss = result[i].split('=');
-        oo[ss[0]] = ss[1];
-    }
-    return oo;
-}
-
-function htmlEncode(str) {
-    var ele = document.createElement('span');
-    ele.appendChild(document.createTextNode(str));
-    return ele.innerHTML;
-}
-
-function htmlDecode(str) {
-    var ele = document.createElement('span');
-    ele.innerHTML = str;
-    return ele.textContent;
-}
-
-function getBoxSize(dom, sizeType) {
-    var size = 0;
-    if (sizeType == 'height') {
-        size = $(dom).outerHeight() +
-            parseFloat($(dom).css('marginTop')) +
-            parseFloat($(dom).css('marginBottom'));
-    } else if (sizeType == 'width') {
-        size = $(dom).outerWidth() +
-            parseFloat($(dom).css('marginLeft')) +
-            parseFloat($(dom).css('marginRight'));
-    } else {
-        size = 0;
-    }
-    return size;
-}
-
 Date.prototype.Format = function(fmt) { //author: meizz 
     var o = {
         'M+': this.getMonth() + 1, //月份 
@@ -84,6 +23,67 @@ String.prototype.rtrim = function() {
     return this.replace(/(\s*$)/g, '');
 }
 
+// export var getStyle = (element, css) => {
+//     if (getComputedStyle) {
+//         return getComputedStyle(element)[css];
+//     } else {
+//         return element.currentStyle[css];
+//     }
+// }
+
+// export var addEvent = (element, type, eventHandler) => {
+//     if (element.addEventListener) {
+//         element.addEventListener(type, eventHandler);
+//     } else if (element.attachEvent) {
+//         element.attachEvent('on' + type, eventHandler);
+//     } else {
+//         element[on + type] = eventHandler;
+//     }
+// }
+
+// JavaScript Document
+export var getQueryString = () => {
+    var result = location.search.match(new RegExp('[\?\&][^\?\&]+=[^\?\&]+', 'g'));
+    if (!result) return {};
+    for (var i = 0; i < result.length; i++) {
+        result[i] = result[i].substring(1);
+    }
+    var oo = {};
+    for (var i in result) {
+        var ss = result[i].split('=');
+        oo[ss[0]] = ss[1];
+    }
+    return oo;
+}
+
+export var htmlEncode = (str) => {
+    var ele = document.createElement('span');
+    ele.appendChild(document.createTextNode(str));
+    return ele.innerHTML;
+}
+
+export var htmlDecode = (str) => {
+    var ele = document.createElement('span');
+    ele.innerHTML = str;
+    return ele.textContent;
+}
+
+export var getBoxSize = (dom, sizeType) => {
+    var size = 0;
+    if (sizeType == 'height') {
+        size = $(dom).outerHeight() +
+            parseFloat($(dom).css('marginTop')) +
+            parseFloat($(dom).css('marginBottom'));
+    } else if (sizeType == 'width') {
+        size = $(dom).outerWidth() +
+            parseFloat($(dom).css('marginLeft')) +
+            parseFloat($(dom).css('marginRight'));
+    } else {
+        size = 0;
+    }
+    return size;
+}
+
 // function getXhr(option) {
 //     var xhr = null;
 //     if (window.XMLHttpRequest) {
@@ -104,8 +104,20 @@ String.prototype.rtrim = function() {
 //     xhr.send(option.data);
 // }
 
+export var randomChar = (l) => {
+    var x = '0123456789qwertyuioplkjhgfdsazxcvbnm',
+        tmp = '',
+        timestamp = new Date().getTime();
 
-var dd = (function($) {
+    for (var i = 0; i < 2; i++) {
+        tmp += x.charAt(Math.ceil(Math.random() * 100000000) % x.length);
+    }
+
+    var code = timestamp + tmp;
+    return code.substring(code.length - l, code.length);
+}
+
+export var dd = (function($) {
     //var url = 'http://localhost:55555/api';
     var url = 'http://192.168.1.250/api';
     // var url = 'http://117.78.46.33:8057/api';

@@ -149,20 +149,23 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 2 */
+
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10422,69 +10425,16 @@ return jQuery;
 
 
 /***/ }),
-/* 3 */
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 
-// export var getStyle = (element, css) => {
-//     if (getComputedStyle) {
-//         return getComputedStyle(element)[css];
-//     } else {
-//         return element.currentStyle[css];
-//     }
-// }
-
-// export var addEvent = (element, type, eventHandler) => {
-//     if (element.addEventListener) {
-//         element.addEventListener(type, eventHandler);
-//     } else if (element.attachEvent) {
-//         element.attachEvent('on' + type, eventHandler);
-//     } else {
-//         element[on + type] = eventHandler;
-//     }
-// }
-
-// JavaScript Document
-function getQueryString() {
-    var result = location.search.match(new RegExp('[\?\&][^\?\&]+=[^\?\&]+', 'g'));
-    if (!result) return {};
-    for (var i = 0; i < result.length; i++) {
-        result[i] = result[i].substring(1);
-    }
-    var oo = {};
-    for (var i in result) {
-        var ss = result[i].split('=');
-        oo[ss[0]] = ss[1];
-    }
-    return oo;
-}
-
-function htmlEncode(str) {
-    var ele = document.createElement('span');
-    ele.appendChild(document.createTextNode(str));
-    return ele.innerHTML;
-}
-
-function htmlDecode(str) {
-    var ele = document.createElement('span');
-    ele.innerHTML = str;
-    return ele.textContent;
-}
-
-function getBoxSize(dom, sizeType) {
-    var size = 0;
-    if (sizeType == 'height') {
-        size = $(dom).outerHeight() + parseFloat($(dom).css('marginTop')) + parseFloat($(dom).css('marginBottom'));
-    } else if (sizeType == 'width') {
-        size = $(dom).outerWidth() + parseFloat($(dom).css('marginLeft')) + parseFloat($(dom).css('marginRight'));
-    } else {
-        size = 0;
-    }
-    return size;
-}
-
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 Date.prototype.Format = function (fmt) {
     //author: meizz 
     var o = {
@@ -10511,6 +10461,63 @@ String.prototype.rtrim = function () {
     return this.replace(/(\s*$)/g, '');
 };
 
+// export var getStyle = (element, css) => {
+//     if (getComputedStyle) {
+//         return getComputedStyle(element)[css];
+//     } else {
+//         return element.currentStyle[css];
+//     }
+// }
+
+// export var addEvent = (element, type, eventHandler) => {
+//     if (element.addEventListener) {
+//         element.addEventListener(type, eventHandler);
+//     } else if (element.attachEvent) {
+//         element.attachEvent('on' + type, eventHandler);
+//     } else {
+//         element[on + type] = eventHandler;
+//     }
+// }
+
+// JavaScript Document
+var getQueryString = exports.getQueryString = function getQueryString() {
+    var result = location.search.match(new RegExp('[\?\&][^\?\&]+=[^\?\&]+', 'g'));
+    if (!result) return {};
+    for (var i = 0; i < result.length; i++) {
+        result[i] = result[i].substring(1);
+    }
+    var oo = {};
+    for (var i in result) {
+        var ss = result[i].split('=');
+        oo[ss[0]] = ss[1];
+    }
+    return oo;
+};
+
+var htmlEncode = exports.htmlEncode = function htmlEncode(str) {
+    var ele = document.createElement('span');
+    ele.appendChild(document.createTextNode(str));
+    return ele.innerHTML;
+};
+
+var htmlDecode = exports.htmlDecode = function htmlDecode(str) {
+    var ele = document.createElement('span');
+    ele.innerHTML = str;
+    return ele.textContent;
+};
+
+var getBoxSize = exports.getBoxSize = function getBoxSize(dom, sizeType) {
+    var size = 0;
+    if (sizeType == 'height') {
+        size = $(dom).outerHeight() + parseFloat($(dom).css('marginTop')) + parseFloat($(dom).css('marginBottom'));
+    } else if (sizeType == 'width') {
+        size = $(dom).outerWidth() + parseFloat($(dom).css('marginLeft')) + parseFloat($(dom).css('marginRight'));
+    } else {
+        size = 0;
+    }
+    return size;
+};
+
 // function getXhr(option) {
 //     var xhr = null;
 //     if (window.XMLHttpRequest) {
@@ -10531,8 +10538,20 @@ String.prototype.rtrim = function () {
 //     xhr.send(option.data);
 // }
 
+var randomChar = exports.randomChar = function randomChar(l) {
+    var x = '0123456789qwertyuioplkjhgfdsazxcvbnm',
+        tmp = '',
+        timestamp = new Date().getTime();
 
-var dd = function ($) {
+    for (var i = 0; i < 2; i++) {
+        tmp += x.charAt(Math.ceil(Math.random() * 100000000) % x.length);
+    }
+
+    var code = timestamp + tmp;
+    return code.substring(code.length - l, code.length);
+};
+
+var dd = exports.dd = function ($) {
     //var url = 'http://localhost:55555/api';
     var url = 'http://192.168.1.250/api';
     // var url = 'http://117.78.46.33:8057/api';
@@ -10562,42 +10581,33 @@ var dd = function ($) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 4 */,
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */
+
+/***/ 43:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/29078f37.barner-01.png";
 
 /***/ }),
-/* 19 */
+
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/b9e17b3d.barner-02.png";
 
 /***/ }),
-/* 20 */
+
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/bff8413f.barner-03.png";
 
 /***/ }),
-/* 21 */
+
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/a604d4bf.barner-04.png";
 
 /***/ })
-/******/ ]);
+
+/******/ });

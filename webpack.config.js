@@ -1,7 +1,15 @@
 var webpack = require('webpack'),
     path = require('path'),
+    fs = require('fs'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+
+var imgs = fs.readdirSync(path.join(__dirname, 'src/assets/games'));
+fs.open(path.join(__dirname, 'src/assets/games/gamesImgs.json'), 'w', function(err, fd) {
+    var buf = new Buffer(JSON.stringify(imgs));
+    var c = fs.writeSync(fd, buf, 0, buf.length, 0);
+})
 
 module.exports = {
     entry: {
@@ -10,7 +18,6 @@ module.exports = {
         news: path.join(__dirname, 'src/pages/news/index.js'),
         mall: path.join(__dirname, 'src/pages/mall/index.js'),
         user: path.join(__dirname, 'src/pages/user/index.js')
-
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -22,6 +29,9 @@ module.exports = {
             exclude: /node_modules/,
             use: 'babel-loader'
         }, {
+            test: /\.json$/,
+            use: 'json-loader'
+        }, {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
                 fallback: 'style-loader',
@@ -29,7 +39,12 @@ module.exports = {
             })
         }, {
             test: /\.(png|jpg|svg)$/,
+            exclude: [path.join(__dirname, 'src/assets/games')],
             use: 'url-loader?limit=8192&name=/images/[hash:8].[name].[ext]'
+        }, {
+            test: /\.(png|jpg|gif)$/,
+            include: [path.join(__dirname, 'src/assets/games')],
+            use: 'file-loader?name=/images/[name].[ext]'
         }]
     },
     plugins: [
