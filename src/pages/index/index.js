@@ -104,7 +104,6 @@ var initMoveCarousel = () => {
             option = lr ? { marginLeft: marginLeft - itarget } : { marginLeft: marginLeft + itarget },
             speed = diffIndex * 300;
 
-        console.log(option, speed);
         imgWrapEle.animate(option, speed, 'swing', () => {
 
         });

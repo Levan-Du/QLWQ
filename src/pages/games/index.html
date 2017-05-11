@@ -16,58 +16,45 @@
     </header>
     <div class="nav">
         <nav class="nav-wrapper clearfix">
-            <a class="nav-item" href="index.html">首页</a>
-            <a class="nav-item" href="news.html">资讯中心</a>
-            <a class="nav-item checked" href="#">游戏中心</a>
-            <a class="nav-item" href="mall.html">商城</a>
-            <a class="nav-item" href="user.html">用户中心</a>
+            <div class="nav-item">
+                <a class="nav-item-title" href="index.html">首页</a></div>
+            <div class="nav-item">
+                <a class="nav-item-title" href="news.html">资讯中心</a>
+            </div>
+            <div class="nav-item checked">
+                <a class="nav-item-title" href="#">游戏中心</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-item-title" href="mall.html">商城</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-item-title" href="user.html">用户中心</a>
+                <ul class="submenu">
+                    <li class="direct"><span></span></li>
+                    <li class="submenu-item"><a href="#">页面1</a></li>
+                    <li class="submenu-item"><a href="#">页面2</a></li>
+                    <li class="submenu-item"><a href="#">页面3</a></li>
+                    <li class="submenu-item"><a href="#">页面4</a></li>
+                </ul>
+            </div>
         </nav>
     </div>
-    <article class="content">
+    <article class="content clearfix">
         <h1 class="title">
             <img src="../../assets/images/games/u1859.png">
             <span>游戏</span>
         </h1>
         <aside class="menu">
-            <ul class="menu-wrapper clearfix">
-                <li class="menu-item">
-                    <a class="menu-item-btn checked">
-                        <img class="img-icon" src="../../assets/images/games/u1873.svg">
-                        <span>iPhone</span>
-                        <img class="img-roundright" src="../../assets/images/problems/u1137.svg">
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-item-btn">
-                        <img class="img-icon" src="../../assets/images/games/u1871.svg">
-                        <span>Android</span>
-                        <img class="img-roundright" src="../../assets/images/problems/u1137.svg">
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-item-btn">
-                        <img class="img-icon" src="../../assets/images/games/u1867.svg">
-                        <span>iPad</span>
-                        <img class="img-roundright" src="../../assets/images/problems/u1137.svg">
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-item-btn">
-                        <img class="img-icon" src="../../assets/images/games/u1869.svg">
-                        <span>PC</span>
-                        <img class="img-roundright" src="../../assets/images/problems/u1137.svg">
-                    </a>
-                </li>
-                <li class="menu-item empty">
-                </li>
+            <ul id="menu_wrapper" class="menu-wrapper clearfix">
+                
             </ul>
         </aside>
         <article class="main">
             <div id="grid_wrapper" class="grid-wrapper clearfix">
-                <div class="grid-box grid-box-pc"></div>
-                <div class="grid-box grid-box-ipad"></div>
+                <div class="grid-box grid-box-ios checked"></div>
                 <div class="grid-box grid-box-android"></div>
-                <div class="grid-box grid-box-ios"></div>
+                <div class="grid-box grid-box-ipad"></div>
+                <div class="grid-box grid-box-pc"></div>
             </div>
         </article>
     </article>

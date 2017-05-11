@@ -68,41 +68,66 @@ export var htmlDecode = (str) => {
     return ele.textContent;
 }
 
-export var getBoxSize = (dom, sizeType) => {
-    var size = 0;
+export var getBoxSize = (box, sizeType) => {
+    var size = 0,
+        $box = $(box);
     if (sizeType == 'height') {
-        size = $(dom).outerHeight() +
-            parseFloat($(dom).css('marginTop')) +
-            parseFloat($(dom).css('marginBottom'));
+        size = parseFloat($box.height()) +
+            parseFloat($box.css('paddingTop')) +
+            parseFloat($box.css('paddingBottom')) +
+            parseFloat($box.css('marginTop')) +
+            parseFloat($box.css('marginBottom')) +
+            parseFloat($box.css('borderTop')) +
+            parseFloat($box.css('borderBottom'));
     } else if (sizeType == 'width') {
-        size = $(dom).outerWidth() +
-            parseFloat($(dom).css('marginLeft')) +
-            parseFloat($(dom).css('marginRight'));
+        size = parseFloat($box.width()) +
+            parseFloat($box.css('paddingTop')) +
+            parseFloat($box.css('paddingBottom')) +
+            parseFloat($box.css('borderTop')) +
+            parseFloat($box.css('borderBottom')) +
+            parseFloat($box.css('marginLeft')) +
+            parseFloat($box.css('marginRight'));
     } else {
         size = 0;
     }
     return size;
 }
 
-// function getXhr(option) {
-//     var xhr = null;
-//     if (window.XMLHttpRequest) {
-//         xhr = new XMLHttpRequest();
-//     } else {
-//         xhr = new ActiveXOjbect('Microsoft.XMLHTTP');
-//     }
-//     xhr.onreadystatechange = () => {
-//         if (xhr.readyState == 4) {
-//             if (xhr.status == 200) {
-//                 option.success(xhr.responseText);
-//             } else {
-// option.error(xhr.)
-//             }
-//         }
-//     };
-//     xhr.open(option.method, option.url, true);
-//     xhr.send(option.data);
-// }
+
+export var getBoxSize$ = ($box, sizeType) => {
+        var size = 0;
+        if (sizeType == 'height') {
+            size = parseFloat($box.outerHeight()) +
+                parseFloat($box.css('marginTop')) +
+                parseFloat($box.css('marginBottom'));
+        } else if (sizeType == 'width') {
+            size = parseFloat($box.outerWidth()) +
+                parseFloat($box.css('marginLeft')) +
+                parseFloat($box.css('marginRight'));
+        } else {
+            size = 0;
+        }
+        return size;
+    }
+    // function getXhr(option) {
+    //     var xhr = null;
+    //     if (window.XMLHttpRequest) {
+    //         xhr = new XMLHttpRequest();
+    //     } else {
+    //         xhr = new ActiveXOjbect('Microsoft.XMLHTTP');
+    //     }
+    //     xhr.onreadystatechange = () => {
+    //         if (xhr.readyState == 4) {
+    //             if (xhr.status == 200) {
+    //                 option.success(xhr.responseText);
+    //             } else {
+    // option.error(xhr.)
+    //             }
+    //         }
+    //     };
+    //     xhr.open(option.method, option.url, true);
+    //     xhr.send(option.data);
+    // }
 
 export var randomChar = (l) => {
     var x = '0123456789qwertyuioplkjhgfdsazxcvbnm',

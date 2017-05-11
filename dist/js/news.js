@@ -1,6 +1,6 @@
-webpackJsonp([2],{
+webpackJsonp([3],{
 
-/***/ 16:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -115,4 +115,4 @@ var initNewsAction = function initNewsAction() {
 
 /***/ })
 
-},[16]);
+},[23]);

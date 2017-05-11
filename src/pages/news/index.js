@@ -32,7 +32,7 @@ var prePage = (id, o) => {
     if (o.pageIndex > 1 && o.pageIndex <= o.totalPage) {
         o.pageIndex--;
     }
-    console.log(o);
+
     renderItem(id, o);
 }
 
@@ -40,7 +40,7 @@ var nextPage = (id, o) => {
     if (o.pageIndex >= 1 && o.pageIndex < o.totalPage) {
         o.pageIndex++;
     }
-    console.log(o);
+    
     renderItem(id, o);
 }
 
