@@ -34,7 +34,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		5: 0
+/******/ 		6: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -152,20 +152,6 @@
 /******/ ({
 
 /***/ 0:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 1:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10426,7 +10412,21 @@ return jQuery;
 
 /***/ }),
 
-/***/ 4:
+/***/ 1:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10506,18 +10506,30 @@ var htmlDecode = exports.htmlDecode = function htmlDecode(str) {
     return ele.textContent;
 };
 
-var getBoxSize = exports.getBoxSize = function getBoxSize(dom, sizeType) {
-    var size = 0;
+var getBoxSize = exports.getBoxSize = function getBoxSize(box, sizeType) {
+    var size = 0,
+        $box = $(box);
     if (sizeType == 'height') {
-        size = $(dom).outerHeight() + parseFloat($(dom).css('marginTop')) + parseFloat($(dom).css('marginBottom'));
+        size = parseFloat($box.height()) + parseFloat($box.css('paddingTop')) + parseFloat($box.css('paddingBottom')) + parseFloat($box.css('marginTop')) + parseFloat($box.css('marginBottom')) + parseFloat($box.css('borderTop')) + parseFloat($box.css('borderBottom'));
     } else if (sizeType == 'width') {
-        size = $(dom).outerWidth() + parseFloat($(dom).css('marginLeft')) + parseFloat($(dom).css('marginRight'));
+        size = parseFloat($box.width()) + parseFloat($box.css('paddingTop')) + parseFloat($box.css('paddingBottom')) + parseFloat($box.css('borderTop')) + parseFloat($box.css('borderBottom')) + parseFloat($box.css('marginLeft')) + parseFloat($box.css('marginRight'));
     } else {
         size = 0;
     }
     return size;
 };
 
+var getBoxSize$ = exports.getBoxSize$ = function getBoxSize$($box, sizeType) {
+    var size = 0;
+    if (sizeType == 'height') {
+        size = parseFloat($box.outerHeight()) + parseFloat($box.css('marginTop')) + parseFloat($box.css('marginBottom'));
+    } else if (sizeType == 'width') {
+        size = parseFloat($box.outerWidth()) + parseFloat($box.css('marginLeft')) + parseFloat($box.css('marginRight'));
+    } else {
+        size = 0;
+    }
+    return size;
+};
 // function getXhr(option) {
 //     var xhr = null;
 //     if (window.XMLHttpRequest) {
@@ -10578,25 +10590,25 @@ var dd = exports.dd = function ($) {
         }
     };
 }($);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 
-/***/ 50:
+/***/ 53:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/b9e17b3d.barner-02.png";
 
 /***/ }),
 
-/***/ 51:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/bff8413f.barner-03.png";
 
 /***/ }),
 
-/***/ 52:
+/***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/a604d4bf.barner-04.png";

@@ -17,7 +17,8 @@ module.exports = {
         games: path.join(__dirname, 'src/pages/games/index.js'),
         news: path.join(__dirname, 'src/pages/news/index.js'),
         mall: path.join(__dirname, 'src/pages/mall/index.js'),
-        user: path.join(__dirname, 'src/pages/user/index.js')
+        user: path.join(__dirname, 'src/pages/user/index.js'),
+        customer: path.join(__dirname, 'src/pages/customer/index.js')        
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -45,6 +46,10 @@ module.exports = {
             test: /\.(png|jpg|gif)$/,
             include: [path.join(__dirname, 'src/assets/games')],
             use: 'file-loader?name=/images/[name].[ext]'
+        }, {
+            test: /\.js$/,
+            include: [path.join(__dirname, 'node_modules/html5shiv/dist/')],
+            use: 'file-loader?name=/js/[name].[ext]'
         }]
     },
     plugins: [
@@ -85,6 +90,12 @@ module.exports = {
             filename: 'user.html',
             inject: true,
             chunks: ['user', 'vendors']
+        }),
+        new HtmlWebpackPlugin({
+            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/customer/index.html'),
+            filename: 'customer.html',
+            inject: true,
+            chunks: ['customer', 'vendors']
         })
     ],
     devServer: {

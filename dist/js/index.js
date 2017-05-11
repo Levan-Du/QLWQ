@@ -2,7 +2,8 @@ webpackJsonp([0],[
 /* 0 */,
 /* 1 */,
 /* 2 */,
-/* 3 */
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = [
@@ -32,7 +33,6 @@ module.exports = [
 ];
 
 /***/ }),
-/* 4 */,
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -84,17 +84,17 @@ var carousel = function carousel(imgEles, btnEles, long) {
 };
 
 exports.default = carousel;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 6 */,
-/* 7 */
+/* 7 */,
+/* 8 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 8 */,
 /* 9 */,
 /* 10 */,
 /* 11 */,
@@ -104,34 +104,36 @@ exports.default = carousel;
 /* 15 */,
 /* 16 */,
 /* 17 */,
-/* 18 */
+/* 18 */,
+/* 19 */,
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./1001.png": 25,
-	"./1002.png": 26,
-	"./1003.png": 27,
-	"./1004.png": 28,
-	"./1005.png": 29,
-	"./1006.png": 30,
-	"./1007.png": 31,
-	"./1008.png": 32,
-	"./2001.png": 33,
-	"./2002.png": 34,
-	"./2003.png": 35,
-	"./2004.png": 36,
-	"./3001.png": 37,
-	"./3002.png": 38,
-	"./3003.png": 39,
-	"./3004.png": 40,
-	"./3005.png": 41,
-	"./4001.png": 42,
-	"./4003.png": 43,
-	"./body_bg.jpg": 44,
-	"./game1.png": 45,
-	"./game_not.png": 46,
-	"./gamesImgs": 3,
-	"./gamesImgs.json": 3
+	"./1001.png": 28,
+	"./1002.png": 29,
+	"./1003.png": 30,
+	"./1004.png": 31,
+	"./1005.png": 32,
+	"./1006.png": 33,
+	"./1007.png": 34,
+	"./1008.png": 35,
+	"./2001.png": 36,
+	"./2002.png": 37,
+	"./2003.png": 38,
+	"./2004.png": 39,
+	"./3001.png": 40,
+	"./3002.png": 41,
+	"./3003.png": 42,
+	"./3004.png": 43,
+	"./3005.png": 44,
+	"./4001.png": 45,
+	"./4003.png": 46,
+	"./body_bg.jpg": 47,
+	"./game1.png": 48,
+	"./game_not.png": 49,
+	"./gamesImgs": 4,
+	"./gamesImgs.json": 4
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -147,51 +149,52 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 18;
+webpackContext.id = 20;
 
 /***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./acti-01.png": 47,
-	"./acti-02.png": 48,
-	"./barner-01.png": 49,
-	"./barner-02.png": 50,
-	"./barner-03.png": 51,
-	"./barner-04.png": 52
-};
-function webpackContext(req) {
-	return __webpack_require__(webpackContextResolve(req));
-};
-function webpackContextResolve(req) {
-	var id = map[req];
-	if(!(id + 1)) // check for number or string
-		throw new Error("Cannot find module '" + req + "'.");
-	return id;
-};
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 19;
-
-/***/ }),
-/* 20 */,
 /* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./acti-01.png": 50,
+	"./acti-02.png": 51,
+	"./barner-01.png": 52,
+	"./barner-02.png": 53,
+	"./barner-03.png": 54,
+	"./barner-04.png": 55
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 21;
+
+/***/ }),
+/* 22 */,
+/* 23 */,
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 
-__webpack_require__(0);
-
 __webpack_require__(1);
 
-__webpack_require__(7);
+__webpack_require__(2);
 
-var _common = __webpack_require__(4);
+__webpack_require__(8);
+
+var _common = __webpack_require__(3);
 
 var comm = _interopRequireWildcard(_common);
 
@@ -199,7 +202,7 @@ var _carousel = __webpack_require__(5);
 
 var _carousel2 = _interopRequireDefault(_carousel);
 
-var _gamesImgs = __webpack_require__(3);
+var _gamesImgs = __webpack_require__(4);
 
 var _gamesImgs2 = _interopRequireDefault(_gamesImgs);
 
@@ -210,7 +213,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var packGoodsImgs = function packGoodsImgs() {
     var imgs = JSON.parse(_gamesImgs2.default);
     imgs.forEach(function (el) {
-        __webpack_require__(18)("./" + el);
+        __webpack_require__(20)("./" + el);
     });
 };
 // import move from '../../commons/move';
@@ -227,7 +230,7 @@ var renderBarnerImage = function renderBarnerImage() {
         imgUrl = '',
         hashcode = comm.randomChar(8),
         tmpl = imgs.map(function (el) {
-        imgUrl = __webpack_require__(19)("./" + el);
+        imgUrl = __webpack_require__(21)("./" + el);
         return '<img src="' + imgUrl + '?' + hashcode + '">';
     }).join('');
 
@@ -303,166 +306,165 @@ var initMoveCarousel = function initMoveCarousel() {
             option = lr ? { marginLeft: marginLeft - itarget } : { marginLeft: marginLeft + itarget },
             speed = diffIndex * 300;
 
-        console.log(option, speed);
         imgWrapEle.animate(option, speed, 'swing', function () {});
 
         currentIndex = i;
     });
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 22 */,
-/* 23 */,
-/* 24 */,
-/* 25 */
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1001.png";
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1002.png";
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1003.png";
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1004.png";
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1005.png";
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1006.png";
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1007.png";
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1008.png";
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/2001.png";
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/2002.png";
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/2003.png";
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/2004.png";
 
 /***/ }),
-/* 37 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/3001.png";
 
 /***/ }),
-/* 38 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/3002.png";
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/3003.png";
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/3004.png";
 
 /***/ }),
-/* 41 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/3005.png";
 
 /***/ }),
-/* 42 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/4001.png";
 
 /***/ }),
-/* 43 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/4003.png";
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/body_bg.jpg";
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/game1.png";
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/game_not.png";
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/1e681eab.acti-01.png";
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/42abb44b.acti-02.png";
 
 /***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/29078f37.barner-01.png";
 
 /***/ })
-],[21]);
+],[24]);

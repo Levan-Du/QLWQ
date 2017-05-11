@@ -1,24 +1,24 @@
-// var path = require('path'),
-//     fs = require('fs');
-
-// var imgs = fs.readdirSync(path.join(__dirname, 'src/assets/games'));
-// fs.open(path.join(__dirname, 'src/assets/games/gamesImgs.json'), 'w', function(err, fd) {
-//     var buf = new Buffer(JSON.stringify(imgs));
-//     var c = fs.writeSync(fd, buf, 0, buf.length, 0);
-//     console.log(c)
-// })
-
-// setTimeout(() => {
-//     console.log(new Date())
-// }, 1000);
-
-
-
-var s1 = 0,
-    s2 = 0;
-for (let i = 0; i <= 10; i++) {
-    s1 += i * i;
-    s2 += i;
+var props = {
+    user: {
+        posts: [{
+            title: 'Foo',
+            comments: ['Good one', 'interesting']
+        }, {
+            title: 'Bar',
+            comments: ['OK']
+        }]
+    }
 }
 
-console.log(s1, s2);
+var get = (arr, props) => {
+    var o = props;
+    arr.forEach(el => {
+        if (o[el]) {
+            o = o[el];
+        }
+    });
+    return o;
+}
+var o1 = get(['user', 'posts', 0, 'title'], props);
+var o2 = get(['user', 'post', 1, 'title'], props);
+console.log(o1, o2);

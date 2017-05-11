@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Levan-Du/QLWQ#readme",
   "dependencies": {
+    "html5shiv": "^3.7.3",
     "jquery": "^3.2.1",
     "snabbt.js": "^0.6.4"
   },

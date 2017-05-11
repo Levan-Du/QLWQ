@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>游戏中心</title>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
 </head>
 
 <body>
@@ -15,68 +18,71 @@
         </div>
     </header>
     <div class="nav">
-        <nav class="nav-wrapper clearfix">
-            <div class="nav-item">
-                <a class="nav-item-title" href="index.html">首页</a></div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="news.html">资讯中心</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="games.html">游戏中心</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="mall.html">商城</a>
-            </div>
-            <div class="nav-item checked">
-                <a class="nav-item-title" href="#">用户中心</a>
-                <ul class="submenu">
-                    <li class="direct"><span></span></li>
-                    <li class="submenu-item"><a href="#">页面1</a></li>
-                    <li class="submenu-item"><a href="#">页面2</a></li>
-                    <li class="submenu-item"><a href="#">页面3</a></li>
-                    <li class="submenu-item"><a href="#">页面4</a></li>
-                </ul>
-            </div>
-        </nav>
     </div>
     <article class="content">
         <p class="line"></p>
-        <div class="content-wrapper clearfix">
-            <aside class="menu">
-                <h1 class="title">个人中心</h1>
-                <ul class="menu-wrapper">
-                    <li class="menu-item">账号信息</li>
-                    <li class="menu-item">游戏银行</li>
-                    <li class="menu-item">游戏充值</li>
-                    <li class="menu-item">消费记录</li>
+        <article class="main">
+            <section class="contact-bar">
+                <ul class="contact-wrapper clearfix">
+                    <li class="item">
+                        <div class="box">
+                            <img src="../../assets/images/custom/u911.svg">
+                            <p class="title">客服官方电话</p>
+                            <p>020-3775924</p>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="box">
+                            <img src="../../assets/images/custom/u909.svg">
+                            <p class="title">在线客服</p>
+                            <a class="btn">在线咨询</a>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="box">
+                            <img src="../../assets/images/custom/u907.svg">
+                            <p class="title">客服邮箱</p>
+                            <p>3537625480@qq.com</p>
+                        </div>
+                    </li>
                 </ul>
-            </aside>
-            <article class="main clearfix">
-                <section class="left">
-                    <div class="center">
-                        <p class="circle"><img class="img-touxiang" src="../../assets/images/index/u227.svg"></p>
-                        <p class="wrapper"><img class="img-message" src="../../assets/images/user/u758.svg"><span>我的消息</span></p>
-                    </div>
-                </section>
-                <section class="mid">
-                    <p>你好！</p>
-                    <p class="username"><span id="username" class="username">某某某</span>女士先生</p>
-                    <p>会员类型：<span class="viptype"></span></p>
-                    <p class="img-box">
-                        <img src="../../assets/images/user/u768.svg">
-                        <img src="../../assets/images/user/u770.svg">
-                        <img src="../../assets/images/user/u772.svg">
+            </section>
+            <section class="services clearfix">
+                <ul class="about">
+                    <li class="questions"><a href="">常见问题</a></li>
+                    <li class="feedbacks"><a href="">游戏反馈</a></li>
+                </ul>
+                <article class="advices">
+                    <p><img src=""><span>防盗指南</span><img src=""></p>
+                    <p><img src=""><span>服务条款</span><img src=""></p>
+                    <p><img src=""><span>Android下载</span></p>
+                    <p><img src=""><span>iPhone下载</span></p>
+                </article>
+                <article class="notices clearfix">
+                    <h4 class="title">服务公告</h4>
+                    <p class="item">
+                        <img src="../../assets/images/custom/u937.png">
+                        <span>公告1</span>
                     </p>
-                </section>
-                <section class="right">
-                    <p><span>等级：</span><span id="grade" class="value">1</span></p>
-                    <p><span>金币：</span><span id="score" class="value">2</span></p>
-                    <p><span>钻石：</span><span id="diamond" class="value">3</span></p>
-                    <p><span>房卡：</span><span id="rcard" class="value">4</span></p>
-                    <p><span>积分：</span><span id="points" class="value">5</span></p>
-                </section>
-            </article>
-        </div>
+                    <p class="item">
+                        <img src="../../assets/images/custom/u937.png">
+                        <span>公告2</span>
+                    </p>
+                    <p class="item">
+                        <img src="../../assets/images/custom/u937.png">
+                        <span>公告3</span>
+                    </p>
+                    <p class="item">
+                        <img src="../../assets/images/custom/u937.png">
+                        <span>公告4</span>
+                    </p>
+                    <p class="item">
+                        <img src="../../assets/images/custom/u937.png">
+                        <span>公告5</span>
+                    </p>
+                </article>
+            </section>
+        </article>
     </article>
     <article class="module">
         <ul class="module-wrapper clearfix">
@@ -91,7 +97,7 @@
                 <p>官方渠道了解更多资讯</p>
             </li>
             <li class="module-item">
-                <a href=""><img src="../../assets/images/index/u180.svg"></a>
+                <a href="customer.html"><img src="../../assets/images/index/u180.svg"></a>
                 <h3>联系客服</h3>
                 <p>官方客服电话：020-3775924</p>
             </li>
