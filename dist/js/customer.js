@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 22:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,18 +10,18 @@ __webpack_require__(1);
 
 __webpack_require__(2);
 
-__webpack_require__(6);
+__webpack_require__(7);
 
 $(function (e) {});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 
-/***/ 6:
+/***/ 7:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
 
-},[22]);
+},[23]);

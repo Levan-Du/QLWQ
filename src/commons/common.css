@@ -9,7 +9,7 @@ body {
 }
 
 body {
-    font-family: '微软雅黑 Bold', '微软雅黑 Regular', '微软雅黑';
+    font-family: '微软雅黑', '华文黑体', '黑体';
 }
 
 * {
@@ -227,4 +227,32 @@ li {
 
 .btn.btn-circle.checked {
     background: #0f0;
+}
+
+.modal {
+    /*display: none;*/
+}
+
+.modal,
+.modal-content {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10000;
+}
+
+.modal-content {
+    width: 480px;
+    height: 300px;
+    background: #fff;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    background: #555;
+    opacity: .5;
 }

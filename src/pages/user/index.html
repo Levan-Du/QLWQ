@@ -13,7 +13,9 @@
 <body>
     <header class="header">
         <div class="container clearfix">
-            <div class="logo"></div>
+            <div class="logo">
+                <a href="index.html"><img src="../../assets/imgs/logo.png"></a>
+            </div>
             <div class="right"></div>
         </div>
     </header>
@@ -106,6 +108,45 @@
         </ul>
     </article>
     <footer class="footer"></footer>
+    <div class="modal">
+        <div class="modal-mask"></div>
+        <article class="modal-content modal-login">
+            <h3>
+                <img src="../../assets/imgs/logoicon.png">
+                <span>登录棋游账号</span> 
+                <a class="btn-close" href=""><span class="iconfont icon-cha"></span></a>
+            </h3>
+            <section>
+                <form>
+                    <label class="label" for="txt_account">
+                        <span class="iconfont icon-ren"></span>
+                        <input id="txt_account" type="text" name="account" placeholder="账号">
+                    </label>
+                    <label class="label" for="txt_pwd">
+                        <span class="iconfont icon-lock-fill"></span>
+                        <input id="txt_pwd" type="text" name="pwd" placeholder="密码">
+                    </label>
+                    <label class="label" for="txt_valicode">
+                        <input id="txt_valicode" type="text" name="valicode" placeholder="验证码">
+                        <img src="">
+                    </label>
+                    <p for="login_submit" class="label label-submit">
+                        <input id="login_submit" type="submit" name="logon">
+                    </p>
+                    <p class="row">
+                        <a href="register.html">立即注册</a>
+                    </p>
+                </form>
+            </section>
+            <section class="other">
+                <p>使用以下方式登录</p>
+                <p>
+                    <a class="qq"><span class="iconfont icon-iconfontqq"></span></a>
+                    <a class="wx"><span class="iconfont icon-weixin"></span></a>
+                </p>
+            </section>
+        </article>
+    </div>
 </body>
 
 </html>

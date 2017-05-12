@@ -8,7 +8,17 @@
 
 .header {
     height: 40px;
+    line-height: 40px;
     background: #eee;
+}
+
+.header .container {
+    width: 970px;
+}
+
+.header .container img {
+    height: 30px;
+    vertical-align: middle;
 }
 
 .nav {

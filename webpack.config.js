@@ -18,7 +18,7 @@ module.exports = {
         news: path.join(__dirname, 'src/pages/news/index.js'),
         mall: path.join(__dirname, 'src/pages/mall/index.js'),
         user: path.join(__dirname, 'src/pages/user/index.js'),
-        customer: path.join(__dirname, 'src/pages/customer/index.js')        
+        customer: path.join(__dirname, 'src/pages/customer/index.js')
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -40,16 +40,19 @@ module.exports = {
             })
         }, {
             test: /\.(png|jpg|svg)$/,
-            exclude: [path.join(__dirname, 'src/assets/games')],
+            exclude: [
+                path.join(__dirname, 'src/assets/games'),
+                path.join(__dirname, 'src/assets/iconfont')
+            ],
             use: 'url-loader?limit=8192&name=/images/[hash:8].[name].[ext]'
         }, {
             test: /\.(png|jpg|gif)$/,
             include: [path.join(__dirname, 'src/assets/games')],
             use: 'file-loader?name=/images/[name].[ext]'
         }, {
-            test: /\.js$/,
-            include: [path.join(__dirname, 'node_modules/html5shiv/dist/')],
-            use: 'file-loader?name=/js/[name].[ext]'
+            test: /\.(eot|svg|woff|ttf|)$/,
+            include: [path.join(__dirname, 'src/assets/iconfont')],
+            use: 'file-loader?name=/css/iconfont/[name].[ext]'
         }]
     },
     plugins: [

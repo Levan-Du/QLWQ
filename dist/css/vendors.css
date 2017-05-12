@@ -9,7 +9,7 @@ body {
 }
 
 body {
-    font-family: '\5FAE\8F6F\96C5\9ED1   Bold', '\5FAE\8F6F\96C5\9ED1   Regular', '\5FAE\8F6F\96C5\9ED1';
+    font-family: '\5FAE\8F6F\96C5\9ED1', '\534E\6587\9ED1\4F53', '\9ED1\4F53';
 }
 
 * {
@@ -228,6 +228,34 @@ li {
 .btn.btn-circle.checked {
     background: #0f0;
 }
+
+.modal {
+    /*display: none;*/
+}
+
+.modal,
+.modal-content {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10000;
+}
+
+.modal-content {
+    width: 480px;
+    height: 300px;
+    background: #fff;
+}
+
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    background: #555;
+    opacity: .5;
+}
 .header,
 .nav,
 .content,
@@ -238,7 +266,17 @@ li {
 
 .header {
     height: 40px;
+    line-height: 40px;
     background: #eee;
+}
+
+.header .container {
+    width: 970px;
+}
+
+.header .container img {
+    height: 30px;
+    vertical-align: middle;
 }
 
 .nav {
