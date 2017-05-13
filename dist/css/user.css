@@ -29,6 +29,15 @@
 
 .icon-fangqia:before { content: "\E76C"; }
 
+::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+input[type="submit"]:focus,
+a:focus {
+    outline: solid 1px #58e;
+}
+
 .nav {
     background-image: url(/images/a604d4bf.barner-04.png);
     height: 350px;
@@ -192,11 +201,11 @@
 }
 
 .modal {
-    color: #555;
+    display: none;
 }
 
 .modal-content {
-    width: 350px;
+    width: 360px;
     height: 450px;
     background: #fff;
 }
@@ -238,21 +247,37 @@
     border: 0;
 }
 
-.modal-content label {
-    display: block;
-    border: solid 1px #ddd;
+.modal-content .row {
     margin: 16px;
-    padding: 5px;
 }
 
-.modal-content label.submit-bar {
+.modal-content .row .label {
+    padding: 6px;
+    display: block;
+    border: solid 1px #ddd;
+}
+
+.modal-content .row .label.focus {
+    outline: solid 1px #58e;
+}
+
+.modal-content .row.vali > * {
+    height: 100%;
+    float: left;
+}
+
+.modal-content .row.vali .label {
+    width: 60%;
+}
+
+.modal-content .label-submit {
     margin: 16px;
     margin-top: 40px;
     padding: 0;
     border: 0;
 }
 
-.modal-content label input[type="submit"] {
+.modal-content .label input[type="submit"] {
     width: 100%;
     height: 100%;
     border: solid 1px;
@@ -264,11 +289,11 @@
     letter-spacing: 3px;
 }
 
-.modal-content label:first-of-type {
+.modal-content .row:first-of-type {
     margin-top: 50px;
 }
 
-.modal-content .row {
+.modal-content .row.textright {
     padding: 0 20px;
     text-align: right;
 }
@@ -278,7 +303,7 @@
     color: #4480fe;
 }
 
-.modal-content .other {
+.modal-content .login-other {
     position: absolute;
     width: 100%;
     height: 80px;
@@ -287,23 +312,23 @@
     font-size: 14px;
 }
 
-.modal-content .other > p {
+.modal-content .login-other > p {
     margin: 10px 20px;
 }
 
-.modal-content .other a {
+.modal-content .login-other a {
     margin: 0 5px;
 }
 
-.modal-content .other .qq .iconfont {
-    color: #c33;
+.modal-content .login-other .qq .iconfont {
+    color: #e33;
 }
 
-.modal-content .other .wx .iconfont {
+.modal-content .login-other .wx .iconfont {
     color: #3c3;
 }
 
-.modal-content .other .iconfont {
-    font-size: 25px;
+.modal-content .login-other .iconfont {
+    font-size: 22px;
     vertical-align: middle;
 }

@@ -34,6 +34,13 @@ var initModalLogin = function initModalLogin() {
         e.preventDefault();
         $('.modal').hide();
     });
+
+    $('input').focus(function (e) {
+        $(e.currentTarget).parent('label').addClass('focus');
+    });
+    $('input').blur(function (e) {
+        $(e.currentTarget).parent('label').removeClass('focus');
+    });
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 

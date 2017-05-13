@@ -17,8 +17,26 @@ body {
     padding: 0;
 }
 
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+:-moz-placeholder {
+    color: #666;
+}
+
+::-moz-placeholder {
+    color: #666;
+}
+
+:-ms-input-placeholder {
+    color: #999;
+}
+
 select,
-input {
+input,
+button,
+a {
     outline: none;
 }
 

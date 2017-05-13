@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>游戏中心</title>
     <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="css/html5polyfill.css">
     <script src="js/html5shiv.js"></script>
     <![endif]-->
 </head>
@@ -116,29 +117,35 @@
                 <span>登录棋游账号</span> 
                 <a class="btn-close" href=""><span class="iconfont icon-cha"></span></a>
             </h3>
-            <section>
+            <section class="login">
                 <form>
-                    <label class="label" for="txt_account">
-                        <span class="iconfont icon-ren"></span>
-                        <input id="txt_account" type="text" name="account" placeholder="账号">
-                    </label>
-                    <label class="label" for="txt_pwd">
-                        <span class="iconfont icon-lock-fill"></span>
-                        <input id="txt_pwd" type="text" name="pwd" placeholder="密码">
-                    </label>
-                    <label class="label" for="txt_valicode">
-                        <input id="txt_valicode" type="text" name="valicode" placeholder="验证码">
-                        <img src="">
-                    </label>
-                    <p for="login_submit" class="label label-submit">
-                        <input id="login_submit" type="submit" name="logon">
+                    <p class="row">
+                        <label class="label" for="txt_account">
+                            <span class="iconfont icon-ren"></span>
+                            <input id="txt_account" type="text" name="account" placeholder="账号">
+                        </label>
                     </p>
                     <p class="row">
+                        <label class="label" for="txt_pwd">
+                            <span class="iconfont icon-lock-fill"></span>
+                            <input id="txt_pwd" type="text" name="pwd" placeholder="密码">
+                        </label>
+                    </p>
+                    <p class="row vali clearfix">
+                        <label class="label" for="txt_valicode">
+                            <input id="txt_valicode" type="text" name="valicode" placeholder="验证码">
+                        </label>
+                        <img src="aaa">
+                    </p>
+                    <p for="login_submit" class="label label-submit">
+                        <input id="login_submit" type="submit" name="logon" value="登录">
+                    </p>
+                    <p class="row textright">
                         <a href="register.html">立即注册</a>
                     </p>
                 </form>
             </section>
-            <section class="other">
+            <section class="login-other">
                 <p>使用以下方式登录</p>
                 <p>
                     <a class="qq"><span class="iconfont icon-iconfontqq"></span></a>

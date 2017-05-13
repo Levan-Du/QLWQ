@@ -18,7 +18,9 @@ body {
 }
 
 select,
-input {
+input,
+button,
+a {
     outline: none;
 }
 
