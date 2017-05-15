@@ -274,3 +274,23 @@ li {
     background: #555;
     opacity: .5;
 }
+
+.line-left {
+    border-left: solid 1px #bbb;
+}
+
+.line-top {
+    border-top: solid 1px #bbb;
+}
+
+.line-right {
+    border-right: solid 1px #bbb;
+}
+
+.line-bottom {
+    border-bottom: solid 1px #bbb;
+}
+
+.error {
+    color: #e33;
+}

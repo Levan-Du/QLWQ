@@ -32,7 +32,6 @@
 
 .nav .nav-wrapper {
     width: 970px;
-    height: 470px;
 }
 
 .nav .nav-wrapper .nav-item {
@@ -76,4 +75,60 @@
     .footer {
         width: 1280px;
     }
+}
+
+.footer .container {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 35px
+}
+
+.footer .container p {
+    text-align: center;
+    margin-bottom: 15px;
+    line-height: 12px;
+    font-size: 12px
+}
+
+.footer .container .smalllist a {
+    color: #e7e7e7
+}
+
+.footer .container .security {
+    width: 720px;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.footer .container .security span {
+    width: 118px;
+    height: 47px;
+    float: left;
+    margin-right: 8px;
+    background: url(../assets/imgs/sprite.png) no-repeat;
+}
+
+.footer .container .security span:nth-of-type(1) {
+    background-position: 0 -520px
+}
+
+.footer .container .security span:nth-of-type(2) {
+    background-position: 0 -567px
+}
+
+.footer .container .security span:nth-of-type(3) {
+    background-position: 0 -615px
+}
+
+.footer .container .security span:nth-of-type(4) {
+    background-position: 0 -664px
+}
+
+.footer .container .credit .icp {
+    color: #000;
+    font-weight: 900;
+}
+
+.footer .container .credit .icp:hover {
+    color: #58E;
 }

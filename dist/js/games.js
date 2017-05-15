@@ -201,8 +201,9 @@ var renderGrid = function renderGrid(pf, data) {
 };
 
 var renderGridItem = function renderGridItem(pf, data) {
+    console.log(data);
     return '\n' + data.map(function (el) {
-        return '\n\t<li class="grid-item">\n\t    <article class="panel">\n\t        <p>\u5176\u4E50\u65E0\u7A77\u6E38\u620F\u4E2D\u5FC3</p>\n\t        <img class="img-game" src="' + el.ImgUrl + '">\n\t        <p class="down">\n\t            <img src="' + pf.icon + '">\n\t            <a href="#">\u4E0B\u8F7D\u6E38\u620F</a>\n\t            <img class="hline" src="' + __webpack_require__(17) + '">\n\t            <img src="' + __webpack_require__(18) + '">\n\t            <a href="#">\u4E8C\u7EF4\u7801\u4E0B\u8F7D</a>\n\t        </p>\n\t    </article>\n\t</li>\n';
+        return '\n\t<li class="grid-item">\n\t    <article class="panel">\n\t        <p class="title">' + el.GameName + '</p>\n\t        <img class="img-game" src="' + el.ImgUrl + '">\n\t        <p class="down">\n\t            <img src="' + pf.icon + '">\n\t            <a href="#">\u4E0B\u8F7D\u6E38\u620F</a>\n\t            <img class="hline" src="' + __webpack_require__(17) + '">\n\t            <img src="' + __webpack_require__(18) + '">\n\t            <a href="#">\u4E8C\u7EF4\u7801\u4E0B\u8F7D</a>\n\t        </p>\n\t    </article>\n\t</li>\n';
     }).join('') + '\n\t';
 };
 

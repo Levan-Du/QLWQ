@@ -185,7 +185,7 @@ a:focus {
     font-weight: 500;
     font-size: 15px;
     position: relative;
-    color:#666;
+    color: #666;
 }
 
 .modal-content h3 .btn-close {
@@ -227,13 +227,18 @@ a:focus {
     outline: solid 1px #58e;
 }
 
-.modal-content .row.vali > * {
+.modal-content .row.vali > .label {
+    width: 70%;
     height: 100%;
+    margin-right: 10px;
     float: left;
 }
 
-.modal-content .row.vali .label {
-    width: 60%;
+.modal-content .row.vali > a {
+    display: block;
+    height: 100%;
+    padding: 6px;
+    overflow: hidden;
 }
 
 .modal-content .label-submit {
@@ -278,7 +283,7 @@ a:focus {
 }
 
 .modal-content .login-other > p {
-    color:#666;
+    color: #666;
     margin: 10px 20px;
 }
 

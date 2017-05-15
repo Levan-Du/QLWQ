@@ -17,6 +17,22 @@ body {
     padding: 0;
 }
 
+::-webkit-input-placeholder {
+    color: #999;
+}
+
+:-moz-placeholder {
+    color: #666;
+}
+
+::-moz-placeholder {
+    color: #666;
+}
+
+:-ms-input-placeholder {
+    color: #999;
+}
+
 select,
 input,
 button,
@@ -258,6 +274,26 @@ li {
     background: #555;
     opacity: .5;
 }
+
+.line-left {
+    border-left: solid 1px #bbb;
+}
+
+.line-top {
+    border-top: solid 1px #bbb;
+}
+
+.line-right {
+    border-right: solid 1px #bbb;
+}
+
+.line-bottom {
+    border-bottom: solid 1px #bbb;
+}
+
+.error {
+    color: #e33;
+}
 .header,
 .nav,
 .content,
@@ -292,7 +328,6 @@ li {
 
 .nav .nav-wrapper {
     width: 970px;
-    height: 470px;
 }
 
 .nav .nav-wrapper .nav-item {
@@ -337,3 +372,96 @@ li {
         width: 1280px;
     }
 }
+
+.footer .container {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 35px
+}
+
+.footer .container p {
+    text-align: center;
+    margin-bottom: 15px;
+    line-height: 12px;
+    font-size: 12px
+}
+
+.footer .container .smalllist a {
+    color: #e7e7e7
+}
+
+.footer .container .security {
+    width: 720px;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.footer .container .security span {
+    width: 118px;
+    height: 47px;
+    float: left;
+    margin-right: 8px;
+    background: url(/images/569693d2.sprite.png) no-repeat;
+}
+
+.footer .container .security span:nth-of-type(1) {
+    background-position: 0 -520px
+}
+
+.footer .container .security span:nth-of-type(2) {
+    background-position: 0 -567px
+}
+
+.footer .container .security span:nth-of-type(3) {
+    background-position: 0 -615px
+}
+
+.footer .container .security span:nth-of-type(4) {
+    background-position: 0 -664px
+}
+
+.footer .container .credit .icp {
+    color: #000;
+    font-weight: 900;
+}
+
+.footer .container .credit .icp:hover {
+    color: #58E;
+}
+
+@font-face {font-family: "iconfont";
+  src: url(/css/iconfont/iconfont.eot); /* IE9*/
+  src: url(/css/iconfont/iconfont.eot#iefix) format('embedded-opentype'), 
+  url(/css/iconfont/iconfont.woff) format('woff'), 
+  url(/css/iconfont/iconfont.ttf) format('truetype'), 
+  url(/css/iconfont/iconfont.svg#iconfont) format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ren:before { content: "\E628"; }
+
+.icon-iconfontqq:before { content: "\E649"; }
+
+.icon-weixin:before { content: "\E603"; }
+
+.icon-lock-fill:before { content: "\E615"; }
+
+.icon-weigouxuan:before { content: "\E623"; }
+
+.icon-cha:before { content: "\E60A"; }
+
+.icon-icon162:before { content: "\E6A0"; }
+
+.icon-tanhao:before { content: "\E61D"; }
+
+.icon-zuanshi:before { content: "\E6D2"; }
+
+.icon-fangqia:before { content: "\E76C"; }
+

@@ -137,12 +137,12 @@ var renderGrid = (pf, data) => {
     $('#grid_wrapper .grid-box-' + pf.cla).append(tmpl);
 }
 
-var renderGridItem = (pf, data) => {
+var renderGridItem = (pf, data) => {console.log(data);
         return `
 ${data.map(el=>`
 	<li class="grid-item">
 	    <article class="panel">
-	        <p>其乐无穷游戏中心</p>
+	        <p class="title">${el.GameName}</p>
 	        <img class="img-game" src="${el.ImgUrl}">
 	        <p class="down">
 	            <img src="${pf.icon}">

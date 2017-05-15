@@ -10564,8 +10564,8 @@ var randomChar = exports.randomChar = function randomChar(l) {
 };
 
 var dd = exports.dd = function ($) {
-    //var url = 'http://localhost:55555/api';
-    var url = 'http://192.168.1.250/api';
+    var url = 'http://localhost:55555/api';
+    // var url = 'http://192.168.1.250/api';
     // var url = 'http://117.78.46.33:8057/api';
     function doAjax(uri, method, data, succFunc, errFunc) {
         var option = {
@@ -10594,21 +10594,21 @@ var dd = exports.dd = function ($) {
 
 /***/ }),
 
-/***/ 54:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 5:
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__.p + "/images/b9e17b3d.barner-02.png";
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
 /***/ 55:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "/images/bff8413f.barner-03.png";
+module.exports = __webpack_require__.p + "/images/b9e17b3d.barner-02.png";
 
 /***/ }),
 
-/***/ 56:
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/a604d4bf.barner-04.png";

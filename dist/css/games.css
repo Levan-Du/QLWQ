@@ -123,6 +123,11 @@
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
+.content .main .grid-wrapper .grid .grid-item .panel .title {
+    color: #58e;
+    font-weight: 900;
+}
+
 .content .main .grid-wrapper .grid .grid-item .panel > p {
     padding: 15px;
 }

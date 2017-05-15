@@ -1,38 +1,3 @@
-
-@font-face {font-family: "iconfont";
-  src: url(/css/iconfont/iconfont.eot); /* IE9*/
-  src: url(/css/iconfont/iconfont.eot#iefix) format('embedded-opentype'), 
-  url(/css/iconfont/iconfont.woff) format('woff'), 
-  url(/css/iconfont/iconfont.ttf) format('truetype'), 
-  url(/css/iconfont/iconfont.svg#iconfont) format('svg'); /* iOS 4.1- */
-}
-
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-ren:before { content: "\E628"; }
-
-.icon-iconfontqq:before { content: "\E649"; }
-
-.icon-weixin:before { content: "\E603"; }
-
-.icon-lock-fill:before { content: "\E615"; }
-
-.icon-cha:before { content: "\E60A"; }
-
-.icon-zuanshi:before { content: "\E6D2"; }
-
-.icon-fangqia:before { content: "\E76C"; }
-
-::-webkit-input-placeholder {
-    color: #aaa;
-}
-
 input[type="submit"]:focus,
 a:focus {
     outline: solid 1px #58e;
@@ -220,6 +185,7 @@ a:focus {
     font-weight: 500;
     font-size: 15px;
     position: relative;
+    color: #666;
 }
 
 .modal-content h3 .btn-close {
@@ -261,13 +227,18 @@ a:focus {
     outline: solid 1px #58e;
 }
 
-.modal-content .row.vali > * {
+.modal-content .row.vali > .label {
+    width: 70%;
     height: 100%;
+    margin-right: 10px;
     float: left;
 }
 
-.modal-content .row.vali .label {
-    width: 60%;
+.modal-content .row.vali > a {
+    display: block;
+    height: 100%;
+    padding: 6px;
+    overflow: hidden;
 }
 
 .modal-content .label-submit {
@@ -286,7 +257,6 @@ a:focus {
     background: #4490f7;
     border-radius: 3px;
     color: #fff;
-    letter-spacing: 3px;
 }
 
 .modal-content .row:first-of-type {
@@ -313,6 +283,7 @@ a:focus {
 }
 
 .modal-content .login-other > p {
+    color: #666;
     margin: 10px 20px;
 }
 
