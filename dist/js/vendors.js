@@ -10564,8 +10564,8 @@ var randomChar = exports.randomChar = function randomChar(l) {
 };
 
 var dd = exports.dd = function ($) {
-    var url = 'http://localhost:55555/api';
-    // var url = 'http://192.168.1.250/api';
+    // var url = 'http://localhost:55555/api';
+    var url = 'http://192.168.1.250/api';
     // var url = 'http://117.78.46.33:8057/api';
     function doAjax(uri, method, data, succFunc, errFunc) {
         var option = {
@@ -10601,14 +10601,14 @@ var dd = exports.dd = function ($) {
 
 /***/ }),
 
-/***/ 55:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/b9e17b3d.barner-02.png";
 
 /***/ }),
 
-/***/ 57:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/a604d4bf.barner-04.png";

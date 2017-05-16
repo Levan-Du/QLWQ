@@ -61,11 +61,11 @@
                 <li class="text-box"><span>滚动游戏公告，例如：某某玩家在什么场中赢得多少金币</span></li>
             </ul>
         </section>
-        <ul class="tab">
-            <li class="tab-page tab-page-acti">
-                <input id="tab-page-1" class="tab-title-check" type="radio" name="tab" checked>
-                <label class="tab-title first" for="tab-page-1">活动</label>
-                <div id="activitiesBox" class="tab-content">
+        <ul id="tab_main" class="tab">
+            <li class="tab-page">
+                <input id="tab_main_1" class="tab-title-check" type="radio" name="tab-main">
+                <label class="tab-title first" for="tab_main_1">充值</label>
+                <div class="tab-content">
                     <div class="container clearfix">
                         <aside class="left">
                             <p class="logoicon"><img src="../../assets/imgs/logoicon.png"></p>
@@ -75,40 +75,109 @@
                             <p id="error_tiaoli" class="error"><span class="iconfont icon-tanhao"></span>必须同意以上条款才能开通</p>
                         </aside>
                         <article class="main">
-                            <section class="top">
+                            <section class="info clearfix">
                                 <p class="half">
                                     <label for="txt_gameid">充值ID：</label>
                                     <input id="txt_gameid" type="" name="GameID">
                                 </p>
                                 <p class="half">
-                                    <label>现有金币</label><span id="show_score"></span></p>
+                                    <label>现有金币：</label><span id="show_score"></span></p>
                                 <p class="half">
-                                    <label>玩家昵称</label><span id="show_nick"></span></p>
+                                    <label>玩家昵称：</label><span id="show_nick"></span></p>
                                 <p class="half">
-                                    <label>现有钻石</label><span id="show_diamond"></span></p>
+                                    <label>现有钻石：</label><span id="show_diamond"></span></p>
                                 <p class="line line-bottom"></p>
                             </section>
-                            <section class="bottom">
+                            <section class="input clearfix">
                                 <p>
                                     <label>充值数量：</label>
-                                    <input type="radio" name="Num">
-                                    <label>10</label>
-                                    <input type="radio" name="Num">
-                                    <label>50</label>
-                                    <input type="radio" name="Num">
-                                    <label>100</label>
-                                    <input type="radio" name="Num" placeholder="其他数量">
+                                    <input id="txt_num_10" type="radio" name="Num" checked>
+                                    <label for="txt_num_10" class="label-show">10</label>
+                                    <input id="txt_num_50" type="radio" name="Num">
+                                    <label for="txt_num_50" class="label-show">50</label>
+                                    <input id="txt_num_100" type="radio" name="Num">
+                                    <label for="txt_num_100" class="label-show">100</label>
+                                    <input id="txt_num_other" type="text" name="Num" placeholder="其他数量">
+                                </p>
+                                <p>
+                                    <label>充值方式：</label>
+                                    <input id="txt_wx_paytype" type="radio" name="PayType" value=0 checked>
+                                    <label for="txt_wx_paytype" class="label-show">微信支付</label>
+                                    <input id="txt_zfb_paytype" type="radio" name="PayType" value=1>
+                                    <label for="txt_zfb_paytype" class="label-show">支付宝</label>
+                                    <input id="txt_other_type" type="radio" name="PayType" value=2>
+                                    <label for="txt_other_type" class="label-show">其他方式</label>
+                                </p>
+                                <p>
+                                    <label>应付金额：</label>
+                                </p>
+                            </section>
+                            <section class="submit-bar">
+                                <p>
+                                    <input type="submit" name="submit" value="确认支付">
                                 </p>
                             </section>
                         </article>
                     </div>
                 </div>
             </li>
-            <li class="tab-page tab-page-notice">
-                <input id="tab-page-2" class="tab-title-check" type="radio" name="tab">
-                <label class="tab-title last" for="tab-page-2">公告</label>
-                <div id="noticesBox" class="tab-content">
-                    <!-- <p>公告内容</p> -->
+            <li class="tab-page">
+                <input id="tab_main_2" class="tab-title-check" type="radio" name="tab-main" checked>
+                <label class="tab-title last" for="tab_main_2">兑换</label>
+                <div class="tab-content">
+                    <ul class="tab tab-horizontal" id="tab_exchange">
+                        <li class="tab-page">
+                            <input id="tab_exchange_1" class="tab-title-check" type="radio" name="tab-exchange">
+                            <label class="tab-title" for="tab_exchange_1">钻石兑换</label>
+                            <div class="tab-content">
+                                <ul id="grid_good_exchange_diamond" class="grid clearfix">
+                                    <li class="grid-item">
+                                        <div class="panel">
+                                            <img src="../../assets/goods/good-01.jpg">
+                                            <span>15钻石</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="tab-page">
+                            <input id="tab_exchange_2" class="tab-title-check" type="radio" name="tab-exchange" checked>
+                            <label class="tab-title" for="tab_exchange_2">积分兑换</label>
+                            <div class="tab-content">
+                                <ul class="tab" id="tab_exchange_point">
+                                    <li class="tab-page">
+                                        <input id="tab_exchange_point_1" class="tab-title-check" type="radio" name="tab-exchange-point" checked>
+                                        <label class="tab-title first" for="tab_exchange_point_1">全部</label>
+                                        <div class="tab-content clearfix">
+                                            <ul class="grid">
+                                                <li class="grid-item">
+                                                    <div class="panel">
+                                                        <img src="../../assets/goods/good-01.jpg">
+                                                        <p>
+                                                            <span>名称</span>
+                                                            <span>100</span>
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="tab-page">
+                                        <input id="tab_exchange_point_2" class="tab-title-check" type="radio" name="tab-exchange-point">
+                                        <label class="tab-title" for="tab_exchange_point_2">虚拟物品</label>
+                                        <div class="tab-content clearfix">
+                                        </div>
+                                    </li>
+                                    <li class="tab-page">
+                                        <input id="tab_exchange_point_3" class="tab-title-check" type="radio" name="tab-exchange-point">
+                                        <label class="tab-title last" for="tab_exchange_point_3">全部奖励</label>
+                                        <div class="tab-content clearfix">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </li>
         </ul>

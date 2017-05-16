@@ -90,8 +90,8 @@
     margin-top: 20px;
 }
 
-.content .tab .tab-page-acti {
-    height: 560px;
+.content #tab_main > .tab-page {
+    height: 660px;
 }
 
 .content .tab .tab-title {
@@ -99,10 +99,10 @@
     height: 50px;
     line-height: 50px;
     box-shadow: 5px -5px -5px rgba(0, 0, 0, 0.3);
-    border-radius: 14px 14px 0 0;
+    /*border-radius: 14px 14px 0 0;*/
 }
 
-.content .tab .tab-content {
+.content #tab_main > .tab-page > .tab-content {
     top: 50px;
     border-top: solid 2px #6cf;
 }
@@ -166,8 +166,12 @@
 .content .tab .tab-content .container .main p {
     float: left;
     width: 100%;
-    height: 40px;
+    height: 50px;
     line-height: 40px;
+}
+
+.content .tab .tab-content .container .main p > * {
+    vertical-align: middle;
 }
 
 .content .tab .tab-content .container .main p.line {
@@ -176,4 +180,104 @@
 
 .content .tab .tab-content .container .main p.half {
     width: 50%;
+}
+
+.content .tab .tab-content .container .main input[type="radio"] {
+    position: absolute;
+    left: -9999px;
+}
+
+.content .tab .tab-content .container .main input[type="radio"]:checked + .label-show {
+    background: rgba(102, 204, 204, 1);
+    color: #fff;
+}
+
+.content .tab .tab-content .container .main input {
+    padding: 8px 20px;
+    border: solid 1px #ddd;
+}
+
+.content .tab .tab-content .container .main .label-show {
+    padding: 5px 20px;
+    border: solid 1px #ddd;
+    background: #eee;
+    cursor: pointer;
+}
+
+.content .tab .tab-content .container .main > section {
+    margin-bottom: 10px;
+}
+
+.content .tab .tab-content .container .main .submit-bar {
+    margin-top: 50px;
+}
+
+.content .tab .tab-content .container .main .submit-bar input {
+    margin-left: 50px;
+    background: rgba(255, 51, 0, .8);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.content .tab .tab-page-exchange > .tab {
+    width: auto;
+    margin: 20px;
+    background: #f8f8f8;
+    height: 550px;
+}
+
+.content #tab_exchange {
+    height: 610px;
+    background: #f8f8f8;
+}
+
+.content #tab_exchange > .tab-page > .tab-content {
+    left: 200px;
+    background: #f2f2f2;
+    z-index: 999;
+}
+
+.content #tab_exchange > .tab-page > .tab-title {
+    position: absolute;
+    height: 60px;
+    padding: 0;
+    z-index: 1000;
+    border: none;
+    background: #f2f2f2;
+}
+
+.content #tab_exchange .tab-page:nth-of-type(2) > .tab-title {
+    top: 64px;
+}
+
+.content #tab_exchange > .tab-page > .tab-title-check:checked + .tab-title {
+    border-left: solid 2px rgba(102, 204, 204, 1);
+    border-top: solid 2px rgba(102, 204, 204, 1);
+    border-bottom: solid 2px rgba(102, 204, 204, 1);
+    color: rgba(102, 204, 204, 1);
+}
+
+.content #tab_exchange > .tab-page > .tab-title-check:checked ~ .tab-content {
+    border: solid 2px rgba(102, 204, 204, 1);
+    height: 586px;
+}
+
+.grid {
+    text-align: center;
+    padding: 10px 50px;
+    font-size: 14px;
+}
+
+.grid-item {
+    float: left;
+    width: 25%;
+}
+
+.grid-item .panel {
+    margin: 20px;
+}
+
+.grid-item img {
+    width: 100%;
 }
