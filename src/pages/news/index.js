@@ -3,8 +3,10 @@ import '../../commons/pages.css';
 import './index.css';
 import '../../commons/common';
 import * as comm from '../../commons/common';
+import { initLoginAction } from '../../commons/pages';
 
 $((e) => {
+    initLoginAction();
     renderNews();
 });
 

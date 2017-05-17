@@ -15,9 +15,14 @@
     <header class="header">
         <div class="container clearfix">
             <div class="logo">
-                <a href="index.html"><img src="../../assets/imgs/logo.png"></a>
+                <a href="index.html">
+                    <img src="../../assets/imgs/logoicon.png">
+                    <span>主页</span>
+                </a>
             </div>
-            <div class="right"></div>
+            <p class="right"><a class="coll-btn">收藏页面</a></p>
+            <p class="right">请<a class="login-btn">登录</a></p>
+            <p class="right">欢迎<span class="login-name">怡红公子</span></p>
         </div>
     </header>
     <div class="nav">
@@ -124,53 +129,6 @@
             </p>
         </div>
     </footer>
-    <div class="modal">
-        <div class="modal-mask"></div>
-        <article class="modal-content modal-login">
-            <h3>
-                <img src="../../assets/imgs/logoicon.png">
-                <span>登录棋游账号</span> 
-                <a class="btn-close" href=""><span class="iconfont icon-cha"></span></a>
-            </h3>
-            <section class="login">
-                <form>
-                    <p class="row">
-                        <label class="label" for="txt_account">
-                            <span class="iconfont icon-ren"></span>
-                            <input id="txt_account" type="text" name="account" placeholder="账号">
-                        </label>
-                    </p>
-                    <p class="row">
-                        <label class="label" for="txt_pwd">
-                            <span class="iconfont icon-lock-fill"></span>
-                            <input id="txt_pwd" type="text" name="pwd" placeholder="密码">
-                        </label>
-                    </p>
-                    <p class="row vali clearfix">
-                        <label class="label" for="txt_valicode">
-                            <input id="txt_valicode" type="text" name="valicode" placeholder="验证码">
-                        </label>
-                        <a id="btn_valiImg">
-                            <img id="valiImg" src="" alt="验证码图片">
-                        </a>
-                    </p>
-                    <p for="login_submit" class="label label-submit">
-                        <input id="login_submit" type="submit" name="logon" value="登录">
-                    </p>
-                    <p class="row textright">
-                        <a href="register.html">立即注册</a>
-                    </p>
-                </form>
-            </section>
-            <section class="login-other">
-                <p>使用以下方式登录</p>
-                <p>
-                    <a class="qq"><span class="iconfont icon-iconfontqq"></span></a>
-                    <a class="wx"><span class="iconfont icon-weixin"></span></a>
-                </p>
-            </section>
-        </article>
-    </div>
 </body>
 
 </html>

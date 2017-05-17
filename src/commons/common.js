@@ -23,25 +23,6 @@ String.prototype.rtrim = function() {
     return this.replace(/(\s*$)/g, '');
 }
 
-// export var getStyle = (element, css) => {
-//     if (getComputedStyle) {
-//         return getComputedStyle(element)[css];
-//     } else {
-//         return element.currentStyle[css];
-//     }
-// }
-
-// export var addEvent = (element, type, eventHandler) => {
-//     if (element.addEventListener) {
-//         element.addEventListener(type, eventHandler);
-//     } else if (element.attachEvent) {
-//         element.attachEvent('on' + type, eventHandler);
-//     } else {
-//         element[on + type] = eventHandler;
-//     }
-// }
-
-// JavaScript Document
 export var getQueryString = () => {
     var result = location.search.match(new RegExp('[\?\&][^\?\&]+=[^\?\&]+', 'g'));
     if (!result) return {};
@@ -95,39 +76,20 @@ export var getBoxSize = (box, sizeType) => {
 
 
 export var getBoxSize$ = ($box, sizeType) => {
-        var size = 0;
-        if (sizeType == 'height') {
-            size = parseFloat($box.outerHeight()) +
-                parseFloat($box.css('marginTop')) +
-                parseFloat($box.css('marginBottom'));
-        } else if (sizeType == 'width') {
-            size = parseFloat($box.outerWidth()) +
-                parseFloat($box.css('marginLeft')) +
-                parseFloat($box.css('marginRight'));
-        } else {
-            size = 0;
-        }
-        return size;
+    var size = 0;
+    if (sizeType == 'height') {
+        size = parseFloat($box.outerHeight()) +
+            parseFloat($box.css('marginTop')) +
+            parseFloat($box.css('marginBottom'));
+    } else if (sizeType == 'width') {
+        size = parseFloat($box.outerWidth()) +
+            parseFloat($box.css('marginLeft')) +
+            parseFloat($box.css('marginRight'));
+    } else {
+        size = 0;
     }
-    // function getXhr(option) {
-    //     var xhr = null;
-    //     if (window.XMLHttpRequest) {
-    //         xhr = new XMLHttpRequest();
-    //     } else {
-    //         xhr = new ActiveXOjbect('Microsoft.XMLHTTP');
-    //     }
-    //     xhr.onreadystatechange = () => {
-    //         if (xhr.readyState == 4) {
-    //             if (xhr.status == 200) {
-    //                 option.success(xhr.responseText);
-    //             } else {
-    // option.error(xhr.)
-    //             }
-    //         }
-    //     };
-    //     xhr.open(option.method, option.url, true);
-    //     xhr.send(option.data);
-    // }
+    return size;
+}
 
 export var randomChar = (l) => {
     var x = '0123456789qwertyuioplkjhgfdsazxcvbnm',
@@ -169,3 +131,101 @@ export var dd = (function($) {
         }
     }
 })($);
+
+$.extend({
+    showLoginModal: (option) => {
+        if ($('.lev-modal-login').length > 0) {
+            return;
+        }
+
+        var code = randomChar(4),
+            modal_id = 'modal_' + code,
+            $modal_id = '#' + modal_id,
+            valiImg_id = 'valiImg' + code,
+            $valiImg_id = '#' + valiImg_id,
+            logoiconUrl = require('../assets/imgs/logoicon.png'),
+            tmpl = `        
+<div id="${modal_id}" class="modal lev-modal-login">
+    <div class="modal-mask"></div>
+    <article class="modal-content modal-login">
+        <h3>
+            <img src="${logoiconUrl}">
+            <span>登录棋游账号</span> 
+            <a class="btn-close" href=""><span class="iconfont icon-cha"></span></a>
+        </h3>
+        <section class="login">
+            <form>
+                <p class="row">
+                    <label class="label" for="txt_account">
+                        <span class="iconfont icon-ren"></span>
+                        <input id="txt_account" type="text" name="account" placeholder="账号">
+                    </label>
+                </p>
+                <p class="row">
+                    <label class="label" for="txt_pwd">
+                        <span class="iconfont icon-lock-fill"></span>
+                        <input id="txt_pwd" type="text" name="pwd" placeholder="密码">
+                    </label>
+                </p>
+                <p class="row vali clearfix">
+                    <label class="label" for="txt_valicode">
+                        <input id="txt_valicode" type="text" name="valicode" placeholder="验证码">
+                    </label>
+                    <a id="btn_valiImg">
+                        <img id="${valiImg_id}" src="" alt="验证码图片">
+                    </a>
+                </p>
+                <p for="login_submit" class="label label-submit">
+                    <input id="login_submit" type="submit" name="logon" value="登录">
+                </p>
+                <p class="row textright">
+                    <a href="register.html">立即注册</a>
+                </p>
+            </form>
+        </section>
+        <section class="login-other">
+            <p>使用以下方式登录</p>
+            <p>
+                <a class="qq"><span class="iconfont icon-iconfontqq"></span></a>
+                <a class="wx"><span class="iconfont icon-weixin"></span></a>
+            </p>
+        </section>
+    </article>
+</div>`;
+        $('body').append(tmpl);
+
+        var loadValidateImg = () => {
+            dd.Get('/Login/ValidateImage', null,
+                (res) => {
+                    $($valiImg_id).prop('src', res);
+                },
+                (err) => {
+                    console.log(err);
+                });
+        }
+        loadValidateImg();
+
+        $($modal_id + '.modal h3 .btn-close').click((e) => {
+            e.preventDefault();
+            $($modal_id).remove();
+        });
+
+        $($modal_id + '.modal input').focus((e) => {
+            $(e.currentTarget).parent('label').addClass('focus');
+        });
+
+        $($modal_id + '.modal input').blur((e) => {
+            $(e.currentTarget).parent('label').removeClass('focus');
+        });
+
+        $($modal_id + '.modal #btn_valiImg').click((e) => {
+            loadValidateImg();
+        });
+
+        return {
+            close: () => {
+                $($modal_id).remove();
+            }
+        }
+    }
+})

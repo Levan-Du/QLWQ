@@ -84,14 +84,17 @@
     height: 30px;
 }
 
-.content .tab {
+.content #tab_main {
     width: 970px;
-    margin: auto;
     margin-top: 20px;
 }
 
+.content .tab {
+    margin: auto;
+}
+
 .content #tab_main > .tab-page {
-    height: 660px;
+    height: 640px;
 }
 
 .content .tab .tab-title {
@@ -220,15 +223,17 @@
     font-weight: 900;
 }
 
-.content .tab .tab-page-exchange > .tab {
+
+/*.content .tab .tab-page-exchange > .tab {
     width: auto;
     margin: 20px;
     background: #f8f8f8;
     height: 550px;
-}
+}*/
 
 .content #tab_exchange {
-    height: 610px;
+    height: 570px;
+    margin: 20px;
     background: #f8f8f8;
 }
 
@@ -260,7 +265,7 @@
 
 .content #tab_exchange > .tab-page > .tab-title-check:checked ~ .tab-content {
     border: solid 2px rgba(102, 204, 204, 1);
-    height: 586px;
+    height: 566px;
 }
 
 .grid {
@@ -280,4 +285,36 @@
 
 .grid-item img {
     width: 100%;
+}
+
+.content #tab_exchange_point .tab-title.first {
+    margin-left: 40px;
+}
+
+.content #tab_exchange_point .tab-title.last {
+    border-right: none;
+}
+
+.content #tab_exchange_point .tab-title {
+    height: auto;
+    line-height: 1;
+    padding: 3px 40px;
+    margin: 5px 0;
+    background: transparent;
+    border: none;
+    border-right: solid 1px #555;
+    font-size: 16px;
+}
+
+.content #tab_exchange_point .tab-title-check:checked + .tab-title {
+    color: #000;
+}
+
+.content #tab_exchange_point .tab-content {
+    padding: 10px 30px;
+}
+
+
+.content #tab_exchange_point .tab-content .grid-item {
+    width: 50%;
 }

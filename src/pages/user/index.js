@@ -3,41 +3,16 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
+import { initLoginAction } from '../../commons/pages';
 
 $((e) => {
-    initModalLogin();
+    initLoginAction();
+    initLoginAction2();
 });
 
-var initModalLogin = () => {
+var loginModal = null;
+var initLoginAction2 = () => {
     $('.main .mid .btn-link').click((e) => {
-        $('.modal').show();
-        loadValidateImg();
+        loginModal = $.showLoginModal();
     });
-
-    $('.modal h3 .btn-close').click((e) => {
-        e.preventDefault();
-        $('.modal').hide();
-    });
-
-    $('input').focus((e) => {
-        $(e.currentTarget).parent('label').addClass('focus');
-    });
-    $('input').blur((e) => {
-        $(e.currentTarget).parent('label').removeClass('focus');
-    });
-
-    $('#btn_valiImg').click((e) => {
-        loadValidateImg();
-    });
-}
-
-
-var loadValidateImg = () => {
-    comm.dd.Get('/Login/ValidateImage', null,
-        (res) => {
-            $('#valiImg').prop('src', res);
-        },
-        (err) => {
-            console.log(err);
-        });
 }

@@ -19,9 +19,9 @@
                     <span>主页</span>
                 </a>
             </div>
-            <p class="right"><a>收藏页面</a></p>
-            <p class="right">请<a>登录</a></p>
-            <p class="right">欢迎<span>怡红公子</span></p>
+            <p class="right"><a class="coll-btn">收藏页面</a></p>
+            <p class="right">请<a class="login-btn">登录</a></p>
+            <p class="right">欢迎<span class="login-name">怡红公子</span></p>
         </div>
     </header>
     <div class="nav">
@@ -125,7 +125,7 @@
                 <input id="tab_main_2" class="tab-title-check" type="radio" name="tab-main" checked>
                 <label class="tab-title last" for="tab_main_2">兑换</label>
                 <div class="tab-content">
-                    <ul class="tab tab-horizontal" id="tab_exchange">
+                    <ul id="tab_exchange" class="tab tab-horizontal">
                         <li class="tab-page">
                             <input id="tab_exchange_1" class="tab-title-check" type="radio" name="tab-exchange">
                             <label class="tab-title" for="tab_exchange_1">钻石兑换</label>
@@ -144,34 +144,41 @@
                             <input id="tab_exchange_2" class="tab-title-check" type="radio" name="tab-exchange" checked>
                             <label class="tab-title" for="tab_exchange_2">积分兑换</label>
                             <div class="tab-content">
-                                <ul class="tab" id="tab_exchange_point">
+                                <ul class="tab" id="tab_exchange_point_grid">
                                     <li class="tab-page">
                                         <input id="tab_exchange_point_1" class="tab-title-check" type="radio" name="tab-exchange-point" checked>
                                         <label class="tab-title first" for="tab_exchange_point_1">全部</label>
-                                        <div class="tab-content clearfix">
-                                            <ul class="grid">
-                                                <li class="grid-item">
-                                                    <div class="panel">
-                                                        <img src="../../assets/goods/good-01.jpg">
-                                                        <p>
-                                                            <span>名称</span>
-                                                            <span>100</span>
-                                                        </p>
-                                                    </div>
-                                                </li>
+                                        <div class="tab-content">
+                                            <ul id="grid_tab_exchange_point_1" class="grid clearfix">
+                                                
                                             </ul>
+                                            <div id="pager_tab_exchange_point_1" class="pager clearfix">
+                                                
+                                            </div>
                                         </div>
                                     </li>
                                     <li class="tab-page">
                                         <input id="tab_exchange_point_2" class="tab-title-check" type="radio" name="tab-exchange-point">
                                         <label class="tab-title" for="tab_exchange_point_2">虚拟物品</label>
                                         <div class="tab-content clearfix">
+                                            <ul id="grid_tab_exchange_point_2" class="grid clearfix">
+                                                
+                                            </ul>
+                                            <div id="pager_tab_exchange_point_2" class="pager clearfix">
+                                                
+                                            </div>                                        
                                         </div>
                                     </li>
                                     <li class="tab-page">
                                         <input id="tab_exchange_point_3" class="tab-title-check" type="radio" name="tab-exchange-point">
                                         <label class="tab-title last" for="tab_exchange_point_3">全部奖励</label>
                                         <div class="tab-content clearfix">
+                                            <ul id="grid_tab_exchange_point_3" class="grid clearfix">
+                                                
+                                            </ul>
+                                            <div id="pager_tab_exchange_point_3" class="pager clearfix">
+                                                
+                                            </div>                                        
                                         </div>
                                     </li>
                                 </ul>
