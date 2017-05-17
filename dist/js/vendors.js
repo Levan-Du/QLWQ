@@ -10413,9 +10413,20 @@ return jQuery;
 /***/ }),
 
 /***/ 1:
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var initLoginAction = exports.initLoginAction = function initLoginAction() {
+    $('.login-btn').click(function (e) {
+        $.showLoginModal();
+    });
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 
@@ -10427,6 +10438,13 @@ return jQuery;
 /***/ }),
 
 /***/ 3:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10461,25 +10479,6 @@ String.prototype.rtrim = function () {
     return this.replace(/(\s*$)/g, '');
 };
 
-// export var getStyle = (element, css) => {
-//     if (getComputedStyle) {
-//         return getComputedStyle(element)[css];
-//     } else {
-//         return element.currentStyle[css];
-//     }
-// }
-
-// export var addEvent = (element, type, eventHandler) => {
-//     if (element.addEventListener) {
-//         element.addEventListener(type, eventHandler);
-//     } else if (element.attachEvent) {
-//         element.attachEvent('on' + type, eventHandler);
-//     } else {
-//         element[on + type] = eventHandler;
-//     }
-// }
-
-// JavaScript Document
 var getQueryString = exports.getQueryString = function getQueryString() {
     var result = location.search.match(new RegExp('[\?\&][^\?\&]+=[^\?\&]+', 'g'));
     if (!result) return {};
@@ -10530,25 +10529,6 @@ var getBoxSize$ = exports.getBoxSize$ = function getBoxSize$($box, sizeType) {
     }
     return size;
 };
-// function getXhr(option) {
-//     var xhr = null;
-//     if (window.XMLHttpRequest) {
-//         xhr = new XMLHttpRequest();
-//     } else {
-//         xhr = new ActiveXOjbect('Microsoft.XMLHTTP');
-//     }
-//     xhr.onreadystatechange = () => {
-//         if (xhr.readyState == 4) {
-//             if (xhr.status == 200) {
-//                 option.success(xhr.responseText);
-//             } else {
-// option.error(xhr.)
-//             }
-//         }
-//     };
-//     xhr.open(option.method, option.url, true);
-//     xhr.send(option.data);
-// }
 
 var randomChar = exports.randomChar = function randomChar(l) {
     var x = '0123456789qwertyuioplkjhgfdsazxcvbnm',
@@ -10590,25 +10570,81 @@ var dd = exports.dd = function ($) {
         }
     };
 }($);
+
+$.extend({
+    showLoginModal: function showLoginModal(option) {
+        if ($('.lev-modal-login').length > 0) {
+            return;
+        }
+
+        var code = randomChar(4),
+            modal_id = 'modal_' + code,
+            $modal_id = '#' + modal_id,
+            valiImg_id = 'valiImg' + code,
+            $valiImg_id = '#' + valiImg_id,
+            logoiconUrl = __webpack_require__(7),
+            tmpl = '        \n<div id="' + modal_id + '" class="modal lev-modal-login">\n    <div class="modal-mask"></div>\n    <article class="modal-content modal-login">\n        <h3>\n            <img src="' + logoiconUrl + '">\n            <span>\u767B\u5F55\u68CB\u6E38\u8D26\u53F7</span> \n            <a class="btn-close" href=""><span class="iconfont icon-cha"></span></a>\n        </h3>\n        <section class="login">\n            <form>\n                <p class="row">\n                    <label class="label" for="txt_account">\n                        <span class="iconfont icon-ren"></span>\n                        <input id="txt_account" type="text" name="account" placeholder="\u8D26\u53F7">\n                    </label>\n                </p>\n                <p class="row">\n                    <label class="label" for="txt_pwd">\n                        <span class="iconfont icon-lock-fill"></span>\n                        <input id="txt_pwd" type="text" name="pwd" placeholder="\u5BC6\u7801">\n                    </label>\n                </p>\n                <p class="row vali clearfix">\n                    <label class="label" for="txt_valicode">\n                        <input id="txt_valicode" type="text" name="valicode" placeholder="\u9A8C\u8BC1\u7801">\n                    </label>\n                    <a id="btn_valiImg">\n                        <img id="' + valiImg_id + '" src="" alt="\u9A8C\u8BC1\u7801\u56FE\u7247">\n                    </a>\n                </p>\n                <p for="login_submit" class="label label-submit">\n                    <input id="login_submit" type="submit" name="logon" value="\u767B\u5F55">\n                </p>\n                <p class="row textright">\n                    <a href="register.html">\u7ACB\u5373\u6CE8\u518C</a>\n                </p>\n            </form>\n        </section>\n        <section class="login-other">\n            <p>\u4F7F\u7528\u4EE5\u4E0B\u65B9\u5F0F\u767B\u5F55</p>\n            <p>\n                <a class="qq"><span class="iconfont icon-iconfontqq"></span></a>\n                <a class="wx"><span class="iconfont icon-weixin"></span></a>\n            </p>\n        </section>\n    </article>\n</div>';
+        $('body').append(tmpl);
+
+        var loadValidateImg = function loadValidateImg() {
+            dd.Get('/Login/ValidateImage', null, function (res) {
+                $($valiImg_id).prop('src', res);
+            }, function (err) {
+                console.log(err);
+            });
+        };
+        loadValidateImg();
+
+        $($modal_id + '.modal h3 .btn-close').click(function (e) {
+            e.preventDefault();
+            $($modal_id).remove();
+        });
+
+        $($modal_id + '.modal input').focus(function (e) {
+            $(e.currentTarget).parent('label').addClass('focus');
+        });
+
+        $($modal_id + '.modal input').blur(function (e) {
+            $(e.currentTarget).parent('label').removeClass('focus');
+        });
+
+        $($modal_id + '.modal #btn_valiImg').click(function (e) {
+            loadValidateImg();
+        });
+
+        return {
+            close: function close() {
+                $($modal_id).remove();
+            }
+        };
+    }
+});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 79:
+/***/ 7:
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/b9e17b3d.barner-02.png";
 
 /***/ }),
 
-/***/ 81:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "/images/a604d4bf.barner-04.png";

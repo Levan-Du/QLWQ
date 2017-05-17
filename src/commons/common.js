@@ -154,7 +154,10 @@ $.extend({
             <a class="btn-close" href=""><span class="iconfont icon-cha"></span></a>
         </h3>
         <section class="login">
-            <form>
+            <form>            
+                <p class="error">
+                错误
+                </p>
                 <p class="row">
                     <label class="label" for="txt_account">
                         <span class="iconfont icon-ren"></span>
@@ -172,7 +175,7 @@ $.extend({
                         <input id="txt_valicode" type="text" name="valicode" placeholder="验证码">
                     </label>
                     <a id="btn_valiImg">
-                        <img id="${valiImg_id}" src="" alt="验证码图片">
+                        <img id="${valiImg_id}" src="" alt="验证码">
                     </a>
                 </p>
                 <p for="login_submit" class="label label-submit">

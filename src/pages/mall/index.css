@@ -208,6 +208,7 @@
     color: #fff;
     font-size: 18px;
     font-weight: 900;
+    cursor: pointer;
 }
 
 
@@ -234,9 +235,9 @@
     position: absolute;
     height: 60px;
     padding: 0;
-    z-index: 1000;
     border: none;
     background: #f2f2f2;
+    z-index: 1000;
 }
 
 .content #tab_exchange .tab-page:nth-of-type(2) > .tab-title {

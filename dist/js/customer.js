@@ -1,27 +1,31 @@
 webpackJsonp([5],{
 
-/***/ 24:
+/***/ 26:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 
-__webpack_require__(1);
-
 __webpack_require__(2);
 
-__webpack_require__(7);
+__webpack_require__(3);
 
-$(function (e) {});
+__webpack_require__(9);
+
+var _pages = __webpack_require__(1);
+
+$(function (e) {
+	(0, _pages.initLoginAction)();
+});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 
-/***/ 7:
+/***/ 9:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ })
 
-},[24]);
+},[26]);

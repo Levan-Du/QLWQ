@@ -320,6 +320,7 @@ li {
     height: 40px;
     line-height: 40px;
     background: #eee;
+    font-size: 14px;
 }
 
 .header .container {
@@ -329,6 +330,20 @@ li {
 .header .container img {
     height: 30px;
     vertical-align: middle;
+}
+
+.header .logo {
+    float: left;
+}
+
+.header .right {
+    float: right;
+    margin-right: 30px;
+}
+
+.header .right .login-btn {
+    text-decoration: underline;
+    margin-left: 5px;
 }
 
 .nav {
@@ -442,6 +457,145 @@ li {
 
 .footer .container .credit .icp:hover {
     color: #58E;
+}
+
+.module {
+    margin-top: 50px;
+}
+
+.modal-content {
+    width: 360px;
+    height: 450px;
+    background: #fff;
+}
+
+.modal-content h3 {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    background: #eee;
+    background-repeat: no-repeat;
+    background-size: 50px 40px;
+    font-weight: 500;
+    font-size: 15px;
+    position: relative;
+    color: #666;
+}
+
+.modal-content h3 .btn-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    color: #888;
+}
+
+.modal-content h3>* {
+    vertical-align: middle;
+}
+
+.modal-content h3 img {
+    height: 20px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.modal-content input {
+    border: 0;
+}
+
+.modal-content .row {
+    margin: 16px;
+}
+
+.modal-content .row .label {
+    padding: 6px;
+    display: block;
+    border: solid 1px #ddd;
+}
+
+.modal-content .row .label.focus {
+    outline: solid 1px #58e;
+}
+
+.modal-content .row.vali > .label {
+    width: 70%;
+    height: 100%;
+    margin-right: 10px;
+    float: left;
+}
+
+.modal-content .row.vali > a {
+    display: block;
+    height: 100%;
+    padding: 6px;
+    overflow: hidden;
+}
+
+.modal-content .label-submit {
+    margin: 16px;
+    margin-top: 40px;
+    padding: 0;
+    border: 0;
+}
+
+.modal-content .label input[type="submit"] {
+    width: 100%;
+    height: 100%;
+    border: solid 1px;
+    padding: 8px 0;
+    font-size: 18px;
+    background: #4490f7;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.modal-content .row:first-of-type {
+    margin-top: 50px;
+}
+
+.modal-content .row.textright {
+    padding: 0 20px;
+    text-align: right;
+}
+
+.modal-content .row a {
+    font-size: 14px;
+    color: #4480fe;
+}
+
+.modal-content .login-other {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    bottom: 0;
+    border-top: solid 1px #ddd;
+    font-size: 14px;
+}
+
+.modal-content .login-other > p {
+    color: #666;
+    margin: 10px 20px;
+}
+
+.modal-content .login-other a {
+    margin: 0 5px;
+}
+
+.modal-content .login-other .qq .iconfont {
+    color: #e33;
+}
+
+.modal-content .login-other .wx .iconfont {
+    color: #3c3;
+}
+
+.modal-content .login-other .iconfont {
+    font-size: 22px;
+    vertical-align: middle;
 }
 
 @font-face {font-family: "iconfont";
