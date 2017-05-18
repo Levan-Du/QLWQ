@@ -1,24 +1,21 @@
-var props = {
-    user: {
-        posts: [{
-            title: 'Foo',
-            comments: ['Good one', 'interesting']
-        }, {
-            title: 'Bar',
-            comments: ['OK']
-        }]
-    }
-}
+var path = require('path'),
+    fs = require('fs'),
+    HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var get = (arr, props) => {
-    var o = props;
-    arr.forEach(el => {
-        if (o[el]) {
-            o = o[el];
-        }
-    });
-    return o;
-}
-var o1 = get(['user', 'posts', 0, 'title'], props);
-var o2 = get(['user', 'post', 1, 'title'], props);
-console.log(o1, o2);
+var pages = fs.readdirSync(path.join(__dirname, 'src/assets/games')),
+    entrys = {},
+    plugins = [];
+
+pages.forEach(el => {
+    entrys[el] = path.join(__dirname, `src/pages/${el}/index.js`);
+    plugins.push(
+        new HtmlWebpackPlugin({
+            template: 'html-withimg-loader!' + path.join(__dirname, `src/pages/${el}/index.html`),
+            filename: el + '.html',
+            inject: true,
+            chunks: [el, 'vendors']
+        })
+    );
+});
+
+console.log(pages, entrys, plugins);

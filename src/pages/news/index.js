@@ -7,6 +7,7 @@ import { initLoginAction } from '../../commons/pages';
 
 $((e) => {
     initLoginAction();
+    renderNewsTab()
     renderNews();
 });
 
@@ -42,7 +43,7 @@ var nextPage = (id, o) => {
     if (o.pageIndex >= 1 && o.pageIndex < o.totalPage) {
         o.pageIndex++;
     }
-    
+
     renderItem(id, o);
 }
 
@@ -56,6 +57,59 @@ var news = { pageIndex: 1 },
     notices = { pageIndex: 1 },
     acts = { pageIndex: 1 };
 
+
+var renderNewsTab = () => {
+    var downItemImg = require('../../assets/images/index/u204.svg'),
+        actiImg1 = require('../../assets/imgs/acti-01.png'),
+        actiImg2 = require('../../assets/imgs/acti-02.png'),
+        getFirstLastBy = (length, i) => {
+            switch (i) {
+                case 0:
+                    return ' first';
+                case length - 1:
+                    return ' last';
+                default:
+                    return '';
+            }
+        },
+        tmpl = [{ id: 'news', title: '新闻' },
+            { id: 'notices', title: '公告' },
+            { id: 'activities', title: '活动' }
+        ].map((el, i, arr) => `
+        <li class="tab-page">
+            <input id="tab-page-${i+1}" class="tab-title-check" type="radio" name="tab" ${i===0?'checked':''}>
+            <label class="tab-title${getFirstLastBy(arr.length,i)}" for="tab-page-${i+1}">${el.title}</label>
+            <div class="tab-content clearfix">
+                <div class="news-list">
+                    <div id="${el.id}Box" class="news-item-wrapper">
+                    </div>
+                    <div class="pager clearfix">
+                        <a data-for="news" data-mark="pre" class="btn">上一页</a>
+                        <a data-for="news" data-mark="next" class="btn">下一页</a>
+                    </div>
+                </div>
+                <div class="news-show">
+                    <ul class="down clearfix">
+                        <li class=down-item>
+                            <img src="${downItemImg}">
+                            <span>Android下载</span>
+                        </li>
+                        <li class=down-item>
+                            <img src="${downItemImg}">
+                            <span>Android下载</span>
+                        </li>
+                    </ul>
+                    <ul class="acti">
+                        <li><img src="${actiImg1}"></li>
+                        <li><img src="${actiImg2}"></li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    `).join('');
+    $('#tab_news').html(tmpl);
+}
+
 var renderNews = () => {
     comm.dd.Get('/News/HotNewList', null,
         (res) => {
@@ -67,7 +121,6 @@ var renderNews = () => {
 
             renderItem('noticesBox', notices);
             renderItem('newsBox', news);
-            // renderNews('acts', acts);
 
             initNewsAction();
         });

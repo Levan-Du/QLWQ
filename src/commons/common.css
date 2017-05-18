@@ -9,7 +9,8 @@ body {
 }
 
 body {
-    font-family: '微软雅黑', '华文黑体', '黑体';
+    font-family: '微软雅黑', '华文黑体', '黑体', 'Arial Normal', 'Arial';
+    color: #555;
 }
 
 * {

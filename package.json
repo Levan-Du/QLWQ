@@ -4,7 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack && webpack-dev-server"
+    "start": "webpack && webpack-dev-server",
+    "build": "set NODE_ENV=production && webpack --progress --profile && webpack-dev-server"
   },
   "repository": {
     "type": "git",

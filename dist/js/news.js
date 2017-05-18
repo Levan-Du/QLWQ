@@ -1,34 +1,42 @@
-webpackJsonp([4],{
+webpackJsonp([3],{
 
-/***/ 13:
+/***/ 19:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 30:
+/***/ 29:
+/***/ (function(module, exports) {
+
+module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsNCkBmb250LWZhY2Ugew0KICBmb250LWZhbWlseTogImlmb250IjsNCiAgc3JjOiB1cmwoIi8vYXQuYWxpY2RuLmNvbS90L2ZvbnRfMTQ0MjM3Mzg5Nl80NzU0NDU1LmVvdD8jaWVmaXgiKSBmb3JtYXQoImVtYmVkZGVkLW9wZW50eXBlIiksIHVybCgiLy9hdC5hbGljZG4uY29tL3QvZm9udF8xNDQyMzczODk2XzQ3NTQ0NTUud29mZiIpIGZvcm1hdCgid29mZiIpLCB1cmwoIi8vYXQuYWxpY2RuLmNvbS90L2ZvbnRfMTQ0MjM3Mzg5Nl80NzU0NDU1LnR0ZiIpIGZvcm1hdCgidHJ1ZXR5cGUiKSwgdXJsKCIvL2F0LmFsaWNkbi5jb20vdC9mb250XzE0NDIzNzM4OTZfNDc1NDQ1NS5zdmcjaWZvbnQiKSBmb3JtYXQoInN2ZyIpOw0KfQ0KDQpdXT48L3N0eWxlPjwvZGVmcz48ZyBjbGFzcz0idHJhbnNmb3JtLWdyb3VwIj48ZyB0cmFuc2Zvcm09InNjYWxlKDAuMTk1MzEyNSwgMC4xOTUzMTI1KSI+PHBhdGggZD0iTTI2Mi40IDI2Mi40bDExNS4yIDAgMCAxMTUuMi0xMTUuMiAwIDAtMTE1LjJaTTI2Mi40IDY0Ni40bDExNS4yIDAgMCAxMTUuMi0xMTUuMiAwIDAtMTE1LjJaTTY0Ni40IDI2Mi40bDExNS4yIDAgMCAxMTUuMi0xMTUuMiAwIDAtMTE1LjJaTTgwNi40IDgwNi40bC0xMTUuMiAwIDAgNTcuNiAxMTUuMiAwYzMyIDAgNTcuNi0yNS42IDU3LjYtNTcuNmwwLTU3LjYtNTcuNiAwTDgwNi40IDgwNi40ek0xNjAgMjE3LjZsMCAyNjIuNCAzMjAgMCAwLTMyMEwyMTcuNiAxNjBDMTg1LjYgMTYwIDE2MCAxODUuNiAxNjAgMjE3LjZ6TTQyMi40IDQyMi40IDIxNy42IDQyMi40IDIxNy42IDIxNy42bDIwNC44IDBMNDIyLjQgNDIyLjR6TTE2MCA4MDYuNGMwIDMyIDI1LjYgNTcuNiA1Ny42IDU3LjZsMjYyLjQgMCAwLTMyMC0zMjAgMEwxNjAgODA2LjR6TTIxNy42IDYwMS42bDIwNC44IDAgMCAyMDQuOEwyMTcuNiA4MDYuNCAyMTcuNiA2MDEuNnpNNTQ0IDU0NGwyMDQuOCAwIDAgNTcuNi0yMDQuOCAwIDAtNTcuNlpNNjkxLjIgNjI3LjIgNjI3LjIgNjI3LjIgNjI3LjIgNjkxLjIgNjkxLjIgNjkxLjIgNjkxLjIgNzQ4LjggNzQ4LjggNzQ4LjggNzQ4LjggNjkxLjIgODY0IDY5MS4yIDg2NCA2MjcuMiA3NDguOCA2MjcuMlpNNTQ0IDc0OC44bDU3LjYgMCAwIDExNS4yLTU3LjYgMCAwLTExNS4yWk02MjcuMiA3NDguOGw1Ny42IDAgMCA1Ny42LTU3LjYgMCAwLTU3LjZaTTU0NCA2MjcuMmw1Ny42IDAgMCA1Ny42LTU3LjYgMCAwLTU3LjZaTTgwNi40IDU0NGw1Ny42IDAgMCA1Ny42LTU3LjYgMCAwLTU3LjZaTTgwNi40IDE2MCA1NDQgMTYwbDAgMzIwIDMyMCAwTDg2NCAyMTcuNkM4NjQgMTg1LjYgODM4LjQgMTYwIDgwNi40IDE2MHpNODA2LjQgNDIyLjQgNjAxLjYgNDIyLjQgNjAxLjYgMjE3LjZsMjA0LjggMEw4MDYuNCA0MjIuNHoiIGZpbGw9IiMyNzI2MzYiPjwvcGF0aD48L2c+PC9nPjwvc3ZnPg=="
+
+/***/ }),
+
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {
 
-__webpack_require__(2);
-
 __webpack_require__(3);
 
-__webpack_require__(13);
+__webpack_require__(4);
 
-var _common = __webpack_require__(4);
+__webpack_require__(19);
+
+var _common = __webpack_require__(1);
 
 var comm = _interopRequireWildcard(_common);
 
-var _pages = __webpack_require__(1);
+var _pages = __webpack_require__(2);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 $(function (e) {
     (0, _pages.initLoginAction)();
+    renderNewsTab();
     renderNews();
 });
 
@@ -74,6 +82,26 @@ var news = { pageIndex: 1 },
     notices = { pageIndex: 1 },
     acts = { pageIndex: 1 };
 
+var renderNewsTab = function renderNewsTab() {
+    var downItemImg = __webpack_require__(29),
+        actiImg1 = __webpack_require__(7),
+        actiImg2 = __webpack_require__(8),
+        getFirstLastBy = function getFirstLastBy(length, i) {
+        switch (i) {
+            case 0:
+                return ' first';
+            case length - 1:
+                return ' last';
+            default:
+                return '';
+        }
+    },
+        tmpl = [{ id: 'news', title: '新闻' }, { id: 'notices', title: '公告' }, { id: 'activities', title: '活动' }].map(function (el, i, arr) {
+        return '\n        <li class="tab-page">\n            <input id="tab-page-' + (i + 1) + '" class="tab-title-check" type="radio" name="tab" ' + (i === 0 ? 'checked' : '') + '>\n            <label class="tab-title' + getFirstLastBy(arr.length, i) + '" for="tab-page-' + (i + 1) + '">' + el.title + '</label>\n            <div class="tab-content clearfix">\n                <div class="news-list">\n                    <div id="' + el.id + 'Box" class="news-item-wrapper">\n                    </div>\n                    <div class="pager clearfix">\n                        <a data-for="news" data-mark="pre" class="btn">\u4E0A\u4E00\u9875</a>\n                        <a data-for="news" data-mark="next" class="btn">\u4E0B\u4E00\u9875</a>\n                    </div>\n                </div>\n                <div class="news-show">\n                    <ul class="down clearfix">\n                        <li class=down-item>\n                            <img src="' + downItemImg + '">\n                            <span>Android\u4E0B\u8F7D</span>\n                        </li>\n                        <li class=down-item>\n                            <img src="' + downItemImg + '">\n                            <span>Android\u4E0B\u8F7D</span>\n                        </li>\n                    </ul>\n                    <ul class="acti">\n                        <li><img src="' + actiImg1 + '"></li>\n                        <li><img src="' + actiImg2 + '"></li>\n                    </ul>\n                </div>\n            </div>\n        </li>\n    ';
+    }).join('');
+    $('#tab_news').html(tmpl);
+};
+
 var renderNews = function renderNews() {
     comm.dd.Get('/News/HotNewList', null, function (res) {
         // acts =Object.assign(acts, newsFilter(res.message, 1));      
@@ -84,7 +112,6 @@ var renderNews = function renderNews() {
 
         renderItem('noticesBox', notices);
         renderItem('newsBox', news);
-        // renderNews('acts', acts);
 
         initNewsAction();
     });
@@ -118,4 +145,4 @@ var initNewsAction = function initNewsAction() {
 
 /***/ })
 
-},[30]);
+},[42]);

@@ -11,15 +11,34 @@ fs.open(path.join(__dirname, 'src/assets/games/gamesImgs.json'), 'w', function(e
     var c = fs.writeSync(fd, buf, 0, buf.length, 0);
 })
 
+var plugins = [];
+if (process.env.NODE_ENV === 'production') {
+    plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    );
+}
+
+var pages = fs.readdirSync(path.join(__dirname, 'src/pages')),
+    entrys = {};
+
+pages.forEach(el => {
+    entrys[el] = path.join(__dirname, `src/pages/${el}/index.js`);
+    plugins.push(
+        new HtmlWebpackPlugin({
+            template: 'html-withimg-loader!' + path.join(__dirname, `src/pages/${el}/index.html`),
+            filename: el + '.html',
+            inject: true,
+            chunks: [el, 'vendors']
+        })
+    );
+});
+
 module.exports = {
-    entry: {
-        index: path.join(__dirname, 'src/pages/index/index.js'),
-        games: path.join(__dirname, 'src/pages/games/index.js'),
-        news: path.join(__dirname, 'src/pages/news/index.js'),
-        mall: path.join(__dirname, 'src/pages/mall/index.js'),
-        user: path.join(__dirname, 'src/pages/user/index.js'),
-        customer: path.join(__dirname, 'src/pages/customer/index.js')
-    },
+    entry: entrys,
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'js/[name].js'
@@ -63,44 +82,8 @@ module.exports = {
             name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
             minChunks: 2 // 提取至少2个模块共有的部分
         }),
-        new ExtractTextPlugin('css/[name].css?[contenthash]'),
-        new HtmlWebpackPlugin({
-            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/index/index.html'),
-            filename: 'index.html',
-            inject: true,
-            chunks: ['index', 'vendors']
-        }),
-        new HtmlWebpackPlugin({
-            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/news/index.html'),
-            filename: 'news.html',
-            inject: true,
-            chunks: ['news', 'vendors']
-        }),
-        new HtmlWebpackPlugin({
-            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/games/index.html'),
-            filename: 'games.html',
-            inject: true,
-            chunks: ['games', 'vendors']
-        }),
-        new HtmlWebpackPlugin({
-            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/mall/index.html'),
-            filename: 'mall.html',
-            inject: true,
-            chunks: ['mall', 'vendors']
-        }),
-        new HtmlWebpackPlugin({
-            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/user/index.html'),
-            filename: 'user.html',
-            inject: true,
-            chunks: ['user', 'vendors']
-        }),
-        new HtmlWebpackPlugin({
-            template: 'html-withimg-loader!' + path.join(__dirname, 'src/pages/customer/index.html'),
-            filename: 'customer.html',
-            inject: true,
-            chunks: ['customer', 'vendors']
-        })
-    ],
+        new ExtractTextPlugin('css/[name].css?[contenthash]')
+    ].concat(plugins),
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         port: 8080,
