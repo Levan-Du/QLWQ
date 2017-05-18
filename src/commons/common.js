@@ -158,7 +158,7 @@ $.extend({
                 <p class="error">
                 错误
                 </p>
-                <p class="row">
+                <p class="row first">
                     <label class="label" for="txt_account">
                         <span class="iconfont icon-ren"></span>
                         <input id="txt_account" type="text" name="account" placeholder="账号">
@@ -231,4 +231,4 @@ $.extend({
             }
         }
     }
-})
+});

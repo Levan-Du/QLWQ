@@ -5,14 +5,7 @@ import * as comm from '../../commons/common';
 import { initLoginAction } from '../../commons/pages';
 import carousel from '../../commons/carousel';
 // import move from '../../commons/move';
-import goodImgs from '../../assets/games/gamesImgs.json';
 
-var packGoodsImgs = () => {
-    var imgs = JSON.parse(goodImgs);
-    imgs.forEach((el) => {
-        require('../../assets/games/' + el);
-    });
-}
 
 $((e) => {
     initLoginAction();

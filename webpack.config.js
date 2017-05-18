@@ -2,21 +2,19 @@ var webpack = require('webpack'),
     path = require('path'),
     fs = require('fs'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-
-var imgs = fs.readdirSync(path.join(__dirname, 'src/assets/games'));
-fs.open(path.join(__dirname, 'src/assets/games/gamesImgs.json'), 'w', function(err, fd) {
-    var buf = new Buffer(JSON.stringify(imgs));
-    var c = fs.writeSync(fd, buf, 0, buf.length, 0);
-})
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 var plugins = [];
 if (process.env.NODE_ENV === 'production') {
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {
+                screw_ie8: true,
                 warnings: false
+            },
+            mangle: {
+                screw_ie8: true
             }
         })
     );
@@ -78,11 +76,14 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery'
         }),
+        new ExtractTextPlugin('css/[name].css?[contenthash]'),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendors', // 将公共模块提取，生成名为`vendors`的chunk
             minChunks: 2 // 提取至少2个模块共有的部分
         }),
-        new ExtractTextPlugin('css/[name].css?[contenthash]')
+        new TransferWebpackPlugin([
+            { from: 'assets/goods', to: 'images' }
+        ], path.join(__dirname, 'src'))
     ].concat(plugins),
     devServer: {
         contentBase: path.join(__dirname, 'dist'),

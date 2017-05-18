@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack && webpack-dev-server",
-    "build": "set NODE_ENV=production && webpack --progress --profile && webpack-dev-server"
+    "build": "set NODE_ENV=production&& webpack --progress --profile && webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "json-loader": "^0.5.4",
     "postcss-loader": "^2.0.3",
     "style-loader": "^0.17.0",
+    "transfer-webpack-plugin": "^0.1.4",
     "url-loader": "^0.5.8",
     "webpack": "^2.5.1",
     "webpack-dev-server": "^2.4.5"

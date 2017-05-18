@@ -227,7 +227,7 @@
 
 .modal-content .label-submit {
     margin: 16px;
-    margin-top: 30px;
+    margin-top: 25px;
     padding: 0;
     border: 0;
 }
@@ -244,17 +244,31 @@
 }
 
 
-/*.modal-content > .row:first-of-type {
+.modal-content > .row:first-of-type {
     margin-top: 50px;
-}*/
+}
 
 .modal-content .error {
     /*visibility: hidden;*/
-    margin: 16px;
+    display: none;
+    margin: 16px 16px 20px;
     padding: 5px;
     border: solid 1px;
     color: #e66;
     font-size: 14px;
+}
+
+
+.modal-content .error.visible{
+    display: block;
+}
+
+.modal-content .error + .row{
+    margin-top: 40px;
+}
+
+.modal-content .error.visible + .row{
+    margin-top: 10px;
 }
 
 .modal-content .row.textright {
