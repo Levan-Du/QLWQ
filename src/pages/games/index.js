@@ -131,36 +131,59 @@ var initGridAction = () => {
 
 var renderGrid = (pf, data) => {
     var tmpl = `
-	<ul class="grid clearfix">
-		${renderGridItem(pf,data)}
-	</ul>
-	${renderGridPager(pf)}
-`
+    <ul class="grid clearfix">
+        ${renderGridItem(pf,data)}
+    </ul>
+    ${renderGridPager(pf)}
+`;
+
     $('#grid_wrapper .grid-box-' + pf.cla).append(tmpl);
+    var downCla = $('#grid_wrapper'),
+        enter = (e) => {
+            var target = $(e.currentTarget),
+                imgBigBox = target.parent().siblings('.box');
+
+            imgBigBox.fadeIn();
+        },
+        leave = (e) => {
+            var target = $(e.currentTarget),
+                imgBigBox = target.parent().siblings('.box');
+                
+            imgBigBox.fadeOut();
+        };
+
+    downCla.on('mouseenter', '.img-code', enter);
+    downCla.on('mouseenter', '.down-btn', enter);
+    downCla.on('mouseleave', '.img-code', leave);
+    downCla.on('mouseleave', '.down-btn', leave);
 }
 
-var renderGridItem = (pf, data) => {console.log(data);
+var renderGridItem = (pf, data) => {
         return `
 ${data.map(el=>`
-	<li class="grid-item">
-	    <article class="panel">
-	        <p class="title">${el.GameName}</p>
-	        <img class="img-game" src="${el.ImgUrl}">
-	        <p class="down">
-	            <img src="${pf.icon}">
-	            <a href="#">下载游戏</a>
-	            <img class="hline" src="${require('../../assets/images/games/u1893.png')}">
-	            <img src="${require('../../assets/images/games/u1897.png')}">
-	            <a href="#">二维码下载</a>
-	        </p>
-	    </article>
-	</li>
+    <li class="grid-item">
+        <article class="panel">
+            <p class="title"><a href="gamesdetail.html">${el.GameName}</a></p>
+            <a href="gamesdetail.html"><img class="img-game" src="${el.ImgUrl}"></a>
+            <p class="down">
+                <img src="${pf.icon}">
+                <a href="#">下载游戏</a>
+                <img class="hline" src="${require('../../assets/images/games/u1893.png')}">
+                <img class="img-code" src="${require('../../assets/images/games/u1897.png')}">
+                <a class="down-btn" href="#">二维码下载</a>
+            </p>
+            <div class="box">
+                <img class="code-big" src="${require('../../assets/images/index/u204.svg')}">
+                <span class="sj"></span>
+            </div>
+        </article>
+    </li>
 `).join('')}
-	`;
+    `;
 }
 
 var renderGridPager=(pf)=>{
-	return `
+    return `
 <section class="grid-more">
     <p class="grid-more-wrapper clearfix">
         <span>------------------------------------------------------------------------------------------------------------------------------------</span>
@@ -173,46 +196,46 @@ var renderGridPager=(pf)=>{
 }
 
 var initMenuAction=()=>{
-	var menuBtns=$('.menu .menu-item-btn'),
-		gridsBoxs=gridWrap.find('.grid-box');	
+    var menuBtns=$('.menu .menu-item-btn'),
+        gridsBoxs=gridWrap.find('.grid-box');   
 
-	menuBtns.click((e)=>{
-		var i= menuBtns.index(e.currentTarget);
-		if(i===currentPlatformIndex){
-			return;
-		}
-		$(menuBtns[currentPlatformIndex]).removeClass('checked');
-		$(e.currentTarget).addClass('checked');
+    menuBtns.click((e)=>{
+        var i= menuBtns.index(e.currentTarget);
+        if(i===currentPlatformIndex){
+            return;
+        }
+        $(menuBtns[currentPlatformIndex]).removeClass('checked');
+        $(e.currentTarget).addClass('checked');
 
-		move(gridsBoxs,i,currentPlatformIndex,()=>{
-			$(gridsBoxs[currentPlatformIndex]).removeClass('checked');
-			$(gridsBoxs[i]).addClass('checked');
+        move(gridsBoxs,i,currentPlatformIndex,()=>{
+            $(gridsBoxs[currentPlatformIndex]).removeClass('checked');
+            $(gridsBoxs[i]).addClass('checked');
 
-			currentPlatformIndex=i;
-    		
-    		setGridWrapperHeight();
-		})
-	});
+            currentPlatformIndex=i;
+            
+            setGridWrapperHeight();
+        })
+    });
 }
 
 var move = (gridsBoxs,index,currIndex,cb) => {
-	var currGrid=$(gridsBoxs[currIndex]),
-		nGrid=$(gridsBoxs[index]);
+    var currGrid=$(gridsBoxs[currIndex]),
+        nGrid=$(gridsBoxs[index]);
 
-	nGrid.css({left:'-100%',display:'block',opacity:.5});
-	nGrid.animate({left:'0',opacity:1},300,'swing',()=>{
-		cb && cb();
-	});
-	currGrid.animate({left:'100%',opacity:.5},300,'swing',()=>{
-		cb && cb();
-	});
+    nGrid.css({left:'-100%',display:'block',opacity:.5});
+    nGrid.animate({left:'0',opacity:1},300,'swing',()=>{
+        cb && cb();
+    });
+    currGrid.animate({left:'100%',opacity:.5},300,'swing',()=>{
+        cb && cb();
+    });
 }
 
 // var move = (i,speed,cb) => {
-// 	var times=(MAX_INDEX-i),
-// 		multiple = -times*100+'%';
+//  var times=(MAX_INDEX-i),
+//      multiple = -times*100+'%';
 
-// 	$('#grid_wrapper').animate({marginLeft:multiple},300*(speed>2?2:speed),'swing',()=>{
-// 		cb && cb();
-// 	});
+//  $('#grid_wrapper').animate({marginLeft:multiple},300*(speed>2?2:speed),'swing',()=>{
+//      cb && cb();
+//  });
 // }

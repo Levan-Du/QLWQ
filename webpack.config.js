@@ -82,7 +82,7 @@ module.exports = {
             minChunks: 2 // 提取至少2个模块共有的部分
         }),
         new TransferWebpackPlugin([
-            { from: 'assets/goods', to: 'images' }
+            { from: 'assets/games', to: 'images' }
         ], path.join(__dirname, 'src'))
     ].concat(plugins),
     devServer: {

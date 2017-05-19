@@ -116,7 +116,7 @@ var renderNews = () => {
             // acts =Object.assign(acts, newsFilter(res.message, 1));      
             news.data = newsFilter(res.message, 2);
             news.totalPage = Math.ceil(news.data.length / pageSize);
-            notices.data = newsFilter(res.message, 3);
+            notices.data = newsFilter(res.message, 1);
             notices.totalPage = Math.ceil(notices.data.length / pageSize);
 
             renderItem('noticesBox', notices);

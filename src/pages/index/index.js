@@ -4,7 +4,6 @@ import './index.css';
 import * as comm from '../../commons/common';
 import { initLoginAction } from '../../commons/pages';
 import carousel from '../../commons/carousel';
-// import move from '../../commons/move';
 
 
 $((e) => {
@@ -51,7 +50,7 @@ var renderNews = () => {
     comm.dd.Get('/News/HotNewList', null,
         (res) => {
             var news = newsFilter(res.message, 2),
-                notices = newsFilter(res.message, 3);
+                notices = newsFilter(res.message, 1);
             // activities = newsFilter(res.message, 1);
 
             renderNews('noticesBox', notices);

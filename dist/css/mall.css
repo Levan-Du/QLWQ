@@ -198,12 +198,18 @@
     margin-bottom: 10px;
 }
 
+.content .tab .tab-content .container .main > section.input p {
+    margin: 10px 0;
+}
+
 .content .tab .tab-content .container .main .submit-bar {
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .content .tab .tab-content .container .main .submit-bar input {
-    margin-left: 50px;
+    width: 180px;
+    height: 50px;
+    margin-left: 100px;
     background: rgba(255, 51, 0, .8);
     color: #fff;
     font-size: 18px;

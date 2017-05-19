@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack && webpack-dev-server",
-    "build": "set NODE_ENV=production&& webpack --progress --profile && webpack-dev-server"
+    "build": "set NODE_ENV=production&& webpack --progress --profile"
   },
   "repository": {
     "type": "git",
@@ -29,10 +29,12 @@
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.11.1",
+    "html-minify-loader": "^1.1.0",
     "html-webpack-plugin": "^2.28.0",
     "html-withimg-loader": "^0.1.16",
     "json-loader": "^0.5.4",
     "postcss-loader": "^2.0.3",
+    "raw-loader": "^0.5.1",
     "style-loader": "^0.17.0",
     "transfer-webpack-plugin": "^0.1.4",
     "url-loader": "^0.5.8",

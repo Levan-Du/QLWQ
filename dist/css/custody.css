@@ -1,0 +1,118 @@
+input[type="submit"]:focus,
+h1 {
+    font-size: 22px;
+    width: 120px;
+    padding: 5px;
+    border-bottom: solid 2px #ccc;
+}
+
+h2 {
+    font-size: 18px;
+    padding: 8px;
+    color: #f90;
+    background: #eee;
+}
+
+p {
+    padding: 2px 5px;
+    line-height: 1.6;
+    font-size: 16px;
+    text-indent: 25px;
+}
+
+.main ul {
+    font-size: 16px;
+    padding: 5px;
+}
+
+.main li {
+    line-height: 1.6;
+    list-style: inside;
+}
+
+.nav {
+    background-image: url(/images/a604d4bf.barner-04.png);
+    height: 250px;
+}
+
+.tab {}
+
+.tab-title {
+    float: left;
+    width: 200px;
+    padding: 0;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 10px 10px 0 0;
+    color: #f90;
+    background: #e7e7e7;
+}
+
+.tab-title-check:checked + .tab-title {
+    background: rgba(255, 153, 0, 1);
+}
+
+.tab-content {
+    top: 50px;
+    padding: 40px;
+    border-top: solid 2px #FF9900;
+}
+
+.content {
+    width: 970px;
+    margin-top: 20px;
+}
+
+.content .tab .tab-page .tab-content aside {
+    float: left;
+    width: 150px;
+    margin-right: 50px;
+}
+
+.content .tab .tab-page .tab-content aside .menu .item {
+    padding: 5px;
+    margin-bottom: 10px;
+    border-bottom: solid 1px #bbb;
+    word-break: keep-all;
+}
+
+.content .tab .tab-page .tab-content aside .menu .item.checked {
+    border-bottom: solid 1px #f90;
+}
+
+.content .tab .tab-page .tab-content aside .menu .item.checked a {
+    color: #f90;
+    font-weight: 900;
+}
+
+.content .tab .tab-page.shenqing .tab-content aside {
+    float: left;
+    width: 180px;
+    margin-left: -30px;
+    margin-right: 50px;
+}
+
+.content .tab .tab-page .tab-content .main {
+    overflow: hidden;
+}
+
+.content .tab .tab-page .tab-content .main > article {
+    display: none;
+}
+
+.content .tab .tab-page .tab-content .main > article.intro ul {
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+.content .tab .tab-page .tab-content .main > article.how li {
+    list-style-type: decimal;
+}
+
+.content .tab .tab-page .tab-content .main > article.checked {
+    display: block;
+}
+
+.content .tab .tab-page .tab-content .main > article > section {
+    margin-bottom: 30px;
+}

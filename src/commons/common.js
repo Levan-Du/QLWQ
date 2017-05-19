@@ -105,8 +105,8 @@ export var randomChar = (l) => {
 }
 
 export var dd = (function($) {
-    // var url = 'http://localhost:55555/api';
-    var url = 'http://192.168.1.250/api';
+    var url = 'http://localhost:9244/api';
+    // var url = 'http://192.168.1.250/api';
     // var url = 'http://117.78.46.33:8057/api';
     function doAjax(uri, method, data, succFunc, errFunc) {
         var option = {
