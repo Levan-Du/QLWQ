@@ -1,13 +1,13 @@
-webpackJsonp([6],{
+webpackJsonp([7],{
 
-/***/ 21:
+/***/ 17:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 45:
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,7 +17,7 @@ __webpack_require__(3);
 
 __webpack_require__(4);
 
-__webpack_require__(21);
+__webpack_require__(17);
 
 var _common = __webpack_require__(1);
 
@@ -138,4 +138,4 @@ var initNewsAction = function initNewsAction() {
 
 /***/ })
 
-},[45]);
+},[41]);
