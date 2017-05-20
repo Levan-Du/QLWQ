@@ -3,150 +3,110 @@ import '../../commons/pages.css';
 import './index.css';
 import '../../commons/common';
 import * as comm from '../../commons/common';
+import move from '../../commons/move';
 import { initLoginAction } from '../../commons/pages';
 
 $((e) => {
     initLoginAction();
-    renderNewsTab()
-    renderNews();
+    loadTheGame();
 });
 
 
-const pageSize = 4;
-var newsFilter = (arr, classId) => {
-    return arr.filter((el, i) => {
-        return el.ClassID == classId;
-    });
+const PageSize = 5;
+
+var HotGamesState = {
+    totalPage: 0,
+    data: []
 }
 
-var renderItem = (id, o) => {
-    var pdata = byPager(o.data, o.pageIndex),
-        tmpl = o.data.length === 0 ?
-        `<p class="news-noitem">没有数据</p>` :
-        pdata.map((el) => {
-            return `<p class="news-item">${el.Subject}</p>`;
-        }).join('');
+var loadTheGame = () => {
+    var id = comm.getQueryString()['id'];
+    comm.dd.Get('/GameGameItem/HotGameList', 'gameId=' + id,
+        function(res) {
+            renderGame(res.message[0]);
 
-    $('#' + id).html(tmpl);
-
-}
-
-var prePage = (id, o) => {
-    if (o.pageIndex > 1 && o.pageIndex <= o.totalPage) {
-        o.pageIndex--;
-    }
-
-    renderItem(id, o);
-}
-
-var nextPage = (id, o) => {
-    if (o.pageIndex >= 1 && o.pageIndex < o.totalPage) {
-        o.pageIndex++;
-    }
-
-    renderItem(id, o);
-}
-
-var byPager = (arr, pageIndex) => {
-    return arr.filter((el, i) => {
-        return i >= (pageIndex - 1) * pageSize && i < pageIndex * pageSize;
-    });
-}
-
-var news = { pageIndex: 1 },
-    notices = { pageIndex: 1 },
-    acts = { pageIndex: 1 };
-
-
-var renderNewsTab = () => {
-    var downItemImg = require('../../assets/images/index/u204.svg'),
-        actiImg1 = require('../../assets/imgs/acti-01.png'),
-        actiImg2 = require('../../assets/imgs/acti-02.png'),
-        getFirstLastBy = (length, i) => {
-            switch (i) {
-                case 0:
-                    return ' first';
-                case length - 1:
-                    return ' last';
-                default:
-                    return '';
-            }
-        },
-        tmpl = [{ id: 'news', title: '新闻' },
-            { id: 'notices', title: '公告' },
-            { id: 'activities', title: '活动' }
-        ].map((el, i, arr) => `
-        <li class="tab-page">
-            <input id="tab-page-${i+1}" class="tab-title-check" type="radio" name="tab" ${i===0?'checked':''}>
-            <label class="tab-title${getFirstLastBy(arr.length,i)}" for="tab-page-${i+1}">${el.title}</label>
-            <div class="tab-content clearfix">
-                <div class="news-list">
-                    <div id="${el.id}Box" class="news-item-wrapper">
-                    </div>
-                    <div class="pager clearfix">
-                        <a data-for="news" data-mark="pre" class="btn">上一页</a>
-                        <a data-for="news" data-mark="next" class="btn">下一页</a>
-                    </div>
-                </div>
-                <div class="news-show">
-                    <ul class="down clearfix">
-                        <li class=down-item>
-                            <img src="${downItemImg}">
-                            <span>Android下载</span>
-                        </li>
-                        <li class=down-item>
-                            <img src="${downItemImg}">
-                            <span>Android下载</span>
-                        </li>
-                    </ul>
-                    <ul class="acti">
-                        <li><img src="${actiImg1}"></li>
-                        <li><img src="${actiImg2}"></li>
-                    </ul>
-                </div>
-            </div>
-        </li>
-    `).join('');
-    $('#tab_news').html(tmpl);
-}
-
-var renderNews = () => {
-    comm.dd.Get('/News/HotNewList', null,
-        (res) => {
-            // acts =Object.assign(acts, newsFilter(res.message, 1));      
-            news.data = newsFilter(res.message, 2);
-            news.totalPage = Math.ceil(news.data.length / pageSize);
-            notices.data = newsFilter(res.message, 1);
-            notices.totalPage = Math.ceil(notices.data.length / pageSize);
-
-            renderItem('noticesBox', notices);
-            renderItem('newsBox', news);
-
-            initNewsAction();
+            loadHotGames();
         });
 }
 
-var initNewsAction = () => {
-    $('.tab-content .pager .btn').click((e) => {
-        var target = $(e.currentTarget),
-            datafor = target.attr('data-for'),
-            datamark = target.attr('data-mark'),
-            go = (mark, box, o) => {
-                mark === 'pre' ? prePage(box, o) : nextPage(box, o);
-            };
+var renderGame = (g) => {
+    $('#game_intro_box').append(g.GameDes || "");
+    $('#game_img_box').append(`<img  src="${g.ImgUrl}" alt="游戏大图">`);
+}
 
-        switch (datafor) {
-            case 'news':
-                go(datamark, 'newsBox', news);
-                break;
-            case 'notices':
-                go(datamark, 'noticesBox', notices);
-                break;
-            case 'acti':
-                go(datamark, 'activiesBox', acts);
-                break;
-            default:
-                break;
+var setHotGamesState = (data) => {
+    var d = data.filter(el => !!el.ImgUrl);
+
+    HotGamesState.data = d;
+    HotGamesState.totalPage = Math.ceil(d.length / PageSize);
+}
+
+var loadHotGames = () => {
+    comm.dd.Get('/GameGameItem/HotGameList', null,
+        function(res) {
+            setHotGamesState(res.message);
+            renderImgGroup();
+        });
+}
+
+var renderImgGroup = () => {
+        var d = HotGamesState.data,
+            p = HotGamesState.totalPage,
+            da = [];
+        for (; p-- > 0;) {
+            var td = d.slice(p * PageSize, (p + 1) * PageSize);
+            da.push(td);
         }
+
+        var tmpl = da.map((el, i) => `
+    <ul class="img-group clearfix${i===0?' checked':''}">
+        ${el.map(el2=>`
+        <li class="item"><img src="${el2.ImgUrl}" alt="图片"></li>
+        `).join('')}
+    </ul>`).join('');
+        $('#hot_img_box').append(tmpl);
+        initHotGamesAction();
+}
+
+
+var currentImgGroupIndex=0;
+var initHotGamesAction=()=>{
+    var moveBoxs=$('.hot-goods #hot_img_box .img-group'),
+        pagerBtns=$('.hot-goods .img-container .pager .btn-pager');
+
+    pagerBtns.click((e)=>{
+        var target =$(e.currentTarget),
+            claProp=target.prop('class');
+
+        if(claProp.indexOf('btn-pre')!==-1){
+            prePage(moveBoxs);
+        }
+        else{
+            nextPage(moveBoxs);
+        }
+    });
+}
+
+var prePage=(moveBoxs)=>{
+    if(currentImgGroupIndex===0){
+        return;
+    }
+    var i=currentImgGroupIndex-1;
+    moveBox(0,moveBoxs,i);
+}
+
+var nextPage=(moveBoxs)=>{
+    if(currentImgGroupIndex===moveBoxs.length-1){
+        return;
+    }
+    var i=currentImgGroupIndex+1;
+    moveBox(1,moveBoxs,i);
+}
+var moveBox=(type,moveBoxs,i)=>{
+    move(type,moveBoxs,i,currentImgGroupIndex,()=>{
+        $(moveBoxs[currentImgGroupIndex]).removeClass('checked');
+        $(moveBoxs[i]).addClass('checked');
+
+        currentImgGroupIndex=i;            
     });
 }

@@ -4,8 +4,11 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import { initLoginAction } from '../../commons/pages';
+import { loadLoginInfo } from '../../commons/login';
+
 
 $((e) => {
+    loadLogin();
     initLoginAction();
     initLoginAction2();
     initNavAction();
@@ -42,4 +45,10 @@ var initNavAction = () => {
         });
     });
 
+}
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
 }

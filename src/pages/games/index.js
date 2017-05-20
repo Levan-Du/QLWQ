@@ -2,6 +2,7 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
+import move from '../../commons/move';
 import { initLoginAction } from '../../commons/pages';
 
 $((e) => {
@@ -148,7 +149,7 @@ var renderGrid = (pf, data) => {
         leave = (e) => {
             var target = $(e.currentTarget),
                 imgBigBox = target.parent().siblings('.box');
-                
+
             imgBigBox.fadeOut();
         };
 
@@ -163,8 +164,8 @@ var renderGridItem = (pf, data) => {
 ${data.map(el=>`
     <li class="grid-item">
         <article class="panel">
-            <p class="title"><a href="gamesdetail.html">${el.GameName}</a></p>
-            <a href="gamesdetail.html"><img class="img-game" src="${el.ImgUrl}"></a>
+            <p class="title"><a href="gamedetail.html?id=${el.GameID}">${el.GameName}</a></p>
+            <a href="gamedetail.html?id=${el.GameID}"><img class="img-game" src="${el.ImgUrl}"></a>
             <p class="down">
                 <img src="${pf.icon}">
                 <a href="#">下载游戏</a>
@@ -207,7 +208,7 @@ var initMenuAction=()=>{
         $(menuBtns[currentPlatformIndex]).removeClass('checked');
         $(e.currentTarget).addClass('checked');
 
-        move(gridsBoxs,i,currentPlatformIndex,()=>{
+        move(0,gridsBoxs,i,currentPlatformIndex,()=>{
             $(gridsBoxs[currentPlatformIndex]).removeClass('checked');
             $(gridsBoxs[i]).addClass('checked');
 
@@ -215,19 +216,6 @@ var initMenuAction=()=>{
             
             setGridWrapperHeight();
         })
-    });
-}
-
-var move = (gridsBoxs,index,currIndex,cb) => {
-    var currGrid=$(gridsBoxs[currIndex]),
-        nGrid=$(gridsBoxs[index]);
-
-    nGrid.css({left:'-100%',display:'block',opacity:.5});
-    nGrid.animate({left:'0',opacity:1},300,'swing',()=>{
-        cb && cb();
-    });
-    currGrid.animate({left:'100%',opacity:.5},300,'swing',()=>{
-        cb && cb();
     });
 }
 

@@ -3,14 +3,26 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
+import pay from '../../commons/pay';
+import { loadLoginInfo } from '../../commons/login';
 import { initLoginAction } from '../../commons/pages';
 
 $((e) => {
+    loadLogin();
     initLoginAction();
     initAction();
     loadGoods();
     onTabGridSelect();
+    sumPaymoney();
+    paySubmit();
+    getUserInfo();
 });
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     PageSize = 4;
@@ -215,9 +227,7 @@ var gotoPage = (grid) => {
 var prePage = (grid) => {
     var gridState = GridState[grid];
     if (gridState.pageIndex > 1) {
-        console.log(gridState);
         gridState.pageIndex--;
-        console.log(gridState);
         gotoPage(grid);
     }
 }
@@ -225,9 +235,57 @@ var prePage = (grid) => {
 var nextPage = (grid) => {
     var gridState = GridState[grid];
     if (gridState.pageIndex < gridState.totalPage) {
-        console.log(gridState);
         gridState.pageIndex++;
-        console.log(gridState);
         gotoPage(grid);
     }
+}
+
+var sumPaymoney = () => {
+    var numRadios = $('#form_recharge section.input .num input[type="radio"]'),
+        numCheckedRadio = numRadios.filter(':checked'),
+        paymoney = numCheckedRadio.val();
+
+    changePaymoney(paymoney);
+
+    $('#form_recharge section.input .num input[type="radio"]').change((e) => {
+        var paymoney = $(e.currentTarget).val();
+        changePaymoney(paymoney);
+    });
+}
+
+var changePaymoney = (paymoney) => {
+    $('#show_paymoney_recharge').text(paymoney);
+    $('#txt_paymoney_recharge').val(paymoney);
+}
+
+var paySubmit = () => {
+    var errorP = $('#error_recharge');
+
+    $('#form_recharge').submit((e) => {
+        e.preventDefault();
+        errorP.hide();
+
+        var data = $(e.currentTarget).serialize(),
+            o = comm.paramsToJson(data);
+
+        if (!o.account) {
+            errorP.text('请输入充值ID！');
+            errorP.show();
+            return;
+        }
+        pay(o);
+    })
+}
+
+var getUserInfo = () => {
+    $('#txt_gameid').change((e) => {
+        comm.dd.Get('/Login/AccountInfo2', 'gameid=' + $(e.currentTarget).val(),
+            (res) => {
+                var u = res.message[0];
+                $('#show_nick').text(u.NickName);
+            }, (err) => {
+
+            }
+        );
+    });
 }

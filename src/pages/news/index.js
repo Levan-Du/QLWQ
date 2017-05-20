@@ -118,9 +118,12 @@ var renderNews = () => {
             news.totalPage = Math.ceil(news.data.length / pageSize);
             notices.data = newsFilter(res.message, 1);
             notices.totalPage = Math.ceil(notices.data.length / pageSize);
+            acts.data = newsFilter(res.message, 3);
+            acts.totalPage = Math.ceil(notices.data.length / pageSize);
 
             renderItem('noticesBox', notices);
             renderItem('newsBox', news);
+            renderItem('activitiesBox', acts);
 
             initNewsAction();
         });

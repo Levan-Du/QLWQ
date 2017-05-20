@@ -317,7 +317,10 @@ li {
 .relative {
     position: relative;
 }
-.header,
+
+.hidden{
+    visibility: hidden;
+}.header,
 .nav,
 .content,
 .module {
@@ -352,6 +355,14 @@ li {
 
 .header .right .login-btn {
     text-decoration: underline;
+    margin-left: 5px;
+}
+
+.header #login_user {
+    display: none;
+}
+
+.header .right .login-name {
     margin-left: 5px;
 }
 
@@ -404,6 +415,8 @@ li {
     height: 200px;
     margin-top: 30px;
     background: #ccc;
+    font-size: 14px;
+    color: #333;
 }
 
 @media screen and (max-width: 1280px) {
@@ -420,9 +433,8 @@ li {
 
 .footer .container p {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 12px;
-    font-size: 12px
 }
 
 .footer .container .smalllist a {
@@ -460,7 +472,6 @@ li {
 }
 
 .footer .container .credit .icp {
-    color: #000;
     font-weight: 900;
 }
 
@@ -474,7 +485,7 @@ li {
 
 .modal-content {
     width: 360px;
-    height: 450px;
+    height: 420px;
     background: #fff;
 }
 
@@ -560,8 +571,8 @@ li {
     background: #4490f7;
     border-radius: 3px;
     color: #fff;
+    cursor: pointer;
 }
-
 
 .modal-content > .row:first-of-type {
     margin-top: 50px;
@@ -575,18 +586,20 @@ li {
     border: solid 1px;
     color: #e66;
     font-size: 14px;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
-
-.modal-content .error.visible{
+.modal-content .error.visible {
     display: block;
 }
 
-.modal-content .error + .row{
+.modal-content .error + .row {
     margin-top: 40px;
 }
 
-.modal-content .error.visible + .row{
+.modal-content .error.visible + .row {
     margin-top: 10px;
 }
 

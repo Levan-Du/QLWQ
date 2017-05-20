@@ -1,13 +1,13 @@
 webpackJsonp([7],{
 
-/***/ 17:
+/***/ 20:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 41:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,125 +17,124 @@ __webpack_require__(3);
 
 __webpack_require__(4);
 
-__webpack_require__(17);
+__webpack_require__(20);
 
 var _common = __webpack_require__(1);
 
 var comm = _interopRequireWildcard(_common);
 
+var _move = __webpack_require__(6);
+
+var _move2 = _interopRequireDefault(_move);
+
 var _pages = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 $(function (e) {
     (0, _pages.initLoginAction)();
-    renderNewsTab();
-    renderNews();
+    loadTheGame();
 });
 
-var pageSize = 4;
-var newsFilter = function newsFilter(arr, classId) {
-    return arr.filter(function (el, i) {
-        return el.ClassID == classId;
+var PageSize = 5;
+
+var HotGamesState = {
+    totalPage: 0,
+    data: []
+};
+
+var loadTheGame = function loadTheGame() {
+    var id = comm.getQueryString()['id'];
+    comm.dd.Get('/GameGameItem/HotGameList', 'gameId=' + id, function (res) {
+        renderGame(res.message[0]);
+
+        loadHotGames();
     });
 };
 
-var renderItem = function renderItem(id, o) {
-    var pdata = byPager(o.data, o.pageIndex),
-        tmpl = o.data.length === 0 ? '<p class="news-noitem">\u6CA1\u6709\u6570\u636E</p>' : pdata.map(function (el) {
-        return '<p class="news-item">' + el.Subject + '</p>';
-    }).join('');
-
-    $('#' + id).html(tmpl);
+var renderGame = function renderGame(g) {
+    $('#game_intro_box').append(g.GameDes || "");
+    $('#game_img_box').append('<img  src="' + g.ImgUrl + '" alt="\u6E38\u620F\u5927\u56FE">');
 };
 
-var prePage = function prePage(id, o) {
-    if (o.pageIndex > 1 && o.pageIndex <= o.totalPage) {
-        o.pageIndex--;
+var setHotGamesState = function setHotGamesState(data) {
+    var d = data.filter(function (el) {
+        return !!el.ImgUrl;
+    });
+
+    HotGamesState.data = d;
+    HotGamesState.totalPage = Math.ceil(d.length / PageSize);
+};
+
+var loadHotGames = function loadHotGames() {
+    comm.dd.Get('/GameGameItem/HotGameList', null, function (res) {
+        setHotGamesState(res.message);
+        renderImgGroup();
+    });
+};
+
+var renderImgGroup = function renderImgGroup() {
+    var d = HotGamesState.data,
+        p = HotGamesState.totalPage,
+        da = [];
+    for (; p-- > 0;) {
+        var td = d.slice(p * PageSize, (p + 1) * PageSize);
+        da.push(td);
     }
 
-    renderItem(id, o);
-};
-
-var nextPage = function nextPage(id, o) {
-    if (o.pageIndex >= 1 && o.pageIndex < o.totalPage) {
-        o.pageIndex++;
-    }
-
-    renderItem(id, o);
-};
-
-var byPager = function byPager(arr, pageIndex) {
-    return arr.filter(function (el, i) {
-        return i >= (pageIndex - 1) * pageSize && i < pageIndex * pageSize;
-    });
-};
-
-var news = { pageIndex: 1 },
-    notices = { pageIndex: 1 },
-    acts = { pageIndex: 1 };
-
-var renderNewsTab = function renderNewsTab() {
-    var downItemImg = __webpack_require__(6),
-        actiImg1 = __webpack_require__(7),
-        actiImg2 = __webpack_require__(8),
-        getFirstLastBy = function getFirstLastBy(length, i) {
-        switch (i) {
-            case 0:
-                return ' first';
-            case length - 1:
-                return ' last';
-            default:
-                return '';
-        }
-    },
-        tmpl = [{ id: 'news', title: '新闻' }, { id: 'notices', title: '公告' }, { id: 'activities', title: '活动' }].map(function (el, i, arr) {
-        return '\n        <li class="tab-page">\n            <input id="tab-page-' + (i + 1) + '" class="tab-title-check" type="radio" name="tab" ' + (i === 0 ? 'checked' : '') + '>\n            <label class="tab-title' + getFirstLastBy(arr.length, i) + '" for="tab-page-' + (i + 1) + '">' + el.title + '</label>\n            <div class="tab-content clearfix">\n                <div class="news-list">\n                    <div id="' + el.id + 'Box" class="news-item-wrapper">\n                    </div>\n                    <div class="pager clearfix">\n                        <a data-for="news" data-mark="pre" class="btn">\u4E0A\u4E00\u9875</a>\n                        <a data-for="news" data-mark="next" class="btn">\u4E0B\u4E00\u9875</a>\n                    </div>\n                </div>\n                <div class="news-show">\n                    <ul class="down clearfix">\n                        <li class=down-item>\n                            <img src="' + downItemImg + '">\n                            <span>Android\u4E0B\u8F7D</span>\n                        </li>\n                        <li class=down-item>\n                            <img src="' + downItemImg + '">\n                            <span>Android\u4E0B\u8F7D</span>\n                        </li>\n                    </ul>\n                    <ul class="acti">\n                        <li><img src="' + actiImg1 + '"></li>\n                        <li><img src="' + actiImg2 + '"></li>\n                    </ul>\n                </div>\n            </div>\n        </li>\n    ';
+    var tmpl = da.map(function (el, i) {
+        return '\n    <ul class="img-group clearfix' + (i === 0 ? ' checked' : '') + '">\n        ' + el.map(function (el2) {
+            return '\n        <li class="item"><img src="' + el2.ImgUrl + '" alt="\u56FE\u7247"></li>\n        ';
+        }).join('') + '\n    </ul>';
     }).join('');
-    $('#tab_news').html(tmpl);
+    $('#hot_img_box').append(tmpl);
+    initHotGamesAction();
 };
 
-var renderNews = function renderNews() {
-    comm.dd.Get('/News/HotNewList', null, function (res) {
-        // acts =Object.assign(acts, newsFilter(res.message, 1));      
-        news.data = newsFilter(res.message, 2);
-        news.totalPage = Math.ceil(news.data.length / pageSize);
-        notices.data = newsFilter(res.message, 1);
-        notices.totalPage = Math.ceil(notices.data.length / pageSize);
+var currentImgGroupIndex = 0;
+var initHotGamesAction = function initHotGamesAction() {
+    var moveBoxs = $('.hot-goods #hot_img_box .img-group'),
+        pagerBtns = $('.hot-goods .img-container .pager .btn-pager');
 
-        renderItem('noticesBox', notices);
-        renderItem('newsBox', news);
-
-        initNewsAction();
-    });
-};
-
-var initNewsAction = function initNewsAction() {
-    $('.tab-content .pager .btn').click(function (e) {
+    pagerBtns.click(function (e) {
         var target = $(e.currentTarget),
-            datafor = target.attr('data-for'),
-            datamark = target.attr('data-mark'),
-            go = function go(mark, box, o) {
-            mark === 'pre' ? prePage(box, o) : nextPage(box, o);
-        };
+            claProp = target.prop('class');
 
-        switch (datafor) {
-            case 'news':
-                go(datamark, 'newsBox', news);
-                break;
-            case 'notices':
-                go(datamark, 'noticesBox', notices);
-                break;
-            case 'acti':
-                go(datamark, 'activiesBox', acts);
-                break;
-            default:
-                break;
+        if (claProp.indexOf('btn-pre') !== -1) {
+            prePage(moveBoxs);
+        } else {
+            nextPage(moveBoxs);
         }
+    });
+};
+
+var prePage = function prePage(moveBoxs) {
+    if (currentImgGroupIndex === 0) {
+        return;
+    }
+    var i = currentImgGroupIndex - 1;
+    moveBox(0, moveBoxs, i);
+};
+
+var nextPage = function nextPage(moveBoxs) {
+    if (currentImgGroupIndex === moveBoxs.length - 1) {
+        return;
+    }
+    var i = currentImgGroupIndex + 1;
+    moveBox(1, moveBoxs, i);
+};
+var moveBox = function moveBox(type, moveBoxs, i) {
+    (0, _move2.default)(type, moveBoxs, i, currentImgGroupIndex, function () {
+        $(moveBoxs[currentImgGroupIndex]).removeClass('checked');
+        $(moveBoxs[i]).addClass('checked');
+
+        currentImgGroupIndex = i;
     });
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 
-},[41]);
+},[44]);

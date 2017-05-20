@@ -1,13 +1,36 @@
 webpackJsonp([3],{
 
-/***/ 24:
+/***/ 12:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var loadLoginInfo = exports.loadLoginInfo = function loadLoginInfo(cb) {
+    var qs = 'account=' + getCookie('account');
+    comm.dd.Get('/Login/AccountInfo', qs, function (res) {
+        var u = res.message;
+        $('#login_user a.login-name').text(u.Accounts);
+        cb(res);
+    }, function (err) {
+        alert(err);
+    });
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+
+/***/ 27:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 48:
+/***/ 51:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19,13 +42,15 @@ __webpack_require__(3);
 
 __webpack_require__(4);
 
-__webpack_require__(24);
+__webpack_require__(27);
 
 var _common = __webpack_require__(1);
 
 var comm = _interopRequireWildcard(_common);
 
 var _pages = __webpack_require__(2);
+
+var _login = __webpack_require__(12);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -61,8 +86,12 @@ var initNavAction = function initNavAction() {
         subMenu.animate({ height: '0' }, 500, 'swing', function () {});
     });
 };
+
+var loadLogin = function loadLogin() {
+    (0, _login.loadLoginInfo)(function (res) {});
+};
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 
-},[48]);
+},[51]);

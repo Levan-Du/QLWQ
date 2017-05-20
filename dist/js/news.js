@@ -1,13 +1,13 @@
 webpackJsonp([6],{
 
-/***/ 21:
+/***/ 24:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 45:
+/***/ 48:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,7 +17,7 @@ __webpack_require__(3);
 
 __webpack_require__(4);
 
-__webpack_require__(21);
+__webpack_require__(24);
 
 var _common = __webpack_require__(1);
 
@@ -76,9 +76,9 @@ var news = { pageIndex: 1 },
     acts = { pageIndex: 1 };
 
 var renderNewsTab = function renderNewsTab() {
-    var downItemImg = __webpack_require__(6),
-        actiImg1 = __webpack_require__(7),
-        actiImg2 = __webpack_require__(8),
+    var downItemImg = __webpack_require__(7),
+        actiImg1 = __webpack_require__(8),
+        actiImg2 = __webpack_require__(9),
         getFirstLastBy = function getFirstLastBy(length, i) {
         switch (i) {
             case 0:
@@ -102,9 +102,12 @@ var renderNews = function renderNews() {
         news.totalPage = Math.ceil(news.data.length / pageSize);
         notices.data = newsFilter(res.message, 1);
         notices.totalPage = Math.ceil(notices.data.length / pageSize);
+        acts.data = newsFilter(res.message, 3);
+        acts.totalPage = Math.ceil(notices.data.length / pageSize);
 
         renderItem('noticesBox', notices);
         renderItem('newsBox', news);
+        renderItem('activitiesBox', acts);
 
         initNewsAction();
     });
@@ -138,4 +141,4 @@ var initNewsAction = function initNewsAction() {
 
 /***/ })
 
-},[45]);
+},[48]);

@@ -37,21 +37,6 @@ export var getQueryString = () => {
     return oo;
 }
 
-export var getCookie = (name) => {
-    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-    if (arr = document.cookie.match(reg))
-        return unescape(arr[2]);
-    else
-        return null;
-}
-
-export var setCookie = (name, value) => {
-    var Days = 1;
-    var exp = new Date();
-    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
-}
-
 export var htmlEncode = (str) => {
     var ele = document.createElement('span');
     ele.appendChild(document.createTextNode(str));
@@ -176,25 +161,8 @@ $.extend({
         var code = randomChar(4),
             modal_id = 'modal_' + code,
             $modal_id = '#' + modal_id,
-
-            form_id = 'form_' + code,
-            $form_id = '#' + form_id,
-
-            account_id = 'txt_account_' + code,
-            $account_id = '#' + account_id,
-
-            pwd_id = 'txt_pwd' + code,
-            $pwd_id = '#' + pwd_id,
-
             valiImg_id = 'valiImg' + code,
             $valiImg_id = '#' + valiImg_id,
-
-            valicode_id = 'txt_valicode_' + code,
-            $valicode_id = '#' + valicode_id,
-
-            submit_id = 'login_submit' + code,
-            $submit_id = '#' + submit_id,
-
             logoiconUrl = require('../assets/imgs/logoicon.png'),
             tmpl = `        
 <div id="${modal_id}" class="modal lev-modal-login">
@@ -206,32 +174,35 @@ $.extend({
             <a class="btn-close" href=""><span class="iconfont icon-cha"></span></a>
         </h3>
         <section class="login">
-            <form id="${form_id}">            
+            <form>            
                 <p class="error">
                 错误
                 </p>
                 <p class="row first">
                     <label class="label" for="txt_account">
                         <span class="iconfont icon-ren"></span>
-                        <input id="${account_id}" type="text" name="account" placeholder="账号">
+                        <input id="txt_account" type="text" name="account" placeholder="账号">
                     </label>
                 </p>
                 <p class="row">
                     <label class="label" for="txt_pwd">
                         <span class="iconfont icon-lock-fill"></span>
-                        <input id="${pwd_id}" type="text" name="pwd" placeholder="密码">
+                        <input id="txt_pwd" type="text" name="pwd" placeholder="密码">
                     </label>
                 </p>
                 <p class="row vali clearfix">
                     <label class="label" for="txt_valicode">
-                        <input id="${valicode_id}" type="text" name="valicode" placeholder="验证码">
+                        <input id="txt_valicode" type="text" name="valicode" placeholder="验证码">
                     </label>
                     <a id="btn_valiImg">
                         <img id="${valiImg_id}" src="" alt="验证码">
                     </a>
                 </p>
                 <p for="login_submit" class="label label-submit">
-                    <input id="${submit_id}" type="submit" name="logon" value="登录">
+                    <input id="login_submit" type="submit" name="logon" value="登录">
+                </p>
+                <p class="row textright">
+                    <a href="register.html">立即注册</a>
                 </p>
             </form>
         </section>
@@ -246,31 +217,15 @@ $.extend({
 </div>`;
         $('body').append(tmpl);
 
-        $($account_id).focus();
-
         var loadValidateImg = () => {
-                dd.Get('/Login/ValidateImage', null,
-                    (res) => {
-                        $($valiImg_id).prop('src', res);
-                    },
-                    (err) => {
-                        showError(err);
-                    });
-            },
-            isValicodePass = false,
-            showError = (msg) => {
-                var errorBox = $($form_id).find('.error');
-                errorBox.text(msg);
-                errorBox.prop('title', msg);
-                errorBox.addClass('visible');
-            },
-            hideError = () => {
-                var errorBox = $($form_id).find('.error');
-                errorBox.text('');
-                errorBox.prop('title', msg);
-                errorBox.removeClass('visible');
-            };
-
+            dd.Get('/Login/ValidateImage', null,
+                (res) => {
+                    $($valiImg_id).prop('src', res);
+                },
+                (err) => {
+                    console.log(err);
+                });
+        }
         loadValidateImg();
 
         $($modal_id + '.modal h3 .btn-close').click((e) => {
@@ -288,64 +243,6 @@ $.extend({
 
         $($modal_id + '.modal #btn_valiImg').click((e) => {
             loadValidateImg();
-        });
-
-        $($valicode_id).change((e) => {
-            var code = $(e.currentTarget).val();
-            dd.Post('/Login/CheckValidaeImage', 'valicode=' + code, (res) => {
-                if (res.status === 'success') {
-                    isValicodePass = true;
-                } else {
-                    isValicodePass = false;
-                    showError('验证码输入不正确！');
-                }
-            }, (err) => {
-                isValicodePass = false;
-            });
-        });
-
-        $($form_id).submit((e) => {
-            e.preventDefault();
-            var target = $(e.currentTarget);
-
-            var data = target.serialize(),
-                o = paramsToJson(data);
-
-            if (!o.account) {
-                showError('请输入用户名！');
-                return;
-            }
-            if (!o.pwd) {
-                showError('请输入密码！');
-                return;
-            }
-            if (!isValicodePass) {
-                showError('验证码输入不正确！');
-                return;
-            }
-
-            loadValidateImg();
-
-            var submitBtn = $($submit_id);
-            submitBtn.val('正在登录...');
-            submitBtn.prop('disabled', 'disabled');
-            dd.Post('/Login/AccountLogon', data, (res) => {
-                if (res.status !== 'success') {
-                    showError(res.message);
-                    submitBtn.val('登录');
-                    submitBtn.removeAttr('disabled');
-                    submitBtn.removeProp('disabled');
-                    console.log(res.message);
-                } else {
-                    setCookie('account', o.account);
-                    location.href = 'user.html';
-                }
-            }, (err) => {
-                showError(err);
-                submitBtn.val('登录');
-                submitBtn.removeAttr('disabled');
-                submitBtn.removeProp('disabled');
-            });
         });
 
         return {

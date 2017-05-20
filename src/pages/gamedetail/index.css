@@ -60,7 +60,7 @@
 }
 
 .content .news-scroll .news-item {
-    margin: 0 250px;
+    margin: 0 60px;
     padding: 6px 20px;
     border: solid 1px;
 }
@@ -86,15 +86,111 @@
     margin-top: 50px;
 }
 
-.content .game-img-list .game-img-box {
+.content .game-img-list .game-box {
     padding: 30px 40px;
     border-bottom: solid 2px #ccc;
 }
 
-.content .game-img-list .game-img-box img {
+.content .game-img-list .game-box img {
     width: 100%;
     height: 335px;
     background: #6ea;
+}
+
+.content .hot-goods > * {
+    margin: 10px 40px;
+}
+
+.hot-goods .top {
+    padding-top: 16px;
+}
+
+.hot-goods .top > * {
+    vertical-align: middle;
+    padding-right: 20px;
+}
+
+.hot-goods .top {
+    padding-top: 16px;
+}
+
+.hot-goods .top > * {
+    vertical-align: middle;
+    padding-right: 20px;
+}
+
+.hot-goods .top img.icon-top {
+    width: 100px;
+    height: 51px;
+}
+
+.hot-goods .top .jiantou span {
+    margin-right: -10px;
+    vertical-align: middle;
+}
+
+.hot-goods .top .jiantou img {
+    width: 28px;
+    height: 20px;
+    margin-right: -20px;
+    vertical-align: middle;
+}
+
+.hot-goods .top .title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.content .hot-goods img {
+    vertical-align: middle;
+}
+
+.content .hot-goods .pager img {
+    width: 40px;
+    height: 48px;
+}
+
+.content .hot-goods .img-container {
+    line-height: 120px;
+}
+
+.content .hot-goods .img-container > .pager.pre {
+    float: left;
+}
+
+.content .hot-goods .img-container > .pager.next {
+    float: right;
+}
+
+.content #hot_img_box {
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+}
+
+.content #hot_img_box .img-group {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.content #hot_img_box .img-group.checked {
+    display: block;
+}
+
+.content #hot_img_box .img-group .item {
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+
+.content #hot_img_box .img-group .item img {
+    width: 110px;
+    height: 110px;
+    background: #eee;
 }
 
 .module {

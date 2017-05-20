@@ -36,6 +36,18 @@
     margin-left: 5px;
 }
 
+.header #login_user {
+    display: none;
+}
+
+.header #login_user.visible {
+    display: block;
+}
+
+.header .right .login-name {
+    margin-left: 5px;
+}
+
 .nav {
     background: rgba(0, 153, 153, 1);
     /*background-image: url(../assets/imgs/barner-01.png);*/
@@ -88,7 +100,6 @@
     font-size: 14px;
     color: #333;
 }
-
 
 @media screen and (max-width: 1280px) {
     .footer {
@@ -156,7 +167,7 @@
 
 .modal-content {
     width: 360px;
-    height: 450px;
+    height: 420px;
     background: #fff;
 }
 
@@ -242,6 +253,7 @@
     background: #4490f7;
     border-radius: 3px;
     color: #fff;
+    cursor: pointer;
 }
 
 .modal-content > .row:first-of-type {
@@ -256,6 +268,9 @@
     border: solid 1px;
     color: #e66;
     font-size: 14px;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .modal-content .error.visible {

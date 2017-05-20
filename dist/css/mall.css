@@ -194,12 +194,12 @@
     cursor: pointer;
 }
 
-.content .tab .tab-content .container .main > section {
+.content .tab .tab-content .container .main form > section {
     margin-bottom: 10px;
 }
 
-.content .tab .tab-content .container .main > section.input p {
-    margin: 10px 0;
+.content .tab .tab-content .container .main form > section.input p {
+    margin: 5px 0;
 }
 
 .content .tab .tab-content .container .main .submit-bar {
@@ -209,7 +209,7 @@
 .content .tab .tab-content .container .main .submit-bar input {
     width: 180px;
     height: 50px;
-    margin-left: 100px;
+    margin-left: 120px;
     background: rgba(255, 51, 0, .8);
     color: #fff;
     font-size: 18px;
@@ -382,4 +382,13 @@
     padding: 4px 6px;
     border: solid 1px #ccc;
     background: transparent;
+}
+
+#form_recharge section.input p.error {
+    display: none;
+    height: auto;
+    color: #e33;
+    border: solid 1px;
+    padding: 0 10px;
+    vertical-align: middle;
 }

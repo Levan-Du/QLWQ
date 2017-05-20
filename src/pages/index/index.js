@@ -50,12 +50,12 @@ var renderNews = () => {
     comm.dd.Get('/News/HotNewList', null,
         (res) => {
             var news = newsFilter(res.message, 2),
-                notices = newsFilter(res.message, 1);
-            // activities = newsFilter(res.message, 1);
-
+                notices = newsFilter(res.message, 1),
+                activities = newsFilter(res.message, 3);
+                
             renderNews('noticesBox', notices);
             renderNews('newsBox', news);
-            // renderNews('activitiesBox', activities);
+            renderNews('activitiesBox', activities);
         });
 }
 

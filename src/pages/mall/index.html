@@ -56,48 +56,55 @@
                             <p id="error_tiaoli" class="error"><span class="iconfont icon-tanhao"></span>必须同意以上条款才能开通</p>
                         </aside>
                         <article class="main">
-                            <section class="info clearfix">
-                                <p class="half">
-                                    <label for="txt_gameid">充值ID：</label>
-                                    <input id="txt_gameid" type="" name="GameID">
-                                </p>
-                                <p class="half">
-                                    <label>现有金币：</label><span id="show_score"></span></p>
-                                <p class="half">
-                                    <label>玩家昵称：</label><span id="show_nick"></span></p>
-                                <p class="half">
-                                    <label>现有钻石：</label><span id="show_diamond"></span></p>
-                                <p class="line line-bottom"></p>
-                            </section>
-                            <section class="input clearfix">
-                                <p>
-                                    <label>充值数量：</label>
-                                    <input id="txt_num_10" type="radio" name="Num" value=10 checked>
-                                    <label for="txt_num_10" class="label-show">10</label>
-                                    <input id="txt_num_50" type="radio" value=50 name="Num">
-                                    <label for="txt_num_50" class="label-show">50</label>
-                                    <input id="txt_num_100" type="radio" value=100 name="Num">
-                                    <label for="txt_num_100" class="label-show">100</label>
-                                    <input id="txt_num_other" type="text" name="Num" placeholder="其他数量">
-                                </p>
-                                <p>
-                                    <label>充值方式：</label>
-                                    <input id="txt_wx_paytype" type="radio" name="PayType" value=0 checked>
-                                    <label for="txt_wx_paytype" class="label-show">微信支付</label>
-                                    <input id="txt_zfb_paytype" type="radio" name="PayType" value=1>
-                                    <label for="txt_zfb_paytype" class="label-show">支付宝</label>
-                                    <input id="txt_other_type" type="radio" name="PayType" value=2>
-                                    <label for="txt_other_type" class="label-show">其他方式</label>
-                                </p>
-                                <p>
-                                    <label>应付金额：</label>
-                                </p>
-                            </section>
-                            <section class="submit-bar">
-                                <p>
-                                    <input type="submit" name="submit" value="确认支付">
-                                </p>
-                            </section>
+                            <form id="form_recharge">
+                                <section class="info clearfix">
+                                    <p class="half">
+                                        <label for="txt_gameid">充值ID：</label>
+                                        <input id="txt_gameid" type="" name="account">
+                                    </p>
+                                    <p class="half">
+                                        <label>现有金币：</label><span id="show_score"></span></p>
+                                    <p class="half">
+                                        <label>玩家昵称：</label><span id="show_nick"></span></p>
+                                    <p class="half">
+                                        <label>现有钻石：</label><span id="show_diamond"></span></p>
+                                    <p class="line line-bottom"></p>
+                                </section>
+                                <section class="input clearfix">
+                                    <p class="num">
+                                        <label>充值数量：</label>
+                                        <input id="txt_num_10" type="radio" name="Num" value=10 checked>
+                                        <label for="txt_num_10" class="label-show">10</label>
+                                        <input id="txt_num_50" type="radio" value=50 name="Num">
+                                        <label for="txt_num_50" class="label-show">50</label>
+                                        <input id="txt_num_100" type="radio" value=100 name="Num">
+                                        <label for="txt_num_100" class="label-show">100</label>
+                                        <input id="txt_num_other" type="text" name="Num" placeholder="其他数量">
+                                        <input type="text" name="goodsname" value="0" class="hidden">
+                                    </p>
+                                    <p class="rtype">
+                                        <label>充值方式：</label>
+                                        <input id="txt_wx_paytype" type="radio" name="rtype" value=0 checked>
+                                        <label for="txt_wx_paytype" class="label-show">微信支付</label>
+                                        <input id="txt_zfb_paytype" type="radio" name="rtype" value=1>
+                                        <label for="txt_zfb_paytype" class="label-show">支付宝</label>
+                                        <input id="txt_other_type" type="radio" name="rtype" value=2>
+                                        <label for="txt_other_type" class="label-show">其他方式</label>
+                                    </p>
+                                    <p class="paymoney">
+                                        <label>应付金额：<span id="show_paymoney_recharge"></span></label>
+                                        <input id="txt_paymoney_recharge" type="text" name="paymoney" value="" class="hidden">
+                                    </p>
+                                    <p id="error_recharge" class="error">
+                                        
+                                    </p>
+                                </section>
+                                <section class="submit-bar">
+                                    <p>
+                                        <input id="submit_recharge" type="submit" name="submit" value="确认支付">
+                                    </p>
+                                </section>
+                            </form>
                         </article>
                     </div>
                 </div>
@@ -131,10 +138,8 @@
                                         <label class="tab-title first" for="tab_exchange_point_1">全部</label>
                                         <div class="tab-content">
                                             <ul id="grid_tab_exchange_point_1" class="grid clearfix">
-                                                
                                             </ul>
                                             <div id="pager_tab_exchange_point_1" class="pager clearfix">
-                                                
                                             </div>
                                         </div>
                                     </li>
@@ -143,11 +148,9 @@
                                         <label class="tab-title" for="tab_exchange_point_2">虚拟物品</label>
                                         <div class="tab-content clearfix">
                                             <ul id="grid_tab_exchange_point_2" class="grid clearfix">
-                                                
                                             </ul>
                                             <div id="pager_tab_exchange_point_2" class="pager clearfix">
-                                                
-                                            </div>                                        
+                                            </div>
                                         </div>
                                     </li>
                                     <li class="tab-page">
@@ -155,11 +158,9 @@
                                         <label class="tab-title last" for="tab_exchange_point_3">全部奖励</label>
                                         <div class="tab-content clearfix">
                                             <ul id="grid_tab_exchange_point_3" class="grid clearfix">
-                                                
                                             </ul>
                                             <div id="pager_tab_exchange_point_3" class="pager clearfix">
-                                                
-                                            </div>                                        
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -170,8 +171,7 @@
             </li>
         </ul>
     </article>
-    #include('../../tmpls/module.html')
-    #include('../../tmpls/footer.html')
+    #include('../../tmpls/module.html') #include('../../tmpls/footer.html')
 </body>
 
 </html>
