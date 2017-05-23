@@ -1,17 +1,25 @@
 .btn.btn-circle {
     float: left;
-    width: 22px;
-    height: 22px;
+    width: 15px;
+    height: 15px;
     margin: 6px 20px;
 }
 
-.nav .btn.btn-circle {
+.barner {
+    height: 45%;
+}
+
+.barner .img-box {
+    height: 100%;
+}
+
+.barner .btn.btn-circle {
     opacity: .3;
 }
 
-.nav .btn-wrapper {
+.barner .btn-wrapper {
     position: absolute;
-    width: 210px;
+    width: 180px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -61,26 +69,32 @@
 }
 
 .tab {
-    margin-left: 2px;
+    height: 360px;
+}
+
+.tab-page {
+    width: 33.33%;
+}
+
+.tab-title {
+    height: 60px;
+    line-height: 60px;
 }
 
 .tab .tab-content {
     width: 850px;
     height: 300px;
-    border: solid 1px #eee;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    /*border: solid 1px #eee;*/
+    /*box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);*/
 }
 
 .tab .tab-content p {
+    top: 60px;
     margin: 20px;
-    height: 48px;
+    height: 45px;
     line-height: 48px;
-    border-bottom: solid 2px #ccc;
+    border-bottom: solid 2px #eee;
     text-align: center;
-}
-
-.tab-title {
-    padding: 16px 121px;
 }
 
 .goods-wraper {
@@ -88,22 +102,30 @@
     height: 310px;
     margin: 50px auto;
     margin-bottom: 0;
-}
-
-.goods-wraper .img-box {
-    height: 190px;
     overflow: hidden;
 }
 
-.goods-wraper .img-box .img-wrapper {
+.goods-wraper .img-box {
     width: 400%;
+    height: 190px;
+    position: relative;
+}
+
+.goods-wraper .img-box .img-wrapper {
+    width: 25%;
+    position: absolute;
+    display: none;
+}
+
+.goods-wraper .img-box .img-wrapper.checked {
+    display: block;
 }
 
 .goods-wraper .img-box .img-item {
     float: left;
-    width: 5.85%;
+    width: 23%;
     height: 150px;
-    margin: 20px 0.2%;
+    margin: 20px 1%;
     background: #f33;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
@@ -132,10 +154,16 @@
 
 .goods-wraper .btn-wrapper {
     float: left;
-    width: 260px;
+    width: 230px;
     margin-top: 45px;
 }
 
 .goods-wraper .btn-wrapper .btn-circle.checked {
     background: rgba(120, 180, 0, 1);
+}
+
+#activitiesBox .news-item a:hover,
+#noticesBox .news-item a:hover,
+#newsBox .news-item a:hover {
+    color: #e33;
 }

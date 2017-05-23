@@ -5,12 +5,20 @@ import '../../commons/common';
 import * as comm from '../../commons/common';
 import move from '../../commons/move';
 import { initLoginAction } from '../../commons/pages';
+import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
+    loadLogin();
     initLoginAction();
     loadTheGame();
 });
 
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 const PageSize = 5;
 
@@ -71,7 +79,8 @@ var renderImgGroup = () => {
 
 var currentImgGroupIndex=0;
 var initHotGamesAction=()=>{
-    var moveBoxs=$('.hot-goods #hot_img_box .img-group'),
+    var itarget=$('#hot_img_box').width(),
+        moveBoxs=$('#hot_img_box .img-group'),
         pagerBtns=$('.hot-goods .img-container .pager .btn-pager');
 
     pagerBtns.click((e)=>{
@@ -79,31 +88,31 @@ var initHotGamesAction=()=>{
             claProp=target.prop('class');
 
         if(claProp.indexOf('btn-pre')!==-1){
-            prePage(moveBoxs);
+            prePage(moveBoxs,itarget);
         }
         else{
-            nextPage(moveBoxs);
+            nextPage(moveBoxs,itarget);
         }
     });
 }
 
-var prePage=(moveBoxs)=>{
+var prePage=(moveBoxs,itarget)=>{
     if(currentImgGroupIndex===0){
         return;
     }
     var i=currentImgGroupIndex-1;
-    moveBox(0,moveBoxs,i);
+    moveBox(0,moveBoxs,itarget,i);
 }
 
-var nextPage=(moveBoxs)=>{
+var nextPage=(moveBoxs,itarget)=>{
     if(currentImgGroupIndex===moveBoxs.length-1){
         return;
     }
     var i=currentImgGroupIndex+1;
-    moveBox(1,moveBoxs,i);
+    moveBox(1,moveBoxs,itarget,i);
 }
-var moveBox=(type,moveBoxs,i)=>{
-    move(type,moveBoxs,i,currentImgGroupIndex,()=>{
+var moveBox=(type,moveBoxs,itarget,i)=>{
+    move(type,moveBoxs,itarget,i,currentImgGroupIndex,()=>{
         $(moveBoxs[currentImgGroupIndex]).removeClass('checked');
         $(moveBoxs[i]).addClass('checked');
 

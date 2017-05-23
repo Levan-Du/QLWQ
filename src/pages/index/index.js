@@ -2,16 +2,28 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
-import { initLoginAction } from '../../commons/pages';
+import move from '../../commons/move';
+import { initLoginAction, initTab, initNav } from '../../commons/pages';
 import carousel from '../../commons/carousel';
+import { loadLoginInfo } from '../../commons/login';
 
 
 $((e) => {
+    initNav('index');
+    loadLogin();
     initLoginAction();
+    initTab();
     renderBarnerImage();
     renderNews();
     renderGoodsImages();
 });
+
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 var renderBarnerImage = () => {
     var imgs = ['barner-01.png', 'barner-02.png', 'barner-03.png'],
@@ -22,10 +34,10 @@ var renderBarnerImage = () => {
             return `<img src="${imgUrl}?${hashcode}">`;
         }).join('');
 
-    $('#nav-img-box').append(tmpl);
+    $('#header_barner_imgbox').append(tmpl);
 
-    var imgEles = $('#nav-img-box img'),
-        btnEles = $('.nav .btn-wrapper .btn-circle');
+    var imgEles = $('#header_barner_imgbox img'),
+        btnEles = $('.barner .btn-wrapper .btn-circle');
     carousel(imgEles, btnEles, 5000);
 }
 
@@ -38,13 +50,12 @@ var renderNews = () => {
             return i < 4;
         });
     }
-    var renderNews = (id, news) => {
+    var renderNewsItem = (id, news) => {
         var tmpl = news.map((el) => {
-            return `<p>${el.Subject}</p>`;
+            return `<p class="news-item"><a href="#">${el.Subject}</a></p>`;
         }).join('');
 
         $('#' + id).append(tmpl);
-
     }
 
     comm.dd.Get('/News/HotNewList', null,
@@ -52,10 +63,10 @@ var renderNews = () => {
             var news = newsFilter(res.message, 2),
                 notices = newsFilter(res.message, 1),
                 activities = newsFilter(res.message, 3);
-                
-            renderNews('noticesBox', notices);
-            renderNews('newsBox', news);
-            renderNews('activitiesBox', activities);
+
+            renderNewsItem('noticesBox', notices);
+            renderNewsItem('newsBox', news);
+            renderNewsItem('activitiesBox', activities);
         });
 }
 
@@ -68,40 +79,66 @@ var renderGoodsImages = () => {
                 goodArr2 = goodArr1.filter((el, i) => {
                     return i < 16;
                 }),
-                tmpl = goodArr2.map(el => {
-                    return '<li class="img-item"><img src="' + el.ImgUrl + '" alt="游戏图片"></li>';
-                });
+                tmplArr = [],
+                item = '';
 
+            goodArr2.forEach((el, i) => {
+                item += `<li class="img-item"><a href="gamedetail.html?id=${el.GameID}"><img src="${el.ImgUrl}" alt="游戏图片"></a></li>`;
+                if ((i + 1) % 4 === 0) {
+                    tmplArr.push(`
+                    <ul class="img-wrapper clearfix${i===3?' checked':''}">
+                        ${item}                        
+                    </ul>
+                    `);
+                    item = '';
+                }
+            });
+            var tmpl = tmplArr.join('');
             $('#goodsImgBox').append(tmpl);
             initMoveCarousel();
         });
 }
 
-var initMoveCarousel = () => {
-    var btns = $('.goods-wraper .btn-circle'),
-        currentIndex = 0;
 
+var preImgGroupIndex = 0;
+var btns = [],
+    moveBoxs = [],
+    iTarget = 0;
+var initMoveCarousel = () => {
+    btns = $('.goods-wraper .btn-circle');
+    moveBoxs = $('#goodsImgBox .img-wrapper');
+    iTarget = moveBoxs.width();
+
+    var interval = startMoveCarousel(iTarget);
     btns.click((e) => {
-        var i = btns.index(e.currentTarget);
-        if (currentIndex === i) {
+        var currIndex = btns.index(e.currentTarget);
+        if (preImgGroupIndex === currIndex) {
             return;
         }
-        $(btns[currentIndex]).removeClass('checked');
+        $(btns[preImgGroupIndex]).removeClass('checked');
         $(e.currentTarget).addClass('checked');
 
+        moveBox(1, currIndex, iTarget);
 
-        var lr = (i > currentIndex),
-            imgWrapEle = $('#goodsImgBox'),
-            diffIndex = Math.abs(i - currentIndex),
-            itarget = parseFloat($('.goods-wraper .img-box').width()) * diffIndex,
-            marginLeft = parseFloat(imgWrapEle.css('marginLeft')),
-            option = lr ? { marginLeft: marginLeft - itarget } : { marginLeft: marginLeft + itarget },
-            speed = diffIndex * 300;
+        preImgGroupIndex = currIndex;
+    });
+}
 
-        imgWrapEle.animate(option, speed, 'swing', () => {
+var startMoveCarousel = (iTarget) => {
+    return setInterval(() => {
+        var currIndex = preImgGroupIndex + 1;
+        if (currIndex >= moveBoxs.length) {
+            currIndex = 0;
+        }
+        $(btns[preImgGroupIndex]).removeClass('checked');
+        $(btns[currIndex]).addClass('checked');
+        moveBox(1, currIndex, iTarget);
+    }, 5000);
+}
 
-        });
-
-        currentIndex = i;
+var moveBox = (type, currIndex, iTarget) => {
+    console.log(currIndex, preImgGroupIndex);
+    move(type, moveBoxs, iTarget, currIndex, preImgGroupIndex, () => {
+        preImgGroupIndex = currIndex;
     });
 }

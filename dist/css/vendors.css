@@ -56,6 +56,10 @@ li {
     list-style: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 .container {
     margin: auto;
 }
@@ -70,6 +74,7 @@ li {
 
 .tab {
     position: relative;
+    border: solid 1px #ddd;
 }
 
 .tab:after {
@@ -91,12 +96,12 @@ li {
 }
 
 .tab-title {
+    box-sizing: border-box;
     display: block;
-    padding: 16px 80px;
-    background: rgba(204, 204, 204, 1);
-    border: solid 1px #ccc;
+    background: #eee;
     font-size: 20px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .tab-title:hover {
@@ -120,6 +125,7 @@ li {
 .tab-title-check {
     position: absolute;
     left: -9999px;
+    vertical-align: middle;
 }
 
 .tab-content {
@@ -138,9 +144,9 @@ li {
 }
 
 .tab-title-check:checked + .tab-title {
-    background: rgba(102, 204, 255, 1);
-    color: #fff;
+    color: #555;
     font-weight: bold;
+    border-bottom: 3px solid #EF3B32;
 }
 
 .tab-title-check:checked ~ .tab-content {
@@ -150,33 +156,7 @@ li {
 
 .nav {
     position: relative;
-    height: 470px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-}
-
-.nav .img-box {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 10;
-    overflow: hidden;
-}
-
-.nav .img-box img {
-    display: none;
-    width: 100%;
-    height: 100%;
-}
-
-.nav-wrapper {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
     margin: auto;
-    z-index: 2000;
 }
 
 .nav-item {
@@ -189,18 +169,16 @@ li {
 
 .nav-item .nav-item-title {
     display: block;
-    padding: 5px 0;
-    height: 100%;
-    background: rgba(215, 215, 215, 1);
-    border: solid 1px rgba(215, 215, 215, 1);
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .nav-item .nav-item-title:hover {
-    background: rgba(102, 204, 255, .9);
+    background: #38b774;
     color: #eee;
 }
 
+
+/*
 .nav-item:first-child .nav-item-title {
     border-radius: 0 0 0 14px;
 }
@@ -208,10 +186,10 @@ li {
 .nav-item:last-child .nav-item-title {
     border-radius: 0 0 14px 0;
 }
+*/
 
 .nav-item.checked .nav-item-title {
-    background: rgba(102, 153, 255, 1);
-    border: solid 1px rgba(102, 153, 255, 1);
+    background: #38b774;
     color: #fff;
     font-weight: bold;
 }
@@ -259,7 +237,7 @@ li {
     border-radius: 50%;
     background: #ccc;
     opacity: .6;
-    box-shadow: 1px 1px 1px 3px rgba(0, 0, 0, .2);
+    box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, .2);
 }
 
 .btn.btn-circle.checked {
@@ -318,10 +296,9 @@ li {
     position: relative;
 }
 
-.hidden{
+.hidden {
     visibility: hidden;
-}.header,
-.nav,
+}
 .content,
 .module {
     width: 1280px;
@@ -333,27 +310,55 @@ li {
     line-height: 40px;
     background: #eee;
     font-size: 14px;
+    position: relative;
 }
 
-.header .container {
-    width: 970px;
-}
-
-.header .container img {
+.header .logo img {
     height: 30px;
     vertical-align: middle;
 }
 
 .header .logo {
-    float: left;
+    position: absolute;
+    width: 1000px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-.header .right {
+.header .todo {
+    position: absolute;
+    right: 100px;
+    top: 0;
+}
+
+.header .todo > * {
     float: right;
+    height: 40px;
+    padding: 0;
+    font-size: 14px;
+    line-height: 40px;
     margin-right: 30px;
+    text-indent: 0;
 }
 
-.header .right .login-btn {
+.header .nav-wrapper {
+    position: absolute;
+    width: 600px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.header .nav-wrapper .nav .nav-item {
+    width: 20%;
+}
+
+.header .todo .login-btn {
     text-decoration: underline;
     margin-left: 5px;
 }
@@ -362,11 +367,17 @@ li {
     display: none;
 }
 
+.header #login_user.visible {
+    display: block;
+}
+
 .header .right .login-name {
     margin-left: 5px;
 }
 
-.nav {
+.barner {
+    position: relative;
+    height: 45%;
     background: rgba(0, 153, 153, 1);
     /*background-image: url(../assets/imgs/barner-01.png);*/
     /*-moz-background-size: 100% 100%;
@@ -375,12 +386,14 @@ li {
     filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
 }
 
-.nav .nav-wrapper {
-    width: 970px;
+.barner .img-box {
+    position: relative;
 }
 
-.nav .nav-wrapper .nav-item {
-    width: 20%;
+.barner .img-box img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .module {
@@ -642,6 +655,22 @@ li {
 .modal-content .login-other .iconfont {
     font-size: 22px;
     vertical-align: middle;
+}
+
+@media screen and (max-width: 1280px) {
+    .header {
+        width: 1280px;
+    }
+    .header .nav-wrapper {
+        width: 600px;
+    }
+    .header .todo > * {
+        float: right;
+        margin-right: 10px;
+    }
+    .barner {
+        width: 1280px;
+    }
 }
 
 @font-face {font-family: "iconfont";

@@ -3,9 +3,13 @@ a:focus {
     outline: solid 1px #58e;
 }
 
-.nav {
+.barner {
     background-image: url(/images/a604d4bf.barner-04.png);
-    height: 350px;
+    height: 420px;
+}
+
+.barner .btn-wrapper {
+    display: none;
 }
 
 .content {
@@ -139,8 +143,9 @@ a:focus {
     font-size: 20px;
 }
 
-.main .mid #username {
+.main .mid #main_username {
     color: #6699FF;
+    margin-right: 5px;
 }
 
 .main .right > p {

@@ -3,14 +3,23 @@ import '../../commons/pages.css';
 import './index.css';
 import '../../commons/common';
 import * as comm from '../../commons/common';
-import { initLoginAction } from '../../commons/pages';
+import { initLoginAction, initTab, initNav } from '../../commons/pages';
+import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
+    initNav('news');
+    loadLogin();
     initLoginAction();
     renderNewsTab()
     renderNews();
 });
 
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 const pageSize = 4;
 var newsFilter = (arr, classId) => {
@@ -24,7 +33,7 @@ var renderItem = (id, o) => {
         tmpl = o.data.length === 0 ?
         `<p class="news-noitem">没有数据</p>` :
         pdata.map((el) => {
-            return `<p class="news-item">${el.Subject}</p>`;
+            return `<p class="news-item"><a href="#">${el.Subject}</a></p>`;
         }).join('');
 
     $('#' + id).html(tmpl);
@@ -78,7 +87,7 @@ var renderNewsTab = () => {
         ].map((el, i, arr) => `
         <li class="tab-page">
             <input id="tab-page-${i+1}" class="tab-title-check" type="radio" name="tab" ${i===0?'checked':''}>
-            <label class="tab-title${getFirstLastBy(arr.length,i)}" for="tab-page-${i+1}">${el.title}</label>
+            <label class="tab-title" for="tab-page-${i+1}">${el.title}</label>
             <div class="tab-content clearfix">
                 <div class="news-list">
                     <div id="${el.id}Box" class="news-item-wrapper">
@@ -108,6 +117,7 @@ var renderNewsTab = () => {
         </li>
     `).join('');
     $('#tab_news').html(tmpl);
+    initTab();
 }
 
 var renderNews = () => {

@@ -5,9 +5,10 @@ import './index.css';
 import * as comm from '../../commons/common';
 import pay from '../../commons/pay';
 import { loadLoginInfo } from '../../commons/login';
-import { initLoginAction } from '../../commons/pages';
+import { initLoginAction, initNav } from '../../commons/pages';
 
 $((e) => {
+    initNav('mall');
     loadLogin();
     initLoginAction();
     initAction();
@@ -282,7 +283,13 @@ var getUserInfo = () => {
         comm.dd.Get('/Login/AccountInfo2', 'gameid=' + $(e.currentTarget).val(),
             (res) => {
                 var u = res.message[0];
+                if (!u) {
+                    return;
+                }
                 $('#show_nick').text(u.NickName);
+                $('#show_score').text(u.Score);
+                $('#show_diamond').text(u.Diamond);
+
             }, (err) => {
 
             }

@@ -2,13 +2,22 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
-import { initLoginAction } from '../../commons/pages';
+import { initLoginAction,initNav } from '../../commons/pages';
+import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
+    initNav('questions');
+    loadLogin();
     initLoginAction();
     onQuesListItemChecked();
 });
 
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 var onQuesListItemChecked = () => {
     var itemTitleBtns = $('#ques_list .item .title-btn'),

@@ -5,46 +5,42 @@
     margin: 5px 20px;
 }
 
-.nav {
+.barner {
     /*background-image: url(../../assets/imgs/barner-04.png);*/
     height: 350px;
 }
 
-.nav .nav-wrapper {
+.barner .games {
+    position: relative;
     width: 970px;
-}
-
-.nav .games {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #fff;
+    margin: auto;
     text-align: center;
     font-size: 18px;
     color: #fff;
+    z-index: 1000;
 }
 
-.nav .games .box {
+.barner .games .box {
     position: absolute;
     top: 60px;
     right: 120px;
 }
 
-.nav .games .box img {
+.barner .games .box img {
     width: 110px;
     height: 110px;
 }
 
-.nav .games .box h1 {
+.barner .games .box h1 {
     font-size: 36px;
     word-break: keep-all;
 }
 
-.nav .games .box .down {
+.barner .games .box .down {
     margin-top: 30px;
 }
 
-.nav .games .down .item {
+.barner .games .down .item {
     width: 130px;
     float: left;
 }

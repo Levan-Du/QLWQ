@@ -13,30 +13,7 @@
 
 <body>
     #include('../../tmpls/header.html')
-    <div class="nav">
-        <nav class="nav-wrapper clearfix">
-            <div class="nav-item">
-                <a class="nav-item-title" href="index.html">首页</a></div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="news.html">资讯中心</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="games.html">游戏中心</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="mall.html">商城</a>
-            </div>
-            <div class="nav-item checked">
-                <a class="nav-item-title" href="#">用户中心</a>
-                <ul class="submenu">
-                    <!-- <li class="direct"><span></span></li> -->
-                    <li class="submenu-item"><a href="customer.html">客服中心</a></li>
-                    <li class="submenu-item"><a href="questions.html">常见问题</a></li>
-                    <li class="submenu-item"><a href="feedbacks.html">游戏反馈</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+    #include('../../tmpls/barner.html')
     <article class="content">
         <p class="line"></p>
         <div class="content-wrapper clearfix">
@@ -57,8 +34,8 @@
                     </div>
                 </section>
                 <section class="mid">
-                    <p>你好！<a class="btn-link">请登录</a></p>
-                    <p class="username"><span id="username" class="username">某某某</span>女士先生</p>
+                    <p>你好！<a id="btn_login_main" class="btn-link">请登录</a></p>
+                    <p id="main_row_username" class="username" style="visibility: hidden;"><span id="main_username" class="username">某某某</span></p>
                     <p>会员类型：<span class="viptype"></span></p>
                     <p class="img-box">
                         <img src="../../assets/images/user/u768.svg">
@@ -67,11 +44,11 @@
                     </p>
                 </section>
                 <section class="right">
-                    <p><span>等级：</span><span id="grade" class="value">1</span></p>
-                    <p><span>金币：</span><span id="score" class="value">2</span></p>
-                    <p><span>钻石：</span><span id="diamond" class="value">3</span></p>
-                    <p><span>房卡：</span><span id="rcard" class="value">4</span></p>
-                    <p><span>积分：</span><span id="points" class="value">5</span></p>
+                    <p><span>等级：</span><span id="main_grade" class="value"></span></p>
+                    <p><span>金币：</span><span id="main_score" class="value"></span></p>
+                    <p><span>钻石：</span><span id="main_diamond" class="value"></span></p>
+                    <p><span>房卡：</span><span id="main_rcard" class="value"></span></p>
+                    <p><span>积分：</span><span id="main_points" class="value"></span></p>
                 </section>
             </article>
         </div>

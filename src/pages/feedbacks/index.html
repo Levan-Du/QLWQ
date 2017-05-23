@@ -12,8 +12,7 @@
 
 <body>
     #include('../../tmpls/header.html')
-    <div class="nav">
-    </div>
+    #include('../../tmpls/barner.html')
     <article class="content">
         <p class="line"></p>
         <article id="content_main_" class="main">
@@ -67,17 +66,17 @@
                     <section class="ask-box">
                         <p class="title"><img src="../../assets/images/ask/u1339.svg"><span>请在此提交您的宝贵意见：</span></p>
                         <section class="ask-content">
-                            <form>
+                            <form id="form_feedback">
                                 <p class="row-select">
                                     <label>游戏模块：
-                                        <select>
+                                        <select name="title">
                                             <option value="1">百人牛牛</option>
                                             <option value="2">炸金花</option>
                                         </select>
                                     </label>
                                 </p>
                                 <p class="row-content">
-                                    <textarea name="ask" placeholder="问题描述"></textarea>
+                                    <textarea name="content" placeholder="问题描述"></textarea>
                                 </p>
                                 <p class="row-qq">
                                     <label>联系方式（选填） QQ：

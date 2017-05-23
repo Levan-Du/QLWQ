@@ -12,8 +12,7 @@
 
 <body>
     #include('../../tmpls/header.html')
-    <div class="nav">
-    </div>
+    #include('../../tmpls/barner.html')
     <article class="content">
         <p class="line"></p>
         <article id="content_main_" class="main">
@@ -48,7 +47,7 @@
                     <li class="ask">
                         <a href="ask.html#content_main_"><span class="icon">1</span><span class="text">我来提问</span></a>
                     </li>
-                    <li class="feedbacks"><a href="advice.html#content_main_">游戏反馈</a></li>
+                    <li class="feedbacks"><a href="feedbacks.html#content_main_">游戏反馈</a></li>
                     <li class="ask ask-bug">
                         <a href="bug.html#content_main_"><span class="icon">1</span><span class="text">游戏BUG</span></a>
                     </li>
@@ -67,17 +66,17 @@
                     <section class="ask-box">
                         <p class="title"><img src="../../assets/images/ask/u1339.svg"><span>请在此提交您的宝贵意见：</span></p>
                         <section class="ask-content">
-                            <form>
+                            <form id="form_advice">
                                 <p class="row-select">
                                     <label>游戏模块：
-                                        <select>
+                                        <select name="title">
                                             <option value="1">百人牛牛</option>
                                             <option value="2">炸金花</option>
                                         </select>
                                     </label>
                                 </p>
                                 <p class="row-content">
-                                    <textarea name="ask" placeholder="问题描述"></textarea>
+                                    <textarea name="content" placeholder="问题描述"></textarea>
                                 </p>
                                 <p class="row-qq">
                                     <label>联系方式（选填） QQ：
@@ -87,7 +86,7 @@
                                 <p class="row-tip">为了能更好地了解您的反馈信息，官方工作人员可能会通过您所留下的联系方式与您联系哦，祝您游戏愉快
                                 </p>
                                 <p class="row-submit">
-                                    <input type="submit" name="提交">
+                                    <input id="submit_feedbacks" type="submit" name="提交">
                                 </p>
                             </form>
                         </section>

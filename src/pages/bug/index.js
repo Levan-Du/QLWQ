@@ -3,12 +3,20 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import { initLoginAction } from '../../commons/pages';
+import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
+    initNav('bug');
+    loadLogin();
     initLoginAction();
     onQuesListItemChecked();
 });
 
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 var onQuesListItemChecked = () => {
     var itemTitleBtns = $('#ques_list .item .title-btn'),
@@ -43,4 +51,20 @@ var onQuesListItemChecked = () => {
 
 
     });
+}
+
+var onSubmit = () => {
+    $('#form_feedback').submit((e) => {
+        e.preventDefault();
+        var data = $(e.currentTarget).serialize();
+        comm.dd.Post('/News/AddFeedback', data + '&ftype=3',
+            (res) => {
+                if (res.status !== 'success') {
+                    alert(res.message);
+                }
+            }, (err) => {
+                alert(err);
+            }
+        );
+    })
 }

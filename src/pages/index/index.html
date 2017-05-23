@@ -12,31 +12,7 @@
 
 <body>
     #include('../../tmpls/header.html')
-    <div class="nav">
-        <div id="nav-img-box" class="img-box">
-        </div>
-        <nav class="nav-wrapper clearfix">
-            <div class="nav-item checked">
-                <a class="nav-item-title" href="#">首页</a></div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="news.html">资讯中心</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="games.html">游戏中心</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="mall.html">商城</a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-item-title" href="user.html">用户中心</a>
-            </div>
-        </nav>
-        <div class="btn-wrapper clearfix">
-            <a class="btn btn-circle"></a>
-            <a class="btn btn-circle"></a>
-            <a class="btn btn-circle"></a>
-        </div>
-    </div>
+    #include('../../tmpls/barner.html')
     <article class="content">
         <section class="news-wrapper">
             <div class="top">
@@ -51,7 +27,7 @@
             <ul class="tab">
                 <li class="tab-page">
                     <input id="tab-page-1" class="tab-title-check" type="radio" name="tab" checked>
-                    <label class="tab-title first" for="tab-page-1">活动</label>
+                    <label class="tab-title" for="tab-page-1">活动</label>
                     <div id="activitiesBox" class="tab-content">
                         <!-- <p>活动内容</p> -->
                     </div>
@@ -65,7 +41,7 @@
                 </li>
                 <li class="tab-page">
                     <input id="tab-page-3" class="tab-title-check" type="radio" name="tab">
-                    <label class="tab-title last" for="tab-page-3">新闻</label>
+                    <label class="tab-title" for="tab-page-3">新闻</label>
                     <div id="newsBox" class="tab-content">
                         <!-- <p>新闻内容</p> -->
                     </div>
@@ -73,13 +49,7 @@
             </ul>
         </section>
         <section class="goods-wraper">
-            <div class="img-box">
-                <ul id="goodsImgBox" class="img-wrapper clearfix">
-                    <!--<li class="img-item"><img class="img" src=""></li>
-                    <li class="img-item"><img class="img" src=""></li>
-                    <li class="img-item"><img class="img" src=""></li>
-                    <li class="img-item"><img class="img" src=""></li> -->
-                </ul>
+            <div id="goodsImgBox" class="img-box">
             </div>
             <div class="img-action">
                 <span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
@@ -93,8 +63,7 @@
             </div>
         </section>
     </article>
-    #include('../../tmpls/module.html')
-    #include('../../tmpls/footer.html')
+    #include('../../tmpls/module.html') #include('../../tmpls/footer.html')
 </body>
 
 </html>

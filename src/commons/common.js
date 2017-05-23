@@ -1,3 +1,7 @@
+// var API_URL = 'http://localhost:9244/api';
+var API_URL = 'http://192.168.1.250/api';
+// var API_URL = 'http://117.78.46.33:8057/api';
+
 Date.prototype.Format = function(fmt) { //author: meizz 
     var o = {
         'M+': this.getMonth() + 1, //月份 
@@ -120,12 +124,9 @@ export var randomChar = (l) => {
 }
 
 export var dd = (function($) {
-    var url = 'http://localhost:9244/api';
-    // var url = 'http://192.168.1.250/api';
-    // var url = 'http://117.78.46.33:8057/api';
     function doAjax(uri, method, data, succFunc, errFunc) {
         var option = {
-            url: url + (uri.substring(0, 1) === '/' ? uri : '/' + uri),
+            url: API_URL + (uri.substring(0, 1) === '/' ? uri : '/' + uri),
             method: method,
             dataType: 'jsonp',
             jsonp: 'jsonpcb',
@@ -269,6 +270,18 @@ $.extend({
                 errorBox.text('');
                 errorBox.prop('title', msg);
                 errorBox.removeClass('visible');
+            },
+            validCodeCheck = (code) => {
+                dd.Post('/Login/CheckValidaeImage', 'valicode=' + code, (res) => {
+                    if (res.status === 'success') {
+                        isValicodePass = true;
+                    } else {
+                        isValicodePass = false;
+                        showError('验证码输入不正确！');
+                    }
+                }, (err) => {
+                    isValicodePass = false;
+                });
             };
 
         loadValidateImg();
@@ -292,16 +305,12 @@ $.extend({
 
         $($valicode_id).change((e) => {
             var code = $(e.currentTarget).val();
-            dd.Post('/Login/CheckValidaeImage', 'valicode=' + code, (res) => {
-                if (res.status === 'success') {
-                    isValicodePass = true;
-                } else {
-                    isValicodePass = false;
-                    showError('验证码输入不正确！');
-                }
-            }, (err) => {
-                isValicodePass = false;
-            });
+            validCodeCheck(code);
+        });
+
+        $($valicode_id).blur((e) => {
+            var code = $(e.currentTarget).val();
+            validCodeCheck(code);
         });
 
         $($form_id).submit((e) => {

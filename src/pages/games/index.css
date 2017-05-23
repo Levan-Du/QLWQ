@@ -1,5 +1,10 @@
-.nav {
+.barner {
     background-image: url(../../assets/imgs/barner-02.png);
+    height: 350px;
+}
+
+.barner .btn-wrapper {
+    display: none;
 }
 
 .content {

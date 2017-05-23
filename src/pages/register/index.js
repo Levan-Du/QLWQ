@@ -3,13 +3,23 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
-import { initLoginAction } from '../../commons/pages';
+import { initLoginAction, initNav } from '../../commons/pages';
+import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
+    initNav('register');
+    loadLogin();
     initLoginAction();
     initLoginAction2();
     initNavAction();
 });
+
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 var loginModal = null;
 var initLoginAction2 = () => {

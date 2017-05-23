@@ -3,15 +3,25 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import move from '../../commons/move';
-import { initLoginAction } from '../../commons/pages';
+import { initLoginAction, initNav } from '../../commons/pages';
+import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
+    initNav('games');
+    loadLogin();
     initLoginAction();
     gridWrap = $('#grid_wrapper');
     renderMenu();
     initMenuAction();
     loadData();
 })
+
+
+var loadLogin = () => {
+    loadLoginInfo((res) => {
+
+    });
+}
 
 const PageSize = 4,
     MAX_INDEX = 3,
@@ -198,7 +208,8 @@ var renderGridPager=(pf)=>{
 
 var initMenuAction=()=>{
     var menuBtns=$('.menu .menu-item-btn'),
-        gridsBoxs=gridWrap.find('.grid-box');   
+        gridsBoxs=gridWrap.find('.grid-box'),
+        itarget=gridsBoxs.width();   
 
     menuBtns.click((e)=>{
         var i= menuBtns.index(e.currentTarget);
@@ -208,7 +219,7 @@ var initMenuAction=()=>{
         $(menuBtns[currentPlatformIndex]).removeClass('checked');
         $(e.currentTarget).addClass('checked');
 
-        move(0,gridsBoxs,i,currentPlatformIndex,()=>{
+        move(0,gridsBoxs,itarget,i,currentPlatformIndex,()=>{
             $(gridsBoxs[currentPlatformIndex]).removeClass('checked');
             $(gridsBoxs[i]).addClass('checked');
 

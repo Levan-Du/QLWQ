@@ -1,19 +1,28 @@
-export default (type, moveBoxs, index, currIndex, cb) => {
-    var currGrid = $(moveBoxs[currIndex]),
-        nGrid = $(moveBoxs[index]),
-        nLeft = '-100%',
-        currLeft = '100%';
+export default (type, moveBoxs, iTarget, currIndex, preIndex, cb) => {
+    var preGrid = $(moveBoxs[preIndex]),
+        currGrid = $(moveBoxs[currIndex]),
+        currLeft = -iTarget + 'px',
+        preLeft = iTarget + 'px',
+        aniComplete1 = false,
+        aniComplete2 = false;
 
     if (type === 1) {
-        nLeft = '100%';
-        currLeft = '-100%';
+        currLeft = iTarget + 'px';
+        preLeft = -iTarget + 'px';
     }
 
-    nGrid.css({ left: nLeft, display: 'block', opacity: .5 });
-    nGrid.animate({ left: '0', opacity: 1 }, 300, 'swing', () => {
-        cb && cb();
+    currGrid.css({ left: currLeft, display: 'block' });
+    currGrid.animate({ left: 0, }, 300, 'swing', () => {
+        aniComplete1 = true;
+        if (aniComplete2) {
+            cb && cb();
+        }
     });
-    currGrid.animate({ left: currLeft, opacity: .5 }, 300, 'swing', () => {
-        cb && cb();
+    preGrid.animate({ left: preLeft}, 300, 'swing', () => {
+        preGrid.css('display', 'none');
+        aniComplete2 = true;
+        if (aniComplete1) {
+            cb && cb();
+        }
     });
 }

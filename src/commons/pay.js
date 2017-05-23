@@ -1,6 +1,7 @@
 import { dd } from './common';
 
-const PAY_URL = 'http://localhost:9244/poleneer/webpay.aspx?'
+// const PAY_URL = 'http://localhost:9244/poleneer/webpay.aspx?';
+const PAY_URL = 'http://192.168.1.250:8057/poleneer/webpay.aspx?';
 
 export default (params) => {
     var qs = 'rtype=' + params.rtype;
