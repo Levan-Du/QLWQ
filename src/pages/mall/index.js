@@ -5,10 +5,11 @@ import './index.css';
 import * as comm from '../../commons/common';
 import pay from '../../commons/pay';
 import { loadLoginInfo } from '../../commons/login';
-import { initLoginAction, initNav } from '../../commons/pages';
+import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
 
 $((e) => {
     initNav('mall');
+    initNavAction();
     loadLogin();
     initLoginAction();
     initAction();
@@ -25,8 +26,9 @@ var loadLogin = () => {
     });
 }
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-    PageSize = 4;
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    PageSize = 4,
+    PageSize0 = 9;
 
 var getGoodTypeByGridIndex = (gridIndex) => {
     switch (gridIndex) {
@@ -42,6 +44,11 @@ var getGoodTypeByGridIndex = (gridIndex) => {
 }
 
 var goods = [],
+    DiamondGridState = {
+        data: [],
+        totalPage: 0,
+        currGridIndex: 0
+    },
     GridState = {
         grid1: {
             gridIndex: 1,
@@ -116,7 +123,9 @@ var loadGoods = () => {
         }
     });
 
-    renderExchangeByDiamondGrid(goods);
+    DiamondGridState.data = goods;
+    DiamondGridState.totalPage = Math.ceil(goods.length / PageSize0);
+    renderExchangeByDiamondGrid(DiamondGridState);
 
     var data = goods.slice();
     GridState['grid1'].data = data;
@@ -132,17 +141,103 @@ var loadGoods = () => {
     renderExchangeByPointGrid('grid3');
 }
 
-var renderExchangeByDiamondGrid = (data) => {
-    var tmpl = data.map(el => `
+var renderExchangeByDiamondGrid = (state) => {
+    var tmplArr = [],
+        d = state.data,
+        l = d.length,
+        items = '',
+        setVisible = (i, l) => {
+            if (l <= PageSize0) {
+                return ' visible';
+            } else {
+                if (i === PageSize0 - 1) {
+                    return ' visible';
+                }
+                return '';
+            }
+        };
+
+    d.forEach((el, i) => {
+        items += `
         <li class="grid-item">
             <div class="panel">
                 <img src="${el.ImgUrl}">
-                <span><span>${el.Price}</span>钻石</span>
+                <p>
+                    <span><span>${el.Price}</span>钻石</span>
+                    <a href="">兑换</a>
+                </p>
             </div>
-        </li>
-    `).join('');
+        </li>`;
+        if ((i + 1) % PageSize0 === 0 || i === l - 1) {
+            tmplArr.push(`        
+            <ul class="grid clearfix${setVisible(i,l)}">
+                ${items}
+            </ul>
+            `);
+            items = '';
+        }
+    });
 
-    $('#grid_good_exchange_diamond').html(tmpl);
+    var tmpl = tmplArr.join(''),
+        diamondGridBox = $('#tab_content_exchange_diamond');
+    diamondGridBox.html(tmpl);
+
+    var pagerbtns = '<a class="btn-pager btn-enum btn-next">下一页</a>';
+    for (var p = state.totalPage; p--;) {
+        pagerbtns += `<a class="btn-pager btn-num" data-pageindex="${p+1}">${p+1}</a>`;
+    }
+    pagerbtns += '<a class="btn-pager btn-enum btn-pre">上一页</a>';
+
+    tmpl = `
+    <div id="pager_tab_exchange_diamond_1" class="pager clearfix">
+        ${pagerbtns}
+    </div>
+    `;
+    diamondGridBox.append(tmpl);
+
+    initDiamondGridPagerAction();
+}
+
+var initDiamondGridPagerAction = () => {
+    var pager = $('#pager_tab_exchange_diamond_1'),
+        btnNums = pager.find('.btn-num'),
+        btnEnums = pager.find('.btn-enum'),
+        diamondGrids = $('#tab_content_exchange_diamond').find('.grid'),
+        gotoPage = (index) => {
+            $(diamondGrids[DiamondGridState.currGridIndex]).removeClass('visible');
+            $(diamondGrids[index]).addClass('visible');
+            DiamondGridState.currGridIndex = index;
+        };
+
+    btnNums.click((e) => {
+        var target = $(e.currentTarget),
+            pageindex = parseInt(target.attr('data-pageindex')) - 1;
+        if (pageindex === DiamondGridState.currGridIndex) {
+            return;
+        }
+
+        gotoPage(pageindex);
+    });
+    btnEnums.click((e) => {
+        var target = $(e.currentTarget),
+            cla = target.prop('class'),
+            tp = DiamondGridState.totalPage,
+            index = DiamondGridState.currGridIndex;
+            
+        if (cla.indexOf('btn-pre') !== -1) {
+            if (index <= 0) {
+                return;
+            }
+            index--;
+            gotoPage(index);
+        } else {
+            if (index >= tp - 1) {
+                return;
+            }
+            index++;
+            gotoPage(index);
+        }
+    });
 }
 
 var renderExchangeByPointGrid = (grid) => {

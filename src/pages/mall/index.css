@@ -37,7 +37,7 @@
 }
 
 .content {
-    margin: 20px auto;
+    margin: 80px auto;
 }
 
 .content .news-scroll .news-item {
@@ -97,8 +97,7 @@
 
 .content .tab .tab-content .container {
     height: 100%;
-    margin: 20px;
-    background: #f9f9f9;
+    padding: 20px;
 }
 
 .content .tab .tab-content .container .left {
@@ -147,8 +146,12 @@
 }
 
 .content .tab .tab-content .container .main {
+    box-sizing: border-box;
+    height: 100%;
     overflow: hidden;
     padding: 20px 30px;
+    background: #f9f9f9;
+    border: solid 1px #ddd;
 }
 
 .content .tab .tab-content .container .main p {
@@ -262,23 +265,74 @@
 }
 
 .grid {
+    box-sizing: border-box;
     text-align: center;
-    padding: 10px 50px;
     font-size: 14px;
     overflow: hidden;
 }
 
 .grid-item {
     float: left;
-    width: 25%;
 }
 
 .grid-item .panel {
-    margin: 20px;
+    height: 100%;
 }
 
 .grid-item img {
+    margin-top: 5%;
     width: 100%;
+    height: 70%;
+}
+
+.grid-item p {
+    padding: 5px;
+}
+
+.grid-item a {
+    margin-left: 20px;
+    padding: 1px 15px;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    color: #555;
+}
+
+#tab_content_exchange_diamond .grid-item {
+    width: 33.33%;
+    height: 33.33%;
+}
+
+#tab_content_exchange_diamond .grid-item .panel {
+    margin: 0 20px;
+}
+
+#tab_content_exchange_diamond .grid {
+    display: none;
+    height: 80%;
+    margin: 0 50px;
+    margin-top: 30px;
+}
+
+#tab_content_exchange_diamond .grid.visible {
+    display: block;
+}
+
+#tab_content_exchange_diamond .grid + .pager {
+    padding: 10px;
+    margin-top: 4%;
+    border-top: solid 1px #ccc;
+}
+
+#pager_tab_exchange_diamond_1.pager .btn-pager {
+    padding: 4px 10px;
+    margin-left: 10px;
+    float: right;
+    border: solid 1px #ccc;
+}
+
+#pager_tab_exchange_diamond_1.pager .btn-pager.btn-num {
+    background: #ddd;
+    border: 0;
 }
 
 .content #tab_exchange_point_grid {
@@ -348,6 +402,7 @@
     display: block;
     height: 140px;
     padding: 10px 10px;
+    overflow: hidden;
 }
 
 .content #tab_exchange_point_grid .tab-content .grid-item .panel div.info > * {
@@ -364,10 +419,11 @@
 .content #tab_exchange_point_grid .tab-content .pager {
     box-sizing: border-box;
     position: absolute;
-    width: 100%;
-    left: 0;
+    left: 10px;
+    right: 10px;
     bottom: 0;
     padding: 10px;
+    border-top: solid 1px #ccc;
 }
 
 .content #tab_exchange_point_grid .tab-content .pager .btn {

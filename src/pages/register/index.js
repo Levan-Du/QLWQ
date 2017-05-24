@@ -3,11 +3,12 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
-import { initLoginAction, initNav } from '../../commons/pages';
+import { initLoginAction, initNav,initNavAction } from '../../commons/pages';
 import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
     initNav('register');
+    initNavAction();
     loadLogin();
     initLoginAction();
     initLoginAction2();
@@ -28,28 +29,3 @@ var initLoginAction2 = () => {
     });
 }
 
-
-var initNavAction = () => {
-    var navItem = $('body > .nav .nav-item');
-
-    navItem.mouseenter((e) => {
-        var navItem = $(e.currentTarget),
-            subMenu = navItem.parent().find('.submenu');
-
-        subMenu.stop();
-        subMenu.animate({ height: '600px' }, 500, 'swing', () => {
-
-        });
-    });
-
-    navItem.mouseleave((e) => {
-        var navItem = $(e.currentTarget),
-            subMenu = navItem.parent().find('.submenu');
-
-        subMenu.stop();
-        subMenu.animate({ height: '0' }, 500, 'swing', () => {
-
-        });
-    });
-
-}

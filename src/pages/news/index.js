@@ -3,11 +3,12 @@ import '../../commons/pages.css';
 import './index.css';
 import '../../commons/common';
 import * as comm from '../../commons/common';
-import { initLoginAction, initTab, initNav } from '../../commons/pages';
+import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
 import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
     initNav('news');
+    initNavAction();
     loadLogin();
     initLoginAction();
     renderNewsTab()
@@ -21,7 +22,7 @@ var loadLogin = () => {
     });
 }
 
-const pageSize = 4;
+const pageSize = 6;
 var newsFilter = (arr, classId) => {
     return arr.filter((el, i) => {
         return el.ClassID == classId;
@@ -31,7 +32,7 @@ var newsFilter = (arr, classId) => {
 var renderItem = (id, o) => {
     var pdata = byPager(o.data, o.pageIndex),
         tmpl = o.data.length === 0 ?
-        `<p class="news-noitem">没有数据</p>` :
+        `<p class="news-item news-item-no">没有数据</p>` :
         pdata.map((el) => {
             return `<p class="news-item"><a href="#">${el.Subject}</a></p>`;
         }).join('');
@@ -68,10 +69,7 @@ var news = { pageIndex: 1 },
 
 
 var renderNewsTab = () => {
-    var downItemImg = require('../../assets/images/index/u204.svg'),
-        actiImg1 = require('../../assets/imgs/acti-01.png'),
-        actiImg2 = require('../../assets/imgs/acti-02.png'),
-        getFirstLastBy = (length, i) => {
+    var getFirstLastBy = (length, i) => {
             switch (i) {
                 case 0:
                     return ' first';
@@ -96,22 +94,6 @@ var renderNewsTab = () => {
                         <a data-for="news" data-mark="pre" class="btn">上一页</a>
                         <a data-for="news" data-mark="next" class="btn">下一页</a>
                     </div>
-                </div>
-                <div class="news-show">
-                    <ul class="down clearfix">
-                        <li class=down-item>
-                            <img src="${downItemImg}">
-                            <span>Android下载</span>
-                        </li>
-                        <li class=down-item>
-                            <img src="${downItemImg}">
-                            <span>Android下载</span>
-                        </li>
-                    </ul>
-                    <ul class="acti">
-                        <li><img src="${actiImg1}"></li>
-                        <li><img src="${actiImg2}"></li>
-                    </ul>
                 </div>
             </div>
         </li>

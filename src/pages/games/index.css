@@ -1,6 +1,5 @@
 .barner {
     background-image: url(../../assets/imgs/barner-02.png);
-    height: 350px;
 }
 
 .barner .btn-wrapper {
@@ -8,7 +7,7 @@
 }
 
 .content {
-    margin-top: 55px;
+    margin-top: 50px;
 }
 
 .content > * {

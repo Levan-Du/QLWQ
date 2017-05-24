@@ -3,13 +3,14 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import move from '../../commons/move';
-import { initLoginAction, initTab, initNav } from '../../commons/pages';
+import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
 import carousel from '../../commons/carousel';
 import { loadLoginInfo } from '../../commons/login';
 
 
 $((e) => {
     initNav('index');
+    initNavAction();
     loadLogin();
     initLoginAction();
     initTab();
@@ -110,6 +111,13 @@ var initMoveCarousel = () => {
     iTarget = moveBoxs.width();
 
     var interval = startMoveCarousel(iTarget);
+    btns.mouseenter((e) => {
+        clearInterval(interval);
+    });
+    btns.mouseleave((e) => {
+        interval = startMoveCarousel(iTarget);
+    });
+
     btns.click((e) => {
         var currIndex = btns.index(e.currentTarget);
         if (preImgGroupIndex === currIndex) {
@@ -118,7 +126,11 @@ var initMoveCarousel = () => {
         $(btns[preImgGroupIndex]).removeClass('checked');
         $(e.currentTarget).addClass('checked');
 
-        moveBox(1, currIndex, iTarget);
+        if (currIndex > preImgGroupIndex) {
+            moveBox(1, currIndex, iTarget);
+        } else {
+            moveBox(0, currIndex, iTarget);
+        }
 
         preImgGroupIndex = currIndex;
     });
@@ -137,7 +149,6 @@ var startMoveCarousel = (iTarget) => {
 }
 
 var moveBox = (type, currIndex, iTarget) => {
-    console.log(currIndex, preImgGroupIndex);
     move(type, moveBoxs, iTarget, currIndex, preImgGroupIndex, () => {
         preImgGroupIndex = currIndex;
     });

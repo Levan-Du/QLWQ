@@ -5,28 +5,6 @@
     margin: 6px 20px;
 }
 
-.barner {
-    height: 45%;
-}
-
-.barner .img-box {
-    height: 100%;
-}
-
-.barner .btn.btn-circle {
-    opacity: .3;
-}
-
-.barner .btn-wrapper {
-    position: absolute;
-    width: 180px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: 100;
-}
-
 .content {
     margin-top: 80px;
 }
@@ -100,7 +78,7 @@
 .goods-wraper {
     width: 84%;
     height: 310px;
-    margin: 50px auto;
+    margin: 80px auto;
     margin-bottom: 0;
     overflow: hidden;
 }

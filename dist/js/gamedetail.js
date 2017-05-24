@@ -1,1 +1,150 @@
-webpackJsonp([7],{20:function(n,t){},44:function(n,t,e){"use strict";(function(n){e(4),e(5),e(20);var t=e(1),i=function(n){if(n&&n.__esModule)return n;var t={};if(null!=n)for(var e in n)Object.prototype.hasOwnProperty.call(n,e)&&(t[e]=n[e]);return t.default=n,t}(t),a=e(7),o=function(n){return n&&n.__esModule?n:{default:n}}(a),r=e(3),c=e(2);n(function(n){u(),(0,r.initLoginAction)(),f()});var u=function(){(0,c.loadLoginInfo)(function(n){})},l={totalPage:0,data:[]},f=function(){var n=i.getQueryString().id;i.dd.Get("/GameGameItem/HotGameList","gameId="+n,function(n){g(n.message[0]),s()})},g=function(t){n("#game_intro_box").append(t.GameDes||""),n("#game_img_box").append('<img  src="'+t.ImgUrl+'" alt="游戏大图">')},m=function(n){var t=n.filter(function(n){return!!n.ImgUrl});l.data=t,l.totalPage=Math.ceil(t.length/5)},s=function(){i.dd.Get("/GameGameItem/HotGameList",null,function(n){m(n.message),d()})},d=function(){for(var t=l.data,e=l.totalPage,i=[];e-- >0;){var a=t.slice(5*e,5*(e+1));i.push(a)}var o=i.map(function(n,t){return'\n    <ul class="img-group clearfix'+(0===t?" checked":"")+'">\n        '+n.map(function(n){return'\n        <li class="item"><img src="'+n.ImgUrl+'" alt="图片"></li>\n        '}).join("")+"\n    </ul>"}).join("");n("#hot_img_box").append(o),_()},p=0,_=function(){var t=n("#hot_img_box").width(),e=n("#hot_img_box .img-group");n(".hot-goods .img-container .pager .btn-pager").click(function(i){-1!==n(i.currentTarget).prop("class").indexOf("btn-pre")?h(e,t):v(e,t)})},h=function(n,t){if(0!==p){b(0,n,t,p-1)}},v=function(n,t){if(p!==n.length-1){b(1,n,t,p+1)}},b=function(t,e,i,a){(0,o.default)(t,e,i,a,p,function(){n(e[p]).removeClass("checked"),n(e[a]).addClass("checked"),p=a})}}).call(t,e(0))}},[44]);
+webpackJsonp([7],{
+
+/***/ 20:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+__webpack_require__(4);
+
+__webpack_require__(5);
+
+__webpack_require__(20);
+
+var _common = __webpack_require__(1);
+
+var comm = _interopRequireWildcard(_common);
+
+var _move = __webpack_require__(7);
+
+var _move2 = _interopRequireDefault(_move);
+
+var _pages = __webpack_require__(3);
+
+var _login = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+$(function (e) {
+    (0, _pages.initNav)('games');
+    (0, _pages.initNavAction)();
+    loadLogin();
+    (0, _pages.initLoginAction)();
+    loadTheGame();
+});
+
+var loadLogin = function loadLogin() {
+    (0, _login.loadLoginInfo)(function (res) {});
+};
+
+var PageSize = 5;
+
+var HotGamesState = {
+    totalPage: 0,
+    data: []
+};
+
+var loadTheGame = function loadTheGame() {
+    var id = comm.getQueryString()['id'];
+    comm.dd.Get('/GameGameItem/HotGameList', 'gameId=' + id, function (res) {
+        renderGame(res.message[0]);
+
+        loadHotGames();
+    });
+};
+
+var renderGame = function renderGame(g) {
+    $('#game_intro_box').append(g.GameDes || "");
+    $('#game_img_box').append('<img  src="' + g.ImgUrl + '" alt="\u6E38\u620F\u5927\u56FE">');
+};
+
+var setHotGamesState = function setHotGamesState(data) {
+    var d = data.filter(function (el) {
+        return !!el.ImgUrl;
+    });
+
+    HotGamesState.data = d;
+    HotGamesState.totalPage = Math.ceil(d.length / PageSize);
+};
+
+var loadHotGames = function loadHotGames() {
+    comm.dd.Get('/GameGameItem/HotGameList', null, function (res) {
+        setHotGamesState(res.message);
+        renderImgGroup();
+    });
+};
+
+var renderImgGroup = function renderImgGroup() {
+    var d = HotGamesState.data,
+        p = HotGamesState.totalPage,
+        da = [];
+    for (; p-- > 0;) {
+        var td = d.slice(p * PageSize, (p + 1) * PageSize);
+        da.push(td);
+    }
+
+    var tmpl = da.map(function (el, i) {
+        return '\n    <ul class="img-group clearfix' + (i === 0 ? ' checked' : '') + '">\n        ' + el.map(function (el2) {
+            return '\n        <li class="item"><img src="' + el2.ImgUrl + '" alt="\u56FE\u7247"></li>\n        ';
+        }).join('') + '\n    </ul>';
+    }).join('');
+    $('#hot_img_box').append(tmpl);
+    initHotGamesAction();
+};
+
+var currentImgGroupIndex = 0;
+var initHotGamesAction = function initHotGamesAction() {
+    var itarget = $('#hot_img_box').width(),
+        moveBoxs = $('#hot_img_box .img-group'),
+        pagerBtns = $('.hot-goods .img-container .pager .btn-pager');
+
+    pagerBtns.click(function (e) {
+        var target = $(e.currentTarget),
+            claProp = target.prop('class');
+
+        if (claProp.indexOf('btn-pre') !== -1) {
+            prePage(moveBoxs, itarget);
+        } else {
+            nextPage(moveBoxs, itarget);
+        }
+    });
+};
+
+var prePage = function prePage(moveBoxs, itarget) {
+    if (currentImgGroupIndex === 0) {
+        return;
+    }
+    var i = currentImgGroupIndex - 1;
+    moveBox(0, moveBoxs, itarget, i);
+};
+
+var nextPage = function nextPage(moveBoxs, itarget) {
+    if (currentImgGroupIndex === moveBoxs.length - 1) {
+        return;
+    }
+    var i = currentImgGroupIndex + 1;
+    moveBox(1, moveBoxs, itarget, i);
+};
+var moveBox = function moveBox(type, moveBoxs, itarget, i) {
+    (0, _move2.default)(type, moveBoxs, itarget, i, currentImgGroupIndex, function () {
+        $(moveBoxs[currentImgGroupIndex]).removeClass('checked');
+        $(moveBoxs[i]).addClass('checked');
+
+        currentImgGroupIndex = i;
+    });
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ })
+
+},[44]);

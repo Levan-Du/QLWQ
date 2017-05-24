@@ -5,7 +5,7 @@ import './index.css';
 import * as comm from '../../commons/common';
 import { initLoginAction } from '../../commons/pages';
 import { loadLoginInfo } from '../../commons/login';
-import { getGenderDes, initNav } from '../../commons/pages';
+import { getGenderDes, initNav,initNavAction } from '../../commons/pages';
 
 
 $((e) => {
@@ -28,31 +28,6 @@ var loadLogin = () => {
     loadLoginInfo((res) => {
 
     });
-}
-
-var initNavAction = () => {
-    var navItem = $('body > .nav .nav-item');
-
-    navItem.mouseenter((e) => {
-        var navItem = $(e.currentTarget),
-            subMenu = navItem.parent().find('.submenu');
-
-        subMenu.stop();
-        subMenu.animate({ height: '600px' }, 500, 'swing', () => {
-
-        });
-    });
-
-    navItem.mouseleave((e) => {
-        var navItem = $(e.currentTarget),
-            subMenu = navItem.parent().find('.submenu');
-
-        subMenu.stop();
-        subMenu.animate({ height: '0' }, 500, 'swing', () => {
-
-        });
-    });
-
 }
 
 var loadLogin = () => {

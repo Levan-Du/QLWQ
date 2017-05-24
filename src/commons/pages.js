@@ -21,7 +21,6 @@ export var getGenderDes = (gender) => {
 
 export var initTab = () => {
     $('.tab-title').mouseenter((e) => {
-        console.log('inittab');
         var target = $(e.currentTarget),
             tabTitleCheckEle = target.siblings('.tab-title-check');
         tabTitleCheckEle.prop('checked', true);
@@ -44,11 +43,11 @@ export var initNav = (page) => {
                 }
             },
             tmpl = navItems.map((el, i) => `
-    <div class="nav-item${page==el?' checked':''}">
+    <div class="nav-item${page==el?' checked':''}" data-page="${el}">
         <a class="nav-item-title" href="${getHref(el)}">${getPageTitle(el)}</a>
         ${el==='user'?`
                 <ul class="submenu">
-                    <!-- <li class="direct"><span></span></li> -->
+                    <li class="direct"><span></span></li>
                     <li class="submenu-item"><a href="customer.html">客服中心</a></li>
                     <li class="submenu-item"><a href="questions.html">常见问题</a></li>
                     <li class="submenu-item"><a href="feedbacks.html">游戏反馈</a></li>
@@ -73,4 +72,31 @@ export var getPageTitle = (item) => {
         default:
             return '首页';
     }
+}
+
+
+export var initNavAction = () => {
+    var navItem = $('body > .header .nav .nav-item[data-page="user"]');
+
+    navItem.mouseenter((e) => {
+        var navItem = $(e.currentTarget),
+            subMenu = navItem.parent().find('.submenu');
+
+        subMenu.stop();
+        subMenu.show();
+        subMenu.animate({ height: '600px' }, 500, 'swing', () => {
+            console.log(subMenu);
+        });
+    });
+
+    navItem.mouseleave((e) => {
+        var navItem = $(e.currentTarget),
+            subMenu = navItem.parent().find('.submenu');
+
+        subMenu.stop();
+        subMenu.animate({ height: '0' }, 500, 'swing', () => {
+            subMenu.hide();
+        });
+    });
+
 }

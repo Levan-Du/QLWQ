@@ -3,11 +3,12 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import move from '../../commons/move';
-import { initLoginAction, initNav } from '../../commons/pages';
+import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
 import { loadLoginInfo } from '../../commons/login';
 
 $((e) => {
     initNav('games');
+    initNavAction();
     loadLogin();
     initLoginAction();
     gridWrap = $('#grid_wrapper');
@@ -27,9 +28,13 @@ const PageSize = 4,
     MAX_INDEX = 3,
     PlatForms = [{ cla: 'ios', title: 'iPhone', icon: require('../../assets/images/games/u1873.svg'), pageIndex: 1 },
         { cla: 'android', title: 'Android', icon: require('../../assets/images/games/u1871.svg'), pageIndex: 1 },
-        { cla: 'ipad', title: 'iPad', icon: require('../../assets/images/games/u1867.svg'), pageIndex: 1 },
-        { cla: 'pc', title: 'PC', icon: require('../../assets/images/games/u1869.svg'), pageIndex: 1 }
     ];
+// ,
+// PlatForms = [{ cla: 'ios', title: 'iPhone', icon: require('../../assets/images/games/u1873.svg'), pageIndex: 1 },
+//     { cla: 'android', title: 'Android', icon: require('../../assets/images/games/u1871.svg'), pageIndex: 1 },
+//     { cla: 'ipad', title: 'iPad', icon: require('../../assets/images/games/u1867.svg'), pageIndex: 1 },
+//     { cla: 'pc', title: 'PC', icon: require('../../assets/images/games/u1869.svg'), pageIndex: 1 }
+// ];
 
 var games = { totalPage: 0 },
     currentPlatformIndex = 0,

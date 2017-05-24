@@ -20,15 +20,15 @@
         </div>
     </article>
     <article class="content">
-        <section class="news-scroll">
+        <!--         <section class="news-scroll">
             <ul class="news-item clearfix">
                 <li class="icon-box"><img src="../../assets/images/news/u251.svg"></li>
                 <li class="text-box"><span>滚动游戏公告，例如：某某玩家在什么场中赢得多少金币</span></li>
             </ul>
-        </section>
+        </section> -->
         <ul id="tab_main" class="tab">
             <li class="tab-page">
-                <input id="tab_main_1" class="tab-title-check" type="radio" name="tab-main" checked>
+                <input id="tab_main_1" class="tab-title-check" type="radio" name="tab-main">
                 <label class="tab-title first" for="tab_main_1">充值</label>
                 <div class="tab-content">
                     <div class="container clearfix">
@@ -93,22 +93,15 @@
                 </div>
             </li>
             <li class="tab-page">
-                <input id="tab_main_2" class="tab-title-check" type="radio" name="tab-main">
+                <input id="tab_main_2" class="tab-title-check" type="radio" name="tab-main" checked>
                 <label class="tab-title last" for="tab_main_2">兑换</label>
                 <div class="tab-content">
                     <ul id="tab_exchange" class="tab tab-horizontal">
                         <li class="tab-page">
                             <input id="tab_exchange_1" class="tab-title-check" type="radio" name="tab-exchange" checked>
                             <label class="tab-title" for="tab_exchange_1">钻石兑换</label>
-                            <div class="tab-content">
-                                <ul id="grid_good_exchange_diamond" class="grid clearfix">
-                                    <li class="grid-item">
-                                        <div class="panel">
-                                            <img src="../../assets/goods/good-01.jpg">
-                                            <span>15钻石</span>
-                                        </div>
-                                    </li>
-                                </ul>
+                            <div class="tab-content" id="tab_content_exchange_diamond">
+
                             </div>
                         </li>
                         <li class="tab-page">

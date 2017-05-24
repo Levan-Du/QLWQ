@@ -63,10 +63,6 @@ module.exports = {
             ],
             use: 'url-loader?limit=8192&name=/images/[hash:8].[name].[ext]'
         }, {
-            test: /\.(png|jpg|gif)$/,
-            include: [path.join(__dirname, 'src/assets/games')],
-            use: 'file-loader?name=/images/[name].[ext]'
-        }, {
             test: /\.(eot|svg|woff|ttf|)$/,
             include: [path.join(__dirname, 'src/assets/iconfont')],
             use: 'file-loader?name=/css/iconfont/[name].[ext]'
@@ -82,7 +78,8 @@ module.exports = {
             minChunks: 2 // 提取至少2个模块共有的部分
         }),
         new TransferWebpackPlugin([
-            { from: 'assets/games', to: 'images' }
+            { from: 'assets/games', to: 'images' },
+            { from: 'commons/vendors', to: 'js' }
         ], path.join(__dirname, 'src'))
     ].concat(plugins),
     devServer: {

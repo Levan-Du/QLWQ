@@ -1,1 +1,69 @@
-webpackJsonp([3],{27:function(n,i){},51:function(n,i,t){"use strict";(function(n){t(6),t(4),t(5),t(27);var i=t(1),e=(function(n){if(n&&n.__esModule)return n;var i={};if(null!=n)for(var t in n)Object.prototype.hasOwnProperty.call(n,t)&&(i[t]=n[t]);i.default=n}(i),t(3)),o=t(2);n(function(n){(0,e.initNav)("user"),u(),(0,e.initLoginAction)(),r(),c()});var a=null,r=function(){n(".main .mid .btn-link").click(function(i){a=n.showLoginModal()})},u=function(){(0,o.loadLoginInfo)(function(n){})},c=function(){var i=n("body > .nav .nav-item");i.mouseenter(function(i){var t=n(i.currentTarget),e=t.parent().find(".submenu");e.stop(),e.animate({height:"600px"},500,"swing",function(){})}),i.mouseleave(function(i){var t=n(i.currentTarget),e=t.parent().find(".submenu");e.stop(),e.animate({height:"0"},500,"swing",function(){})})},u=function(){(0,o.loadLoginInfo)(function(i){n("#main_username").text(i.Accounts+" "+(0,e.getGenderDes)(i.Gender)),n("#main_row_username").css("visibility","visible"),n("#main_grade").text(i.MemberOrder),n("#main_score").text(i.Score),n("#main_diamond").text(i.Diamond),n("#main_rcard").text(i.RCard),n("#main_points").text(i.Point),n("#btn_login_main").hide()})}}).call(i,t(0))}},[51]);
+webpackJsonp([3],{
+
+/***/ 27:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+__webpack_require__(6);
+
+__webpack_require__(4);
+
+__webpack_require__(5);
+
+__webpack_require__(27);
+
+var _common = __webpack_require__(1);
+
+var comm = _interopRequireWildcard(_common);
+
+var _pages = __webpack_require__(3);
+
+var _login = __webpack_require__(2);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+$(function (e) {
+    (0, _pages.initNav)('user');
+    loadLogin();
+    (0, _pages.initLoginAction)();
+    initLoginAction2();
+    (0, _pages.initNavAction)();
+});
+
+var loginModal = null;
+var initLoginAction2 = function initLoginAction2() {
+    $('.main .mid .btn-link').click(function (e) {
+        loginModal = $.showLoginModal();
+    });
+};
+
+var loadLogin = function loadLogin() {
+    (0, _login.loadLoginInfo)(function (res) {});
+};
+
+var loadLogin = function loadLogin() {
+    (0, _login.loadLoginInfo)(function (u) {
+        $('#main_username').text(u.Accounts + ' ' + (0, _pages.getGenderDes)(u.Gender));
+        $('#main_row_username').css('visibility', 'visible');
+        $('#main_grade').text(u.MemberOrder);
+        $('#main_score').text(u.Score);
+        $('#main_diamond').text(u.Diamond);
+        $('#main_rcard').text(u.RCard);
+        $('#main_points').text(u.Point);
+        $('#btn_login_main').hide();
+    });
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ })
+
+},[51]);
