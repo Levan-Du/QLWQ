@@ -1,6 +1,6 @@
 .barner {
     background-image: url(../../assets/imgs/barner-04.png);
-    height: 350px;
+    height: 34%;
 }
 
 .barner .btn-wrapper {
@@ -9,11 +9,24 @@
 
 .content {
     width: 1050px;
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
-.content > .line {
-    border-bottom: solid 2px #888;
+.content > .title {
+    padding: 20px 30px;
+    border-bottom: solid 2px #ccc;
+}
+
+.content > .title img {
+    width: 50px;
+}
+
+.content > .title > * {
+    display: inline;
+    vertical-align: middle;
+    width: 68px;
+    font-size: 32px;
+    padding-right: 20px;
 }
 
 .main {
@@ -80,6 +93,7 @@
     display: block;
     vertical-align: middle;
 }
+
 
 /*.main .services .left li.feedbacks {
     background: rgba(102, 153, 255, 1);

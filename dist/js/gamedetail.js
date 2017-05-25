@@ -1,13 +1,13 @@
 webpackJsonp([7],{
 
-/***/ 20:
+/***/ 17:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 44:
+/***/ 40:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,7 +17,7 @@ __webpack_require__(4);
 
 __webpack_require__(5);
 
-__webpack_require__(20);
+__webpack_require__(17);
 
 var _common = __webpack_require__(1);
 
@@ -147,4 +147,4 @@ var moveBox = function moveBox(type, moveBoxs, itarget, i) {
 
 /***/ })
 
-},[44]);
+},[40]);

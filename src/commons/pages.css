@@ -7,9 +7,14 @@
 .header {
     height: 50px;
     line-height: 50px;
-    background: #eee;
+    background: #10374f;
     font-size: 14px;
     position: relative;
+    color: #eee;
+}
+
+.header * {
+    color: #eee;
 }
 
 .header .logo img {
@@ -29,7 +34,7 @@
 
 .header .todo {
     position: absolute;
-    width: 1100px;
+    width: 1160px;
     left: 0;
     right: 0;
     top: 0;
@@ -70,16 +75,25 @@
     margin-left: 5px;
 }
 
-.header #login_user {
+.header .todo #login_user {
     display: none;
 }
 
-.header #login_user.visible {
+.header .todo #login_user.visible {
     display: block;
 }
 
-.header .right .login-name {
-    margin-left: 5px;
+.header .todo .login-name {
+    margin-left: 10px;
+}
+
+.header .todo .login-name .iconfont {
+    color: #38b774;
+}
+
+.header .todo .login-name .user-setting {
+    width: 200px;
+    background: 
 }
 
 .header .nav-item .submenu {
@@ -127,13 +141,10 @@
 }
 
 .module {
-    height: 180px;
-    margin-top: 50px;
-}
-
-.module-wrapper {
+    height: 150px;
     width: 800px;
-    margin: auto;
+    margin: 80px auto;
+    margin-bottom: 20px;
 }
 
 .module-wrapper .module-item {
@@ -158,9 +169,13 @@
 .footer {
     height: 200px;
     margin-top: 30px;
-    background: #ccc;
+    background: #10374f;
     font-size: 14px;
     color: #333;
+}
+
+.footer * {
+    color: #eee;
 }
 
 @media screen and (max-width: 1280px) {
@@ -217,14 +232,11 @@
 
 .footer .container .credit .icp {
     font-weight: 900;
+    color: #38f;
 }
 
 .footer .container .credit .icp:hover {
-    color: #58E;
-}
-
-.module {
-    margin-top: 50px;
+    color: #f83;
 }
 
 .modal-content {

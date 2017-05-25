@@ -7,7 +7,7 @@
 
 .barner {
     /*background-image: url(../../assets/imgs/barner-04.png);*/
-    height: 350px;
+    height: 34%;
 }
 
 .barner .games {
@@ -22,7 +22,7 @@
 
 .barner .games .box {
     position: absolute;
-    top: 60px;
+    top: 35px;
     right: 120px;
 }
 
@@ -116,8 +116,7 @@
 }
 
 .hot-goods .top img.icon-top {
-    width: 100px;
-    height: 51px;
+    height: 37px;
 }
 
 .hot-goods .top .jiantou span {

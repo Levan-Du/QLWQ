@@ -1,13 +1,13 @@
 webpackJsonp([10],{
 
-/***/ 17:
+/***/ 14:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 41:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19,7 +19,7 @@ __webpack_require__(4);
 
 __webpack_require__(5);
 
-__webpack_require__(17);
+__webpack_require__(14);
 
 var _common = __webpack_require__(1);
 
@@ -83,4 +83,4 @@ var initContent = function initContent() {
 
 /***/ })
 
-},[41]);
+},[37]);

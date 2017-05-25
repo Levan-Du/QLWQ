@@ -8,11 +8,11 @@ export var loadLoginInfo = (cb) => {
         return;
     }
 
-    var userShow = $('#login_user a.login-name');
+    var userShow = $('#show_user');
     userShow.text(account);
     $('#login_user').show();
     $('#login_action').hide();
-    
+
     dd.Get('/Login/AccountInfo', qs,
         (res) => {
             if (res.status === 'success') {
@@ -23,4 +23,11 @@ export var loadLoginInfo = (cb) => {
             alert(err);
         }
     );
+}
+
+
+export var initLoginUserAction = () => {
+    $('#').mouseenter((e) => {
+        
+    });
 }

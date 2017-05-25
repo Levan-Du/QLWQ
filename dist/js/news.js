@@ -1,13 +1,13 @@
 webpackJsonp([6],{
 
-/***/ 24:
+/***/ 21:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 48:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,7 +17,7 @@ __webpack_require__(4);
 
 __webpack_require__(5);
 
-__webpack_require__(24);
+__webpack_require__(21);
 
 var _common = __webpack_require__(1);
 
@@ -42,7 +42,7 @@ var loadLogin = function loadLogin() {
     (0, _login.loadLoginInfo)(function (res) {});
 };
 
-var pageSize = 4;
+var pageSize = 6;
 var newsFilter = function newsFilter(arr, classId) {
     return arr.filter(function (el, i) {
         return el.ClassID == classId;
@@ -51,7 +51,7 @@ var newsFilter = function newsFilter(arr, classId) {
 
 var renderItem = function renderItem(id, o) {
     var pdata = byPager(o.data, o.pageIndex),
-        tmpl = o.data.length === 0 ? '<p class="news-noitem">\u6CA1\u6709\u6570\u636E</p>' : pdata.map(function (el) {
+        tmpl = o.data.length === 0 ? '<p class="news-item news-item-no">\u6CA1\u6709\u6570\u636E</p>' : pdata.map(function (el) {
         return '<p class="news-item"><a href="#">' + el.Subject + '</a></p>';
     }).join('');
 
@@ -85,10 +85,7 @@ var news = { pageIndex: 1 },
     acts = { pageIndex: 1 };
 
 var renderNewsTab = function renderNewsTab() {
-    var downItemImg = __webpack_require__(8),
-        actiImg1 = __webpack_require__(9),
-        actiImg2 = __webpack_require__(10),
-        getFirstLastBy = function getFirstLastBy(length, i) {
+    var getFirstLastBy = function getFirstLastBy(length, i) {
         switch (i) {
             case 0:
                 return ' first';
@@ -99,7 +96,7 @@ var renderNewsTab = function renderNewsTab() {
         }
     },
         tmpl = [{ id: 'news', title: '新闻' }, { id: 'notices', title: '公告' }, { id: 'activities', title: '活动' }].map(function (el, i, arr) {
-        return '\n        <li class="tab-page">\n            <input id="tab-page-' + (i + 1) + '" class="tab-title-check" type="radio" name="tab" ' + (i === 0 ? 'checked' : '') + '>\n            <label class="tab-title" for="tab-page-' + (i + 1) + '">' + el.title + '</label>\n            <div class="tab-content clearfix">\n                <div class="news-list">\n                    <div id="' + el.id + 'Box" class="news-item-wrapper">\n                    </div>\n                    <div class="pager clearfix">\n                        <a data-for="news" data-mark="pre" class="btn">\u4E0A\u4E00\u9875</a>\n                        <a data-for="news" data-mark="next" class="btn">\u4E0B\u4E00\u9875</a>\n                    </div>\n                </div>\n                <div class="news-show">\n                    <ul class="down clearfix">\n                        <li class=down-item>\n                            <img src="' + downItemImg + '">\n                            <span>Android\u4E0B\u8F7D</span>\n                        </li>\n                        <li class=down-item>\n                            <img src="' + downItemImg + '">\n                            <span>Android\u4E0B\u8F7D</span>\n                        </li>\n                    </ul>\n                    <ul class="acti">\n                        <li><img src="' + actiImg1 + '"></li>\n                        <li><img src="' + actiImg2 + '"></li>\n                    </ul>\n                </div>\n            </div>\n        </li>\n    ';
+        return '\n        <li class="tab-page">\n            <input id="tab-page-' + (i + 1) + '" class="tab-title-check" type="radio" name="tab" ' + (i === 0 ? 'checked' : '') + '>\n            <label class="tab-title" for="tab-page-' + (i + 1) + '">' + el.title + '</label>\n            <div class="tab-content clearfix">\n                <div class="news-list">\n                    <div id="' + el.id + 'Box" class="news-item-wrapper">\n                    </div>\n                    <div class="pager clearfix">\n                        <a data-for="news" data-mark="pre" class="btn">\u4E0A\u4E00\u9875</a>\n                        <a data-for="news" data-mark="next" class="btn">\u4E0B\u4E00\u9875</a>\n                    </div>\n                </div>\n            </div>\n        </li>\n    ';
     }).join('');
     $('#tab_news').html(tmpl);
     (0, _pages.initTab)();
@@ -151,4 +148,4 @@ var initNewsAction = function initNewsAction() {
 
 /***/ })
 
-},[48]);
+},[44]);

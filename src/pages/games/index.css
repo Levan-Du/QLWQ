@@ -14,12 +14,12 @@
     margin: 0 30px;
 }
 
-.content .title {
+.content > .title {
     padding: 20px 30px;
     border-bottom: solid 2px #ccc;
 }
 
-.content .title > * {
+.content > .title > * {
     display: inline;
     vertical-align: middle;
     width: 68px;

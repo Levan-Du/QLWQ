@@ -14,17 +14,31 @@ a:focus {
 
 .content {
     width: 970px;
-    margin-top: 20px;
+    margin-top: 60px;
     font-size: 18px;
 }
 
-.content > .line {
-    width: 950px;
-    border-bottom: solid 2px #888;
+.content > .title {
+    width: 100%;
+    margin-left: -30px;
+    padding: 20px 30px;
+    border-bottom: solid 2px #ccc;
+}
+
+.content > .title img {
+    width: 40px;
+}
+
+.content > .title > * {
+    display: inline;
+    vertical-align: middle;
+    width: 68px;
+    font-size: 32px;
+    padding-right: 20px;
 }
 
 .content .content-wrapper {
-    margin-top: 55px;
+    margin-top: 30px;
 }
 
 .menu {

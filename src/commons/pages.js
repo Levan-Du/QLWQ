@@ -48,7 +48,7 @@ export var initNav = (page) => {
         ${el==='user'?`
                 <ul class="submenu">
                     <li class="direct"><span></span></li>
-                    <li class="submenu-item"><a href="customer.html">客服中心</a></li>
+                    <li class="submenu-item first"><a href="customer.html">客服中心</a></li>
                     <li class="submenu-item"><a href="questions.html">常见问题</a></li>
                     <li class="submenu-item"><a href="feedbacks.html">游戏反馈</a></li>
                 </ul>
@@ -76,25 +76,25 @@ export var getPageTitle = (item) => {
 
 
 export var initNavAction = () => {
-    var navItem = $('body > .header .nav .nav-item[data-page="user"]');
+    var navItems = $('body > .header .nav .nav-item[data-page="user"]');
 
-    navItem.mouseenter((e) => {
+    navItems.mouseenter((e) => {
         var navItem = $(e.currentTarget),
             subMenu = navItem.parent().find('.submenu');
 
         subMenu.stop();
         subMenu.show();
-        subMenu.animate({ height: '600px' }, 500, 'swing', () => {
-            console.log(subMenu);
+        subMenu.animate({ height: '600px' }, 300, 'swing', () => {
+
         });
     });
 
-    navItem.mouseleave((e) => {
+    navItems.mouseleave((e) => {
         var navItem = $(e.currentTarget),
             subMenu = navItem.parent().find('.submenu');
 
         subMenu.stop();
-        subMenu.animate({ height: '0' }, 500, 'swing', () => {
+        subMenu.animate({ height: '0' }, 300, 'swing', () => {
             subMenu.hide();
         });
     });
