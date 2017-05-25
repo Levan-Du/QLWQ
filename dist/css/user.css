@@ -25,6 +25,10 @@ a:focus {
     border-bottom: solid 2px #ccc;
 }
 
+.content > .title img {
+    width: 40px;
+}
+
 .content > .title > * {
     display: inline;
     vertical-align: middle;
@@ -175,4 +179,3 @@ a:focus {
     border-bottom: solid 1px #aaa;
     vertical-align: center;
 }
-

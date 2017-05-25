@@ -17,6 +17,10 @@
     border-bottom: solid 2px #ccc;
 }
 
+.content > .title img {
+    width: 50px;
+}
+
 .content > .title > * {
     display: inline;
     vertical-align: middle;

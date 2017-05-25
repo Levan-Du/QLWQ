@@ -27,7 +27,7 @@ export var loadLoginInfo = (cb) => {
 
 
 export var initLoginUserAction = () => {
-    $('#').mouseenter((e) => {
+    $('#login_user').mouseenter((e) => {
         
     });
 }

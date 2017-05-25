@@ -5,7 +5,7 @@ import './index.css';
 import * as comm from '../../commons/common';
 import { initLoginAction } from '../../commons/pages';
 import { loadLoginInfo } from '../../commons/login';
-import { getGenderDes, initNav,initNavAction } from '../../commons/pages';
+import { getGenderDes, initNav, initNavAction } from '../../commons/pages';
 
 
 $((e) => {
@@ -32,7 +32,8 @@ var loadLogin = () => {
 
 var loadLogin = () => {
     loadLoginInfo((u) => {
-        $('#main_username').text(u.Accounts + ' ' + getGenderDes(u.Gender));
+        $('#main_username').text(u.Accounts);
+        $('#main_call').text(getGenderDes(u.Gender))
         $('#main_row_username').css('visibility', 'visible');
         $('#main_grade').text(u.MemberOrder);
         $('#main_score').text(u.Score);

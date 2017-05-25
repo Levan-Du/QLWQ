@@ -10725,7 +10725,7 @@ $.extend({
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.loadLoginInfo = undefined;
+exports.initLoginUserAction = exports.loadLoginInfo = undefined;
 
 var _common = __webpack_require__(1);
 
@@ -10750,6 +10750,10 @@ var loadLoginInfo = exports.loadLoginInfo = function loadLoginInfo(cb) {
     }, function (err) {
         alert(err);
     });
+};
+
+var initLoginUserAction = exports.initLoginUserAction = function initLoginUserAction() {
+    $('#').mouseenter(function (e) {});
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
@@ -10831,25 +10835,23 @@ var getPageTitle = exports.getPageTitle = function getPageTitle(item) {
 };
 
 var initNavAction = exports.initNavAction = function initNavAction() {
-    var navItem = $('body > .header .nav .nav-item[data-page="user"]');
+    var navItems = $('body > .header .nav .nav-item[data-page="user"]');
 
-    navItem.mouseenter(function (e) {
+    navItems.mouseenter(function (e) {
         var navItem = $(e.currentTarget),
             subMenu = navItem.parent().find('.submenu');
 
         subMenu.stop();
         subMenu.show();
-        subMenu.animate({ height: '600px' }, 500, 'swing', function () {
-            console.log(subMenu);
-        });
+        subMenu.animate({ height: '600px' }, 300, 'swing', function () {});
     });
 
-    navItem.mouseleave(function (e) {
+    navItems.mouseleave(function (e) {
         var navItem = $(e.currentTarget),
             subMenu = navItem.parent().find('.submenu');
 
         subMenu.stop();
-        subMenu.animate({ height: '0' }, 500, 'swing', function () {
+        subMenu.animate({ height: '0' }, 300, 'swing', function () {
             subMenu.hide();
         });
     });

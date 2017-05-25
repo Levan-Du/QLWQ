@@ -93,7 +93,15 @@
 
 .header .todo .login-name .user-setting {
     width: 200px;
-    background: 
+    background:
+}
+
+.header .todo .login-name .user-setting .item.left {
+    float: left;
+}
+
+.header .todo .login-name .user-setting .item.left {
+    float: right;
 }
 
 .header .nav-item .submenu {
