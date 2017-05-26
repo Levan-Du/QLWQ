@@ -35,6 +35,7 @@ $(function (e) {
     loadLogin();
     (0, _pages.initLoginAction)();
     onQuesListItemChecked();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

@@ -4,7 +4,7 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import { initLoginAction, initNav,initNavAction } from '../../commons/pages';
-import { loadLoginInfo } from '../../commons/login';
+import { loadLoginInfo ,initLoginUserAction} from '../../commons/login';
 
 $((e) => {
     initNav('custody');
@@ -13,6 +13,7 @@ $((e) => {
     initLoginAction();
     initJianHuMenu();
     initContent();
+    initLoginUserAction();
 });
 
 var loadLogin = () => {

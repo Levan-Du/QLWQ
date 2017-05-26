@@ -5,7 +5,7 @@ import '../../commons/common';
 import * as comm from '../../commons/common';
 import move from '../../commons/move';
 import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
-import { loadLoginInfo } from '../../commons/login';
+import { loadLoginInfo,initLoginUserAction } from '../../commons/login';
 
 $((e) => {
     initNav('games');
@@ -13,6 +13,7 @@ $((e) => {
     loadLogin();
     initLoginAction();
     loadTheGame();
+    initLoginUserAction();
 });
 
 

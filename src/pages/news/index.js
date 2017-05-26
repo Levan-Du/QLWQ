@@ -4,7 +4,7 @@ import './index.css';
 import '../../commons/common';
 import * as comm from '../../commons/common';
 import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
-import { loadLoginInfo } from '../../commons/login';
+import { loadLoginInfo ,initLoginUserAction} from '../../commons/login';
 
 $((e) => {
     initNav('news');
@@ -13,6 +13,7 @@ $((e) => {
     initLoginAction();
     renderNewsTab()
     renderNews();
+    initLoginUserAction();
 });
 
 

@@ -41,6 +41,7 @@ $(function (e) {
     loadLogin();
     (0, _pages.initLoginAction)();
     loadTheGame();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

@@ -38,6 +38,7 @@ $(function (e) {
     (0, _pages.initLoginAction)();
     initLoginAction2();
     (0, _pages.initNavAction)();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

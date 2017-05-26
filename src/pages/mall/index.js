@@ -4,7 +4,7 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import pay from '../../commons/pay';
-import { loadLoginInfo } from '../../commons/login';
+import { loadLoginInfo,initLoginUserAction } from '../../commons/login';
 import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
 
 $((e) => {
@@ -18,6 +18,7 @@ $((e) => {
     sumPaymoney();
     paySubmit();
     getUserInfo();
+    initLoginUserAction();
 });
 
 var loadLogin = () => {

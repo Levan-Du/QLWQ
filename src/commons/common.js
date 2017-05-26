@@ -56,6 +56,10 @@ export var setCookie = (name, value) => {
     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 }
 
+export var clearCookie = (name) => {
+    setCookie(name, "", -1);
+}
+
 export var htmlEncode = (str) => {
     var ele = document.createElement('span');
     ele.appendChild(document.createTextNode(str));
@@ -347,7 +351,7 @@ $.extend({
                     console.log(res.message);
                 } else {
                     setCookie('account', o.account);
-                    location.href = 'user.html';
+                    window.location.reload();
                 }
             }, (err) => {
                 showError(err);

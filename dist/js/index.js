@@ -85,6 +85,7 @@ $(function (e) {
     renderBarnerImage();
     renderNews();
     renderGoodsImages();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

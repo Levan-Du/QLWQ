@@ -36,6 +36,7 @@ $(function (e) {
     (0, _pages.initLoginAction)();
     renderNewsTab();
     renderNews();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

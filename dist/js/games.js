@@ -93,6 +93,7 @@ $(function (e) {
     renderMenu();
     initMenuAction();
     loadData();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

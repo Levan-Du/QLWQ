@@ -165,6 +165,7 @@ $(function (e) {
     sumPaymoney();
     paySubmit();
     getUserInfo();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

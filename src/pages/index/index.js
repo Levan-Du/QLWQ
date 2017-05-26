@@ -5,7 +5,7 @@ import * as comm from '../../commons/common';
 import move from '../../commons/move';
 import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
 import carousel from '../../commons/carousel';
-import { loadLoginInfo } from '../../commons/login';
+import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
 
 
 $((e) => {
@@ -17,6 +17,7 @@ $((e) => {
     renderBarnerImage();
     renderNews();
     renderGoodsImages();
+    initLoginUserAction();
 });
 
 

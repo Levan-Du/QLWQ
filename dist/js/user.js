@@ -37,6 +37,7 @@ $(function (e) {
     (0, _pages.initLoginAction)();
     initLoginAction2();
     (0, _pages.initNavAction)();
+    (0, _login.initLoginUserAction)();
 });
 
 var loginModal = null;
@@ -52,7 +53,8 @@ var loadLogin = function loadLogin() {
 
 var loadLogin = function loadLogin() {
     (0, _login.loadLoginInfo)(function (u) {
-        $('#main_username').text(u.Accounts + ' ' + (0, _pages.getGenderDes)(u.Gender));
+        $('#main_username').text(u.Accounts);
+        $('#main_call').text((0, _pages.getGenderDes)(u.Gender));
         $('#main_row_username').css('visibility', 'visible');
         $('#main_grade').text(u.MemberOrder);
         $('#main_score').text(u.Score);

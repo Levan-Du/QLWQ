@@ -43,12 +43,8 @@ a:focus {
 
 .menu {
     float: left;
-    width: 280px;
-}
-
-.main {
-    overflow: hidden;
-    background: rgba(242, 242, 242, 1);
+    width: 220px;
+    color: #000;
 }
 
 .menu .title {
@@ -59,123 +55,101 @@ a:focus {
 }
 
 .menu .menu-wrapper .menu-item {
-    width: 150px;
+    width: 160px;
     margin-top: 10px;
     padding: 10px 0;
-    border-bottom: solid 1px #aaa;
+    border-bottom: solid 1px #999;
 }
 
 .main {
-    height: 360px;
-}
-
-.main .left,
-.main .mid,
-.main .right {
-    float: left;
-    width: 33%;
-}
-
-.main .left {
+    margin-left: 220px;
+    margin-right: 20px;
+    background: rgba(242, 242, 242, 1);
     position: relative;
-    height: 100%;
+    height: 430px;
+    border-radius: 90px 0 240px 0;
 }
 
-.main .left .center {
-    display: block;
+.main span {
+    vertical-align: middle;
+}
+
+.main .bg-top {
+    height: 188px;
+}
+
+.main .bg-top img {
+    width: 100%;
+}
+
+.main .circle {
     position: absolute;
-    width: 125px;
-    height: 190px;
     left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-}
-
-.main .left .circle {
-    position: relative;
-    width: 125px;
-    height: 125px;
+    top: 110px;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
     border: solid 1px #eee;
     border-radius: 50%;
     background: #fff;
-    box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-.main .left .circle .img-touxiang {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
+.main .circle .img-touxiang {
     width: 60px;
     height: 60px;
+    vertical-align: middle;
 }
 
-.main .left .wrapper {
-    margin-top: 30px;
-}
-
-.main .left .wrapper > * {
-    display: block;
-    float: left;
-    height: 40px;
-    line-height: 40px;
-}
-
-.main .left .wrapper .img-message {
-    width: 40px;
-    height: 40px;
-}
-
-.main .mid > p {
-    height: 60px;
-    line-height: 60px;
-}
-
-.main .mid >p:first-child {
-    margin-top: 45px;
-}
-
-.main .mid img {
-    width: 38px;
-    height: 38px;
-}
-
-.main .mid .img-box {
-    padding: 20px 0;
-}
-
-.main .mid .img-box img {
-    float: left;
-    margin-right: 20px;
-}
-
-.main .mid p.username {
-    font-size: 20px;
-}
-
-.main .mid #main_username {
-    color: #6699FF;
-    margin-right: 5px;
-}
-
-.main .right > p {
-    height: 60px;
-    line-height: 60px;
-}
-
-.main .right > p:first-child {
-    margin-top: 35px;
-}
-
-.main .right p > span.value {
-    display: inline-block;
-    width: 110px;
-    height: 23px;
-    line-height: 23px;
+.main p.hello {
+    width: 300px;
+    font-size: 24px;
+    padding: 25px;
+    padding-left: 160px;
+    padding-bottom: 35px;
     border-bottom: solid 1px #aaa;
-    vertical-align: center;
+}
+
+.main p.hello .username {
+    color: #38f;
+    margin-right: 10px;
+}
+
+.main p.info {
+    position: absolute;
+    top: 200px;
+    right: 0;
+    width: 180px;
+    height: 30px;
+    padding: 2px 5px;
+    background: rgba(54, 169, 206, 1);
+    color: #fff;
+}
+
+.main p.info .label {
+    font-weight: 900;
+}
+
+.main p.info .value {
+    color: #f63;
+}
+
+.main p.info.info1 {
+    right: -50px;
+}
+
+.main p.info.info2 {
+    top: 260px;
+    right: -20px;
+}
+
+.main p.info.info3 {
+    top: 320px;
+    right: 10px;
+}
+
+.main p.info.info4 {
+    top: 380px;
+    right: 40px;
 }

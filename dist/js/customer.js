@@ -34,6 +34,7 @@ $(function (e) {
     (0, _pages.initNavAction)();
     loadLogin();
     (0, _pages.initLoginAction)();
+    (0, _login.initLoginUserAction)();
 });
 
 var loadLogin = function loadLogin() {

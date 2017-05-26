@@ -1,4 +1,4 @@
-import { dd, getCookie } from './common';
+import { dd, getCookie, clearCookie } from './common';
 
 export var loadLoginInfo = (cb) => {
     var account = getCookie('account'),
@@ -27,7 +27,19 @@ export var loadLoginInfo = (cb) => {
 
 
 export var initLoginUserAction = () => {
-    $('#login_user').mouseenter((e) => {
-        
+    var userEle = $('#login_user'),
+        exitEle = $('#login_user_setting_exit');
+    console.log(exitEle);
+    userEle.mouseenter((e) => {
+        userEle.addClass('hover');
+        userEle.find('#login_user_setting').addClass('visible');
+    });
+    userEle.mouseleave((e) => {
+        userEle.removeClass('hover');
+        userEle.find('#login_user_setting').removeClass('visible');
+    });
+    exitEle.click((e) => {
+        clearCookie('account');
+        window.location.reload();
     });
 }

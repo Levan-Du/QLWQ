@@ -4,7 +4,7 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import { initLoginAction } from '../../commons/pages';
-import { loadLoginInfo } from '../../commons/login';
+import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
 import { getGenderDes, initNav, initNavAction } from '../../commons/pages';
 
 
@@ -14,6 +14,7 @@ $((e) => {
     initLoginAction();
     initLoginAction2();
     initNavAction();
+    initLoginUserAction();
 });
 
 var loginModal = null;

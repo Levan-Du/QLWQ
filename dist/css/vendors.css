@@ -400,14 +400,20 @@ button {
 .header .todo .login-btn {
     text-decoration: underline;
     margin-left: 5px;
+    color: #c63;
 }
 
 .header .todo #login_user {
+    position: relative;
     display: none;
 }
 
 .header .todo #login_user.visible {
     display: block;
+}
+
+.header .todo #login_user.hover {
+    background: rgba(50, 80, 110, 1);
 }
 
 .header .todo .login-name {
@@ -418,9 +424,37 @@ button {
     color: #38b774;
 }
 
-.header .todo .login-name .user-setting {
+.header .todo #login_user .user-setting {
+    position: absolute;
+    display: none;
     width: 200px;
-    background: 
+    background: rgba(50, 80, 110, 1);
+    z-index: 10001;
+}
+
+.header .todo #login_user .user-setting.visible {
+    display: block;
+}
+
+.header .todo #login_user .user-setting .item > * {
+    vertical-align: middle;
+    padding: 5px 10px;
+}
+
+.header .todo #login_user .user-setting .item.left {
+    float: left;
+}
+
+.header .todo #login_user .user-setting .item.left img {
+    width: 50px;
+}
+
+.header .todo #login_user .user-setting .item.right {
+    float: right;
+}
+
+.header .todo #login_user .user-setting #login_user_setting_exit {
+    color: #c63;
 }
 
 .header .nav-item .submenu {

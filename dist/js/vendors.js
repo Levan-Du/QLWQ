@@ -10478,6 +10478,10 @@ var setCookie = exports.setCookie = function setCookie(name, value) {
     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 };
 
+var clearCookie = exports.clearCookie = function clearCookie(name) {
+    setCookie(name, "", -1);
+};
+
 var htmlEncode = exports.htmlEncode = function htmlEncode(str) {
     var ele = document.createElement('span');
     ele.appendChild(document.createTextNode(str));
@@ -10695,7 +10699,7 @@ $.extend({
                     console.log(res.message);
                 } else {
                     setCookie('account', o.account);
-                    location.href = 'user.html';
+                    window.location.reload();
                 }
             }, function (err) {
                 showError(err);
@@ -10753,7 +10757,21 @@ var loadLoginInfo = exports.loadLoginInfo = function loadLoginInfo(cb) {
 };
 
 var initLoginUserAction = exports.initLoginUserAction = function initLoginUserAction() {
-    $('#').mouseenter(function (e) {});
+    var userEle = $('#login_user'),
+        exitEle = $('#login_user_setting_exit');
+    console.log(exitEle);
+    userEle.mouseenter(function (e) {
+        userEle.addClass('hover');
+        userEle.find('#login_user_setting').addClass('visible');
+    });
+    userEle.mouseleave(function (e) {
+        userEle.removeClass('hover');
+        userEle.find('#login_user_setting').removeClass('visible');
+    });
+    exitEle.click(function (e) {
+        (0, _common.clearCookie)('account');
+        window.location.reload();
+    });
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
