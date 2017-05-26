@@ -11,57 +11,41 @@
 </head>
 
 <body>
-    #include('../../tmpls/header.html')
-    #include('../../tmpls/barner.html')
+    #include('../../tmpls/header.html') #include('../../tmpls/barner.html')
     <article class="content">
-        <section class="news-wrapper">
-            <div class="top">
-                <img class="icon-top" src="../../assets/images/index/u16.svg">
-                <span class="title">活动资讯</span>
-                <a class="jiantou">
-                    <span>更多</span>
-                    <img src="../../assets/images/index/u19.svg">
-                    <img src="../../assets/images/index/u19.svg">
-                </a>
-            </div>
-            <ul class="tab">
-                <li class="tab-page">
-                    <input id="tab-page-1" class="tab-title-check" type="radio" name="tab" checked>
-                    <label class="tab-title" for="tab-page-1">活动</label>
-                    <div id="activitiesBox" class="tab-content">
-                        <!-- <p>活动内容</p> -->
-                    </div>
-                </li>
-                <li class="tab-page">
-                    <input id="tab-page-2" class="tab-title-check" type="radio" name="tab">
-                    <label class="tab-title" for="tab-page-2">公告</label>
-                    <div id="noticesBox" class="tab-content">
-                        <!-- <p>公告内容</p> -->
-                    </div>
-                </li>
-                <li class="tab-page">
-                    <input id="tab-page-3" class="tab-title-check" type="radio" name="tab">
-                    <label class="tab-title" for="tab-page-3">新闻</label>
-                    <div id="newsBox" class="tab-content">
-                        <!-- <p>新闻内容</p> -->
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section class="goods-wraper">
-            <div id="goodsImgBox" class="img-box">
-            </div>
-            <div class="img-action">
-                <span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-                <div class="btn-wrapper clearfix">
-                    <a class="btn btn-circle checked"></a>
-                    <a class="btn btn-circle"></a>
-                    <a class="btn btn-circle"></a>
-                    <a class="btn btn-circle"></a>
+        <article class="container">
+            <section class="news-wrapper">
+                <div class="container">
+                    <article class="clearfix">
+                        <section class="right">
+                            <p><img src="../../assets/imgs/index_act_01.png"></p>
+                            <p><img src="../../assets/imgs/index_act_02.png"></p>
+                        </section>
+                        <section class="left">
+                            <h2 class="title">新闻<span>/news</span></h2>
+                            <ul id="news_list" class="list">
+                            </ul>
+                            <p class="more"><span>abc</span><a href="news.html">更多新闻>></a></p>
+                            <p class="bg-img"><img src="../../assets/images/index/u162.png"></p>
+                        </section>
+                    </article>
                 </div>
-                <span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-            </div>
-        </section>
+            </section>
+            <section class="goods-wraper">
+                <div class="img-action clearfix">
+                    <span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+                    <div class="btn-wrapper clearfix">
+                        <a class="btn btn-circle checked"></a>
+                        <a class="btn btn-circle"></a>
+                        <a class="btn btn-circle"></a>
+                        <a class="btn btn-circle"></a>
+                    </div>
+                    <span class="line">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+                </div>
+                <div id="goodsImgBox" class="img-box">
+                </div>
+            </section>
+        </article>
     </article>
     #include('../../tmpls/module.html') #include('../../tmpls/footer.html')
 </body>

@@ -19,7 +19,7 @@ $((e) => {
 
 var loginModal = null;
 var initLoginAction2 = () => {
-    $('.main .mid .btn-link').click((e) => {
+    $('.main #btn_login_main').click((e) => {
         loginModal = $.showLoginModal();
     });
 }
@@ -35,7 +35,10 @@ var loadLogin = () => {
     loadLoginInfo((u) => {
         $('#main_username').text(u.Accounts);
         $('#main_call').text(getGenderDes(u.Gender))
-        $('#main_row_username').css('visibility', 'visible');
+        $('#lbl_btn_login_main').removeClass('visible');
+        $('#btn_login_main').removeClass('visible');
+        $('#main_username').addClass('visible');
+        $('#main_call').addClass('visible');
         $('#main_grade').text(u.MemberOrder);
         $('#main_score').text(u.Score);
         $('#main_diamond').text(u.Diamond);

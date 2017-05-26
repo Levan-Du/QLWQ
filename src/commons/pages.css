@@ -176,9 +176,13 @@
 
 .module {
     height: 150px;
-    width: 800px;
     margin: 80px auto;
     margin-bottom: 20px;
+}
+
+.module-wrapper {
+    width: 800px;
+    margin: auto;
 }
 
 .module-wrapper .module-item {
@@ -325,6 +329,10 @@
     padding: 6px;
     display: block;
     border: solid 1px #ddd;
+}
+
+.modal-content .row input {
+    width: 290px;
 }
 
 .modal-content .row .label.focus {

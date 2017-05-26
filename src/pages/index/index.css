@@ -5,80 +5,119 @@
     margin: 6px 20px;
 }
 
-.content {
-    margin-top: 80px;
+@media only screen and (min-width: 1200px) and (max-width: 8000px) {
+    .content {
+        width: 100%;
+    }
+}
+
+.content .container {
+    margin-top: 60px;
 }
 
 .news-wrapper {
-    width: 860px;
-    height: 450px;
+    width: 100%;
+    background: #f2f2f2;
+    padding: 20px 0;
     margin: auto;
 }
 
-.news-wrapper .top {
-    padding-top: 16px;
+.news-wrapper .container {
+    width: 1060px;
+    margin: auto;
 }
 
-.news-wrapper .top > * {
-    vertical-align: middle;
-    padding-right: 20px;
+.news-wrapper .left {
+    overflow: hidden;
+    background: rgba(102, 153, 255, 1);
+    /*background-image: url(../../assets/images/index/u162.png);*/
+    color: #fff;
+    position: relative;
 }
 
-.news-wrapper .top img.icon-top {
-    width: 50px;
-    height: 79px;
+.news-wrapper .left .bg-img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0.08;
+    width: 279px;
+    height: 174px;
+    z-index: 20;
 }
 
-.news-wrapper .top .jiantou span {
-    margin-right: -10px;
-    vertical-align: middle;
+.news-wrapper .left .bg-img img {
+    width: 100%;
+    height: 100%;
 }
 
-.news-wrapper .top .jiantou img {
-    width: 28px;
-    height: 20px;
-    margin-right: -20px;
-    vertical-align: middle;
-}
-
-.news-wrapper .top .title {
+.news-wrapper .left .title {
+    padding: 20px;
     font-size: 30px;
-    font-weight: bold;
+    border-bottom: dashed 2px #ccc;
 }
 
-.tab {
-    height: 360px;
+.news-wrapper .left .list .item {
+    font-size: 24px;
+    padding: 9px 20px;
+    padding-right: 30px;
+    border-bottom: dashed 2px #bbb;
 }
 
-.tab-page {
-    width: 33.33%;
+.news-wrapper .left .list .item p {
+    line-height: 1.8;
 }
 
-.tab-title {
-    height: 60px;
-    line-height: 60px;
+.news-wrapper .left .list .item .time {
+    text-align: right;
+    font-size: 16px;
 }
 
-.tab .tab-content {
-    width: 850px;
-    height: 300px;
-    /*border: solid 1px #eee;*/
-    /*box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);*/
+.news-wrapper .left .more {
+    padding: 20px;
+    /*padding-right: 30px;*/
+    position: relative;
 }
 
-.tab .tab-content p {
-    top: 60px;
-    margin: 20px;
-    height: 45px;
-    line-height: 48px;
-    border-bottom: solid 2px #eee;
-    text-align: center;
+.news-wrapper .left .more span {
+    margin-left: -100px;
+}
+
+.news-wrapper .left .more a {
+    position: absolute;
+    width: 100px;
+    right: 0;
+    margin: auto;
+    color: #fff;
+    word-break: keep-all;
+    z-index: 30;
+}
+
+.news-wrapper .left .more a:hover {
+    color: #e33;
+}
+
+.news-wrapper .right {
+    float: right;
+    width: 450px;
+    margin-left: 30px;
+}
+
+.news-wrapper .right img {
+    width: 450px;
+    height: 245px;
+}
+
+.news-wrapper .right > p {
+    margin-top: 12px;
+}
+
+.news-wrapper .right > p:nth-of-type(1) {
+    margin-top: 0;
 }
 
 .goods-wraper {
-    width: 84%;
-    height: 310px;
-    margin: 80px auto;
+    width: 1085px;
+    margin: 50px auto;
     margin-bottom: 0;
     overflow: hidden;
 }
@@ -93,6 +132,7 @@
     width: 25%;
     position: absolute;
     display: none;
+    padding: 10px 0;
 }
 
 .goods-wraper .img-box .img-wrapper.checked {
@@ -124,7 +164,6 @@
     width: 370px;
     height: 22px;
     overflow: hidden;
-    margin-top: 50px;
     letter-spacing: -3px;
     font-weight: bold;
     color: #ccc;
@@ -133,11 +172,14 @@
 .goods-wraper .btn-wrapper {
     float: left;
     width: 230px;
-    margin-top: 45px;
 }
 
 .goods-wraper .btn-wrapper .btn-circle.checked {
     background: rgba(120, 180, 0, 1);
+}
+
+body > .module {
+    margin-top: 60px;
 }
 
 #activitiesBox .news-item a:hover,

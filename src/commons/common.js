@@ -216,26 +216,26 @@ $.extend({
                 错误
                 </p>
                 <p class="row first">
-                    <label class="label" for="txt_account">
+                    <label class="label" for="${account_id}">
                         <span class="iconfont icon-ren"></span>
-                        <input id="${account_id}" type="text" name="account" placeholder="账号">
+                        <input id="${account_id}" type="text" name="account" placeholder="账号/手机号">
                     </label>
                 </p>
                 <p class="row">
-                    <label class="label" for="txt_pwd">
+                    <label class="label" for="${pwd_id}">
                         <span class="iconfont icon-lock-fill"></span>
                         <input id="${pwd_id}" type="text" name="pwd" placeholder="密码">
                     </label>
                 </p>
                 <p class="row vali clearfix">
-                    <label class="label" for="txt_valicode">
+                    <label class="label" for="${valicode_id}">
                         <input id="${valicode_id}" type="text" name="valicode" placeholder="验证码">
                     </label>
                     <a id="btn_valiImg">
                         <img id="${valiImg_id}" src="" alt="验证码">
                     </a>
                 </p>
-                <p for="login_submit" class="label label-submit">
+                <p for="${submit_id}" class="label label-submit">
                     <input id="${submit_id}" type="submit" name="logon" value="登录">
                 </p>
             </form>
@@ -267,13 +267,16 @@ $.extend({
                 var errorBox = $($form_id).find('.error');
                 errorBox.text(msg);
                 errorBox.prop('title', msg);
-                errorBox.addClass('visible');
+                errorBox.fadeIn('normal', () => {
+                    errorBox.addClass('visible');
+                });
             },
             hideError = () => {
                 var errorBox = $($form_id).find('.error');
                 errorBox.text('');
                 errorBox.prop('title', msg);
                 errorBox.removeClass('visible');
+                errorBox.fadeOut();
             },
             validCodeCheck = (code) => {
                 dd.Post('/Login/CheckValidaeImage', 'valicode=' + code, (res) => {
@@ -319,6 +322,7 @@ $.extend({
 
         $($form_id).submit((e) => {
             e.preventDefault();
+            $($valicode_id).blur();
             var target = $(e.currentTarget);
 
             var data = target.serialize(),
@@ -326,38 +330,47 @@ $.extend({
 
             if (!o.account) {
                 showError('请输入用户名！');
+                $($account_id).focus();
                 return;
             }
             if (!o.pwd) {
                 showError('请输入密码！');
+                $($pwd_id).focus();
                 return;
             }
             if (!isValicodePass) {
                 showError('验证码输入不正确！');
+                $($valicode_id).focus();
                 return;
             }
 
-            loadValidateImg();
+            var url = '/Login/AccountLogon',
+                submitBtn = $($submit_id);
 
-            var submitBtn = $($submit_id);
+            if (/1\d{10}/.test(o.account)) {
+                url = '/Login/AccountLogonByMobile';
+            }
             submitBtn.val('正在登录...');
             submitBtn.prop('disabled', 'disabled');
-            dd.Post('/Login/AccountLogon', data, (res) => {
+            dd.Post(url, data, (res) => {
+                    console.log(res);
                 if (res.status !== 'success') {
-                    showError(res.message);
                     submitBtn.val('登录');
                     submitBtn.removeAttr('disabled');
                     submitBtn.removeProp('disabled');
-                    console.log(res.message);
                 } else {
-                    setCookie('account', o.account);
+                    setCookie('account', res.message.m_accounts);
                     window.location.reload();
                 }
+
+                loadValidateImg();
             }, (err) => {
                 showError(err);
                 submitBtn.val('登录');
                 submitBtn.removeAttr('disabled');
                 submitBtn.removeProp('disabled');
+
+                loadValidateImg();
             });
         });
 

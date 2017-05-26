@@ -7,27 +7,28 @@
     display: none;
 }
 
-.content {
+.content .container{
     width: 1050px;
     margin-top: 60px;
 }
 
-.content > .title {
-    padding: 20px 30px;
+.content .container > .title {
+    padding: 10px 30px;
     border-bottom: solid 2px #ccc;
 }
 
-.content > .title img {
-    width: 50px;
+.content .container > .title img {
+    width: 70px;
 }
 
-.content > .title > * {
+.content .container > .title > * {
     display: inline;
-    vertical-align: middle;
+    vertical-align: bottom;
     width: 68px;
     font-size: 32px;
-    padding-right: 20px;
+    padding-right: 10px;
 }
+
 
 .main {
     margin-top: 10px;

@@ -21,20 +21,20 @@
 .content .title {
     width: 1100px;
     margin: auto;
-    padding: 20px 30px;
+    padding: 10px 30px;
     border-bottom: solid 2px #ccc;
 }
 
 .content > .title img {
-    width: 40px;
+    width: 50px;
 }
 
 .content .title > * {
     display: inline;
-    vertical-align: middle;
+    vertical-align: bottom;
     width: 68px;
     font-size: 32px;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 .news-scroll .news-item {
@@ -108,7 +108,7 @@
     height: 50px;
     line-height: 50px;
     border-bottom: solid 1px #ddd;
-    text-align: center;
+    text-align: left;
 }
 
 .news-wrapper .tab .tab-content .news-list .news-item a:hover {
@@ -128,7 +128,7 @@
 }
 
 .news-wrapper .news-show {
-    margin-top: 20px;
+    margin-top: 60px;
     text-align: center;
 }
 
@@ -139,8 +139,4 @@
 
 .news-wrapper .news-show .acti li img {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-}
-
-.module {
-    margin-top: 100px;
 }

@@ -15,16 +15,16 @@
 }
 
 .content > .title {
-    padding: 20px 30px;
+    padding: 10px 30px;
     border-bottom: solid 2px #ccc;
 }
 
 .content > .title > * {
     display: inline;
-    vertical-align: middle;
+    vertical-align: bottom;
     width: 68px;
     font-size: 32px;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 .content .menu,

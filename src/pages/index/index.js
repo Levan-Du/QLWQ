@@ -52,23 +52,21 @@ var renderNews = () => {
             return i < 4;
         });
     }
-    var renderNewsItem = (id, news) => {
+    var renderNewsItem = (news) => {
         var tmpl = news.map((el) => {
-            return `<p class="news-item"><a href="#">${el.Subject}</a></p>`;
+            return `<li class="item">
+                        <p>${el.Subject}</p>
+                        <p class="time">[${new Date(el.IssueDate).Format('MM/dd')}]</p>
+                    </li>`;
         }).join('');
 
-        $('#' + id).append(tmpl);
+        $('#news_list').html(tmpl);
     }
 
     comm.dd.Get('/News/HotNewList', null,
         (res) => {
-            var news = newsFilter(res.message, 2),
-                notices = newsFilter(res.message, 1),
-                activities = newsFilter(res.message, 3);
-
-            renderNewsItem('noticesBox', notices);
-            renderNewsItem('newsBox', news);
-            renderNewsItem('activitiesBox', activities);
+            var news = newsFilter(res.message, 2);
+            renderNewsItem(news);
         });
 }
 

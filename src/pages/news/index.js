@@ -4,7 +4,7 @@ import './index.css';
 import '../../commons/common';
 import * as comm from '../../commons/common';
 import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
-import { loadLoginInfo ,initLoginUserAction} from '../../commons/login';
+import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
 
 $((e) => {
     initNav('news');
@@ -33,11 +33,19 @@ var newsFilter = (arr, classId) => {
 var renderItem = (id, o) => {
     var pdata = byPager(o.data, o.pageIndex),
         tmpl = o.data.length === 0 ?
-        `<p class="news-item news-item-no">没有数据</p>` :
-        pdata.map((el) => {
-            return `<p class="news-item"><a href="#">${el.Subject}</a></p>`;
-        }).join('');
+        `<p class="news-item news-item-no">没有数据</p>` : pdata.map((el) => {
+            return `<ul  class="news-item clearfix"><li style="float:right;"><span>${new Date(el.IssueDate).Format('yyyy/MM/dd')}</span></li><li style="overflow:hidden;"><a href="#">${el.Subject}</a><li></ul>`;
+        }).join('');;
 
+    // if (id === 'newsBox') {
+    //     tmpl = pdata.map((el) => {
+    //         return `<ul  class="news-item clearfix"><li style="float:right;"><span>${new Date(el.IssueDate).Format('yyyy/MM/dd')}</span></li><li style="overflow:hidden;"><a href="#">${el.Subject}</a><li></ul>`;
+    //     }).join('');
+    // } else {
+    //     tmpl = pdata.map((el) => {
+    //         return `<p class="news-item"><a href="#">${el.Subject}</a></p>`;
+    //     }).join('');
+    // }
     $('#' + id).html(tmpl);
 
 }

@@ -12,32 +12,34 @@ a:focus {
     display: none;
 }
 
-.content {
+.content > .container {
     width: 970px;
     margin-top: 60px;
     font-size: 18px;
 }
 
-.content > .title {
+.content > .container > .title {
     width: 100%;
+    margin: auto;
     margin-left: -30px;
-    padding: 20px 30px;
+    padding: 10px 30px;
     border-bottom: solid 2px #ccc;
 }
 
-.content > .title img {
-    width: 40px;
+.content > .container > .title img {
+    width: 50px;
 }
 
-.content > .title > * {
+.content > .container > .title > * {
     display: inline;
-    vertical-align: middle;
+    vertical-align: bottom;
     width: 68px;
     font-size: 32px;
-    padding-right: 20px;
+    padding-right: 10px;
 }
 
 .content .content-wrapper {
+    margin: auto;
     margin-top: 30px;
 }
 
@@ -114,6 +116,24 @@ a:focus {
 .main p.hello .username {
     color: #38f;
     margin-right: 10px;
+}
+
+.main p.hello #btn_login_main {
+    font-size: 20px;
+}
+
+.main p.hello #lbl_btn_login_main,
+.main p.hello #btn_login_main,
+.main p.hello #main_username,
+.main p.hello #main_call {
+    display: none;
+}
+
+.main p.hello #lbl_btn_login_main.visible,
+.main p.hello #btn_login_main.visible,
+.main p.hello #main_username.visible,
+.main p.hello #main_call.visible {
+    display: inline;
 }
 
 .main p.info {

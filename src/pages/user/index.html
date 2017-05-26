@@ -14,34 +14,37 @@
 <body>
     #include('../../tmpls/header.html') #include('../../tmpls/barner.html')
     <article class="content">
-        <h1 class="title">
-            <img src="../../assets/images/index/u42.png">
-            <span>个人中心</span>
-        </h1>
-        <div class="content-wrapper clearfix">
-            <aside class="menu">
-                <ul class="menu-wrapper">
-                    <li class="menu-item">账号信息</li>
-                    <li class="menu-item">游戏充值</li>
-                    <li class="menu-item">充值记录</li>
-                </ul>
-            </aside>
-            <article class="main clearfix">
-                <p class="bg-top"><img src="../../assets/images/index/u2.png"></p>
-                <p class="hello">你好！
-                    <a id="btn_login_main" class="btn-link">请登录</a>
-                    <span id="main_username" class="username">某某某</span>
-                    <span id="main_call"></span>
-                </p>
-                <p class="circle">
-                    <img class="img-touxiang" src="../../assets/images/index/u227.svg">
-                </p>
-                <p class="info info1"><span class="label">金币：</span><span id="main_score" class="value"></span></p>
-                <p class="info info2"><span class="label">钻石：</span><span id="main_diamond" class="value"></span></p>
-                <p class="info info3"><span class="label">房卡：</span><span id="main_rcard" class="value"></span></p>
-                <p class="info info4"><span class="label">积分：</span><span id="main_points" class="value"></span></p>
-            </article>
-        </div>
+        <article class="container">
+            <h1 class="title">
+                <img src="../../assets/images/index/u42.png">
+                <span>个人中心</span>
+            </h1>
+            <div class="content-wrapper clearfix">
+                <aside class="menu">
+                    <ul class="menu-wrapper">
+                        <li class="menu-item">账号信息</li>
+                        <li class="menu-item">游戏充值</li>
+                        <li class="menu-item">充值记录</li>
+                    </ul>
+                </aside>
+                <article class="main clearfix">
+                    <p class="bg-top"><img src="../../assets/images/index/u2.png"></p>
+                    <p class="hello">你好！
+                        <span id="lbl_btn_login_main" class="visible">请</span>
+                        <a id="btn_login_main" class="btn-link visible"><span>登录<span></a>
+                        <span id="main_username" class="username">某某某</span>
+                        <span id="main_call"></span>
+                    </p>
+                    <p class="circle">
+                        <img class="img-touxiang" src="../../assets/images/index/u227.svg">
+                    </p>
+                    <p class="info info1"><span class="label">金币：</span><span id="main_score" class="value"></span></p>
+                    <p class="info info2"><span class="label">钻石：</span><span id="main_diamond" class="value"></span></p>
+                    <p class="info info3"><span class="label">房卡：</span><span id="main_rcard" class="value"></span></p>
+                    <p class="info info4"><span class="label">积分：</span><span id="main_points" class="value"></span></p>
+                </article>
+            </div>
+        </article>
     </article>
     #include('../../tmpls/module.html') #include('../../tmpls/footer.html')
 </body>

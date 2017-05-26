@@ -82,9 +82,10 @@ export var initNavAction = () => {
         var navItem = $(e.currentTarget),
             subMenu = navItem.parent().find('.submenu');
 
+        navItem.addClass('hover');
         subMenu.stop();
         subMenu.show();
-        subMenu.animate({ height: '600px' }, 300, 'swing', () => {
+        subMenu.animate({ height: '150px' }, 300, 'swing', () => {
 
         });
     });
@@ -95,6 +96,7 @@ export var initNavAction = () => {
 
         subMenu.stop();
         subMenu.animate({ height: '0' }, 300, 'swing', () => {
+            navItem.removeClass('hover');
             subMenu.hide();
         });
     });

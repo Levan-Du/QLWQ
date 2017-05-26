@@ -37,7 +37,25 @@
 }
 
 .content {
-    margin: 80px auto;
+    margin: 50px auto;
+}
+
+.content > .title {
+    margin: 0 100px;
+    padding: 10px 30px;
+    border-bottom: solid 2px #ccc;
+}
+
+.content > .title img {
+    width: 50px;
+}
+
+.content > .title > * {
+    display: inline;
+    vertical-align: bottom;
+    width: 68px;
+    font-size: 32px;
+    padding-right: 10px;
 }
 
 .content .news-scroll .news-item {
