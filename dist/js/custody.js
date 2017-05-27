@@ -67,16 +67,16 @@ var initJianHuMenu = function initJianHuMenu() {
         $(menuBtns[index]).parent().addClass('checked');
         currentIndex = index;
 
-        var height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize(tabContEle, 'height');
+        var height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize$(tabContEle, 'height');
         contentEle.height(height);
     });
 };
 
 var initContent = function initContent() {
     var contentEle = $('body > .content'),
-        mainEle = $('.content .tab .tab-page.jianhu .main > article.checked').parent(),
-        tabContEle = mainEle.parent(),
-        height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize(tabContEle, 'height');
+        mainEle = $('.content .tab .tab-page.jianhu .main'),
+        tabContEle = $('.content .tab .tab-page.jianhu .tab-content'),
+        height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize$(tabContEle, 'height');
 
     contentEle.height(height);
 };
