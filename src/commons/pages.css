@@ -376,10 +376,20 @@
     margin-top: 50px;
 }
 
+.modal-content .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
 .modal-content .error {
     /*visibility: hidden;*/
+    position: absolute;
     display: none;
-    margin: 16px 16px 20px;
+    left: 16px;
+    top: 56px;
+    right: 16px;
+    /*margin: 16px 16px 20px;*/
     padding: 5px;
     border: solid 1px;
     color: #e66;
@@ -390,7 +400,7 @@
 }
 
 .modal-content .error.visible {
-    display: block;
+    /*display: block;*/
 }
 
 .modal-content .error + .row {
@@ -398,7 +408,7 @@
 }
 
 .modal-content .error.visible + .row {
-    margin-top: 10px;
+    margin-top: 65px;
 }
 
 .modal-content .row.textright {

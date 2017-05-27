@@ -15,7 +15,6 @@ export var loadLoginInfo = (cb) => {
         (res) => {
             if (res.status === 'success') {
                 var u = res.message[0];
-                console.log(u);
                 $('#show_user').text(u.NickName);
                 $('#login_mobile').text(u.Accounts);
                 cb(u);

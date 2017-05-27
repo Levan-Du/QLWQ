@@ -3,8 +3,8 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
-import { initLoginAction, initNav,initNavAction } from '../../commons/pages';
-import { loadLoginInfo ,initLoginUserAction} from '../../commons/login';
+import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
+import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
 
 $((e) => {
     initNav('custody');
@@ -44,16 +44,16 @@ var initJianHuMenu = () => {
         $(menuBtns[index]).parent().addClass('checked');
         currentIndex = index;
 
-        var height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize(tabContEle, 'height');
+        var height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize$(tabContEle, 'height');
         contentEle.height(height);
     })
 }
 
 var initContent = () => {
     var contentEle = $('body > .content'),
-        mainEle = $('.content .tab .tab-page.jianhu .main > article.checked').parent(),
-        tabContEle = mainEle.parent(),
-        height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize(tabContEle, 'height');
+        mainEle = $('.content .tab .tab-page.jianhu .main'),
+        tabContEle = $('.content .tab .tab-page.jianhu .tab-content'),
+        height = comm.getBoxSize$(mainEle, 'height') + comm.getBoxSize$(tabContEle, 'height');
 
     contentEle.height(height);
 }

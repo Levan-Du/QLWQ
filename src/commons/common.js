@@ -1,5 +1,5 @@
-// var API_URL = 'http://localhost:9244/api';
-var API_URL = 'http://192.168.1.250/api';
+var API_URL = 'http://localhost:9244/api';
+// var API_URL = 'http://192.168.1.250/api';
 // var API_URL = 'http://117.78.46.33:8057/api';
 
 Date.prototype.Format = function(fmt) { //author: meizz 
@@ -25,6 +25,28 @@ String.prototype.ltrim = function() {
 }
 String.prototype.rtrim = function() {
     return this.replace(/(\s*$)/g, '');
+}
+
+
+if (!Array.prototype.forEach) {
+    Array.prototype.forEach = function(callback) {
+        var arr = this;
+        for (var i in arr) {
+            callback(arr[i], i);
+        }
+    }
+}
+
+if (!Array.prototype.find) {
+    Array.prototype.find = function(callback) {
+        var arr = [];
+        this.forEach(function(el, i) {
+            if (callback(el, i)) {
+                arr.push(el);
+            }
+        });
+        return arr;
+    }
 }
 
 export var getQueryString = () => {
@@ -204,7 +226,8 @@ $.extend({
             tmpl = `        
 <div id="${modal_id}" class="modal lev-modal-login">
     <div class="modal-mask"></div>
-    <article class="modal-content modal-login">
+    <div class="modal-content modal-login">
+        <article class="container">
         <h3>
             <img src="${logoiconUrl}">
             <span>登录棋游账号</span> 
@@ -229,7 +252,7 @@ $.extend({
                 </p>
                 <p class="row vali clearfix">
                     <label class="label" for="${valicode_id}">
-                        <input id="${valicode_id}" type="text" name="valicode" placeholder="验证码">
+                        <input id="${valicode_id}" type="text" name="valicode" placeholder="验证码" autocomplete="off">
                     </label>
                     <a id="btn_valiImg">
                         <img id="${valiImg_id}" src="" alt="验证码">
@@ -247,7 +270,8 @@ $.extend({
                 <a class="wx"><span class="iconfont icon-weixin"></span></a>
             </p>
         </section>
-    </article>
+        </article>
+    </div>
 </div>`;
         $('body').append(tmpl);
 
@@ -262,14 +286,14 @@ $.extend({
                         showError(err);
                     });
             },
-            isValicodePass = false,
             showError = (msg) => {
                 var errorBox = $($form_id).find('.error');
                 errorBox.text(msg);
                 errorBox.prop('title', msg);
-                errorBox.fadeIn('normal', () => {
-                    errorBox.addClass('visible');
-                });
+                // errorBox.removeClass('visible');
+                errorBox.hide();
+                errorBox.addClass('visible');
+                errorBox.fadeIn('normal', () => {});
             },
             hideError = () => {
                 var errorBox = $($form_id).find('.error');
@@ -278,16 +302,16 @@ $.extend({
                 errorBox.removeClass('visible');
                 errorBox.fadeOut();
             },
-            validCodeCheck = (code) => {
+            validCodeCheck = (code, callback) => {
                 dd.Post('/Login/CheckValidaeImage', 'valicode=' + code, (res) => {
                     if (res.status === 'success') {
-                        isValicodePass = true;
+                        callback && callback();
                     } else {
-                        isValicodePass = false;
                         showError('验证码输入不正确！');
+                        $($valicode_id).focus();
                     }
                 }, (err) => {
-                    isValicodePass = false;
+                    $($valicode_id).focus();
                 });
             };
 
@@ -310,22 +334,10 @@ $.extend({
             loadValidateImg();
         });
 
-        $($valicode_id).change((e) => {
-            var code = $(e.currentTarget).val();
-            validCodeCheck(code);
-        });
-
-        $($valicode_id).blur((e) => {
-            var code = $(e.currentTarget).val();
-            validCodeCheck(code);
-        });
-
         $($form_id).submit((e) => {
             e.preventDefault();
-            $($valicode_id).blur();
-            var target = $(e.currentTarget);
-
-            var data = target.serialize(),
+            var target = $(e.currentTarget),
+                data = target.serialize(),
                 o = paramsToJson(data);
 
             if (!o.account) {
@@ -338,39 +350,38 @@ $.extend({
                 $($pwd_id).focus();
                 return;
             }
-            if (!isValicodePass) {
-                showError('验证码输入不正确！');
-                $($valicode_id).focus();
-                return;
-            }
 
-            var url = '/Login/AccountLogon',
-                submitBtn = $($submit_id);
+            validCodeCheck($($valicode_id).val(), () => {
+                var url = '/Login/AccountLogon',
+                    submitBtn = $($submit_id);
 
-            if (/1\d{10}/.test(o.account)) {
-                url = '/Login/AccountLogonByMobile';
-            }
-            submitBtn.val('正在登录...');
-            submitBtn.prop('disabled', 'disabled');
-            dd.Post(url, data, (res) => {
-                    console.log(res);
-                if (res.status !== 'success') {
+                if (/1\d{10}/.test(o.account)) {
+                    url = '/Login/AccountLogonByMobile';
+                }
+                submitBtn.val('正在登录...');
+                submitBtn.prop('disabled', 'disabled');
+
+                dd.Post(url, data, (res) => {
+                    if (res.status !== 'success') {
+                        submitBtn.val('登录');
+                        submitBtn.removeAttr('disabled');
+                        submitBtn.removeProp('disabled');
+                        showError(res.message);
+
+                        loadValidateImg();
+                    } else {
+                        setCookie('account', res.message.m_accounts);
+                        window.location.reload();
+                    }
+
+                }, (err) => {
                     submitBtn.val('登录');
                     submitBtn.removeAttr('disabled');
                     submitBtn.removeProp('disabled');
-                } else {
-                    setCookie('account', res.message.m_accounts);
-                    window.location.reload();
-                }
+                    showError(err);
 
-                loadValidateImg();
-            }, (err) => {
-                showError(err);
-                submitBtn.val('登录');
-                submitBtn.removeAttr('disabled');
-                submitBtn.removeProp('disabled');
-
-                loadValidateImg();
+                    loadValidateImg();
+                });
             });
         });
 

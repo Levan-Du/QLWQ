@@ -1,1 +1,47 @@
-webpackJsonp([9],{15:function(n,i){},38:function(n,i,t){"use strict";(function(n){t(4),t(5),t(15);var i=t(1),o=(function(n){if(n&&n.__esModule)return n;var i={};if(null!=n)for(var t in n)Object.prototype.hasOwnProperty.call(n,t)&&(i[t]=n[t]);i.default=n}(i),t(3)),c=t(2);n(function(n){(0,o.initNav)("customer"),(0,o.initNavAction)(),r(),(0,o.initLoginAction)(),(0,c.initLoginUserAction)()});var r=function(){(0,c.loadLoginInfo)(function(n){})}}).call(i,t(0))}},[38]);
+webpackJsonp([9],{
+
+/***/ 15:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 38:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+__webpack_require__(4);
+
+__webpack_require__(5);
+
+__webpack_require__(15);
+
+var _common = __webpack_require__(1);
+
+var comm = _interopRequireWildcard(_common);
+
+var _pages = __webpack_require__(3);
+
+var _login = __webpack_require__(2);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+$(function (e) {
+    (0, _pages.initNav)('customer');
+    (0, _pages.initNavAction)();
+    loadLogin();
+    (0, _pages.initLoginAction)();
+    (0, _login.initLoginUserAction)();
+});
+
+var loadLogin = function loadLogin() {
+    (0, _login.loadLoginInfo)(function (res) {});
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ })
+
+},[38]);

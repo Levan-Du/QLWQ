@@ -1,1 +1,161 @@
-webpackJsonp([6],{21:function(t,a){},44:function(t,a,n){"use strict";(function(t){n(4),n(5),n(21);var a=n(1),e=function(t){if(t&&t.__esModule)return t;var a={};if(null!=t)for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(a[n]=t[n]);return a.default=t,a}(a),i=n(3),c=n(2);t(function(t){(0,i.initNav)("news"),(0,i.initNavAction)(),s(),(0,i.initLoginAction)(),v(),w(),(0,c.initLoginUserAction)()});var s=function(){(0,c.loadLoginInfo)(function(t){})},o=function(t,a){return t.filter(function(t,n){return t.ClassID==a})},l=function(a,n){var e=u(n.data,n.pageIndex),i=0===n.data.length?'<p class="news-item news-item-no">没有数据</p>':e.map(function(t){return'<ul  class="news-item clearfix"><li style="float:right;"><span>'+new Date(t.IssueDate).Format("yyyy/MM/dd")+'</span></li><li style="overflow:hidden;"><a href="#">'+t.Subject+"</a><li></ul>"}).join("");t("#"+a).html(i)},r=function(t,a){a.pageIndex>1&&a.pageIndex<=a.totalPage&&a.pageIndex--,l(t,a)},d=function(t,a){a.pageIndex>=1&&a.pageIndex<a.totalPage&&a.pageIndex++,l(t,a)},u=function(t,a){return t.filter(function(t,n){return n>=6*(a-1)&&n<6*a})},f={pageIndex:1},g={pageIndex:1},p={pageIndex:1},v=function(){var a=[{id:"news",title:"新闻"},{id:"notices",title:"公告"},{id:"activities",title:"活动"}].map(function(t,a,n){return'\n        <li class="tab-page">\n            <input id="tab-page-'+(a+1)+'" class="tab-title-check" type="radio" name="tab" '+(0===a?"checked":"")+'>\n            <label class="tab-title" for="tab-page-'+(a+1)+'">'+t.title+'</label>\n            <div class="tab-content clearfix">\n                <div class="news-list">\n                    <div id="'+t.id+'Box" class="news-item-wrapper">\n                    </div>\n                    <div class="pager clearfix">\n                        <a data-for="news" data-mark="pre" class="btn">上一页</a>\n                        <a data-for="news" data-mark="next" class="btn">下一页</a>\n                    </div>\n                </div>\n            </div>\n        </li>\n    '}).join("");t("#tab_news").html(a),(0,i.initTab)()},w=function(){e.dd.Get("/News/HotNewList",null,function(t){f.data=o(t.message,2),f.totalPage=Math.ceil(f.data.length/6),g.data=o(t.message,1),g.totalPage=Math.ceil(g.data.length/6),p.data=o(t.message,3),p.totalPage=Math.ceil(g.data.length/6),l("noticesBox",g),l("newsBox",f),l("activitiesBox",p),x()})},x=function(){t(".tab-content .pager .btn").click(function(a){var n=t(a.currentTarget),e=n.attr("data-for"),i=n.attr("data-mark"),c=function(t,a,n){"pre"===t?r(a,n):d(a,n)};switch(e){case"news":c(i,"newsBox",f);break;case"notices":c(i,"noticesBox",g);break;case"acti":c(i,"activiesBox",p)}})}}).call(a,n(0))}},[44]);
+webpackJsonp([6],{
+
+/***/ 21:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+__webpack_require__(4);
+
+__webpack_require__(5);
+
+__webpack_require__(21);
+
+var _common = __webpack_require__(1);
+
+var comm = _interopRequireWildcard(_common);
+
+var _pages = __webpack_require__(3);
+
+var _login = __webpack_require__(2);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+$(function (e) {
+    (0, _pages.initNav)('news');
+    (0, _pages.initNavAction)();
+    loadLogin();
+    (0, _pages.initLoginAction)();
+    renderNewsTab();
+    renderNews();
+    (0, _login.initLoginUserAction)();
+});
+
+var loadLogin = function loadLogin() {
+    (0, _login.loadLoginInfo)(function (res) {});
+};
+
+var pageSize = 6;
+var newsFilter = function newsFilter(arr, classId) {
+    return arr.filter(function (el, i) {
+        return el.ClassID == classId;
+    });
+};
+
+var renderItem = function renderItem(id, o) {
+    var pdata = byPager(o.data, o.pageIndex),
+        tmpl = o.data.length === 0 ? '<p class="news-item news-item-no">\u6CA1\u6709\u6570\u636E</p>' : pdata.map(function (el) {
+        return '<ul  class="news-item clearfix"><li style="float:right;"><span>' + new Date(el.IssueDate).Format('yyyy/MM/dd') + '</span></li><li style="overflow:hidden;"><a href="#">' + el.Subject + '</a><li></ul>';
+    }).join('');;
+
+    // if (id === 'newsBox') {
+    //     tmpl = pdata.map((el) => {
+    //         return `<ul  class="news-item clearfix"><li style="float:right;"><span>${new Date(el.IssueDate).Format('yyyy/MM/dd')}</span></li><li style="overflow:hidden;"><a href="#">${el.Subject}</a><li></ul>`;
+    //     }).join('');
+    // } else {
+    //     tmpl = pdata.map((el) => {
+    //         return `<p class="news-item"><a href="#">${el.Subject}</a></p>`;
+    //     }).join('');
+    // }
+    $('#' + id).html(tmpl);
+};
+
+var prePage = function prePage(id, o) {
+    if (o.pageIndex > 1 && o.pageIndex <= o.totalPage) {
+        o.pageIndex--;
+    }
+
+    renderItem(id, o);
+};
+
+var nextPage = function nextPage(id, o) {
+    if (o.pageIndex >= 1 && o.pageIndex < o.totalPage) {
+        o.pageIndex++;
+    }
+
+    renderItem(id, o);
+};
+
+var byPager = function byPager(arr, pageIndex) {
+    return arr.filter(function (el, i) {
+        return i >= (pageIndex - 1) * pageSize && i < pageIndex * pageSize;
+    });
+};
+
+var news = { pageIndex: 1 },
+    notices = { pageIndex: 1 },
+    acts = { pageIndex: 1 };
+
+var renderNewsTab = function renderNewsTab() {
+    var getFirstLastBy = function getFirstLastBy(length, i) {
+        switch (i) {
+            case 0:
+                return ' first';
+            case length - 1:
+                return ' last';
+            default:
+                return '';
+        }
+    },
+        tmpl = [{ id: 'news', title: '新闻' }, { id: 'notices', title: '公告' }, { id: 'activities', title: '活动' }].map(function (el, i, arr) {
+        return '\n        <li class="tab-page">\n            <input id="tab-page-' + (i + 1) + '" class="tab-title-check" type="radio" name="tab" ' + (i === 0 ? 'checked' : '') + '>\n            <label class="tab-title" for="tab-page-' + (i + 1) + '">' + el.title + '</label>\n            <div class="tab-content clearfix">\n                <div class="news-list">\n                    <div id="' + el.id + 'Box" class="news-item-wrapper">\n                    </div>\n                    <div class="pager clearfix">\n                        <a data-for="news" data-mark="pre" class="btn">\u4E0A\u4E00\u9875</a>\n                        <a data-for="news" data-mark="next" class="btn">\u4E0B\u4E00\u9875</a>\n                    </div>\n                </div>\n            </div>\n        </li>\n    ';
+    }).join('');
+    $('#tab_news').html(tmpl);
+    (0, _pages.initTab)();
+};
+
+var renderNews = function renderNews() {
+    comm.dd.Get('/News/HotNewList', null, function (res) {
+        // acts =Object.assign(acts, newsFilter(res.message, 1));      
+        news.data = newsFilter(res.message, 2);
+        news.totalPage = Math.ceil(news.data.length / pageSize);
+        notices.data = newsFilter(res.message, 1);
+        notices.totalPage = Math.ceil(notices.data.length / pageSize);
+        acts.data = newsFilter(res.message, 3);
+        acts.totalPage = Math.ceil(notices.data.length / pageSize);
+
+        renderItem('noticesBox', notices);
+        renderItem('newsBox', news);
+        renderItem('activitiesBox', acts);
+
+        initNewsAction();
+    });
+};
+
+var initNewsAction = function initNewsAction() {
+    $('.tab-content .pager .btn').click(function (e) {
+        var target = $(e.currentTarget),
+            datafor = target.attr('data-for'),
+            datamark = target.attr('data-mark'),
+            go = function go(mark, box, o) {
+            mark === 'pre' ? prePage(box, o) : nextPage(box, o);
+        };
+
+        switch (datafor) {
+            case 'news':
+                go(datamark, 'newsBox', news);
+                break;
+            case 'notices':
+                go(datamark, 'noticesBox', notices);
+                break;
+            case 'acti':
+                go(datamark, 'activiesBox', acts);
+                break;
+            default:
+                break;
+        }
+    });
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ })
+
+},[44]);
