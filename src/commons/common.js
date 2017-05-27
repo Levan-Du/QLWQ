@@ -32,7 +32,7 @@ if (!Array.prototype.forEach) {
     Array.prototype.forEach = function(callback) {
         var arr = this;
         for (var i in arr) {
-            callback(arr[i], i);
+            callback(arr[i], parseInt(i));
         }
     }
 }
