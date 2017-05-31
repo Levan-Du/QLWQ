@@ -6,6 +6,7 @@ import move from '../../commons/move';
 import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
 import carousel from '../../commons/carousel';
 import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
+import { news, goods } from './mock';
 
 
 $((e) => {
@@ -43,17 +44,26 @@ var renderBarnerImage = () => {
     carousel(imgEles, btnEles, 5000);
 }
 
+var getNews = (cb) => {
+    cb(news);
+    // var newsFilter = (arr, classId) => {
+    //     var arr2 = arr.filter((el, i) => {
+    //         return el.ClassID == classId;
+    //     });
+    //     return arr2.filter((el, i) => {
+    //         return i < 4;
+    //     });
+    // }
+    // comm.dd.Get('/News/HotNewList', null,
+    //     (res) => {
+    //         var news = newsFilter(res.message, 2);
+    //         cb(news);
+    //     });
+}
+
 var renderNews = () => {
-    var newsFilter = (arr, classId) => {
-        var arr2 = arr.filter((el, i) => {
-            return el.ClassID == classId;
-        });
-        return arr2.filter((el, i) => {
-            return i < 4;
-        });
-    }
-    var renderNewsItem = (news) => {
-        var tmpl = news.map((el) => {
+    var renderNewsItem = (data) => {
+        var tmpl = data.map((el) => {
             return `<li class="item">
                         <p>${el.Subject}</p>
                         <p class="time">[${new Date(el.IssueDate).Format('MM/dd')}]</p>
@@ -62,41 +72,46 @@ var renderNews = () => {
 
         $('#news_list').html(tmpl);
     }
+    getNews((data) => {
+        renderNewsItem(data);
+    })
+}
 
-    comm.dd.Get('/News/HotNewList', null,
-        (res) => {
-            var news = newsFilter(res.message, 2);
-            renderNewsItem(news);
-        });
+var getGoods = (cb) => {
+    cb(goods);
+    // comm.dd.Get('/GameGameItem/HotGameList', null,
+    //     (res) => {
+    //         var t = res.message.filter((el) => {
+    //                 return !!el.ImgUrl;
+    //             }),
+    //             data = t.filter((el, i) => {
+    //                 return i < 16;
+    //             });
+    //         console.log(JSON.stringify(data));
+    //         cb(data);
+    //     });
 }
 
 var renderGoodsImages = () => {
-    comm.dd.Get('/GameGameItem/HotGameList', null,
-        (res) => {
-            var goodArr1 = res.message.filter((el) => {
-                    return !!el.ImgUrl;
-                }),
-                goodArr2 = goodArr1.filter((el, i) => {
-                    return i < 16;
-                }),
-                tmplArr = [],
-                item = '';
+    getGoods((data) => {
+        var tmplArr = [],
+            item = '';
 
-            goodArr2.forEach((el, i) => {
-                item += `<li class="img-item"><a href="gamedetail.html?id=${el.GameID}"><img src="${el.ImgUrl}" alt="游戏图片"></a></li>`;
-                if ((i + 1) % 4 === 0) {
-                    tmplArr.push(`
+        data.forEach((el, i) => {
+            item += `<li class="img-item"><a href="gamedetail.html?id=${el.GameID}"><img src="${el.ImgUrl}" alt="游戏图片"></a></li>`;
+            if ((i + 1) % 4 === 0) {
+                tmplArr.push(`
                     <ul class="img-wrapper clearfix${i===3?' checked':''}">
                         ${item}                        
                     </ul>
                     `);
-                    item = '';
-                }
-            });
-            var tmpl = tmplArr.join('');
-            $('#goodsImgBox').append(tmpl);
-            initMoveCarousel();
+                item = '';
+            }
         });
+        var tmpl = tmplArr.join('');
+        $('#goodsImgBox').append(tmpl);
+        initMoveCarousel();
+    });
 }
 
 

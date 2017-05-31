@@ -147,7 +147,6 @@
 
 .content .main .grid-wrapper .grid .grid-item .panel .box {
     position: absolute;
-    width: 60%;
     height: 60%;
     top: 0;
     right: 0;
@@ -161,6 +160,8 @@
 
 .content .main .grid-wrapper .grid .grid-item .panel .box img {
     display: block;
+    width: 200px;
+    height: 200px;
     margin: auto;
     background: #e7e7e7;
 }
@@ -170,7 +171,7 @@
     width: 0;
     height: 0;
     margin: auto;
-    border-top: solid 40px #e7e7e7;
+    border-top: solid 40px #f2f2f2;
     border-left: solid 30px transparent;
     border-right: solid 30px transparent;
     box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, .2);

@@ -4,7 +4,8 @@ import './index.css';
 import * as comm from '../../commons/common';
 import move from '../../commons/move';
 import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
-import { loadLoginInfo,initLoginUserAction } from '../../commons/login';
+import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
+import mockData from './mock';
 
 $((e) => {
     initNav('games');
@@ -30,12 +31,6 @@ const PageSize = 4,
     PlatForms = [{ cla: 'ios', title: 'iPhone', icon: require('../../assets/images/games/u1873.svg'), pageIndex: 1 },
         { cla: 'android', title: 'Android', icon: require('../../assets/images/games/u1871.svg'), pageIndex: 1 },
     ];
-// ,
-// PlatForms = [{ cla: 'ios', title: 'iPhone', icon: require('../../assets/images/games/u1873.svg'), pageIndex: 1 },
-//     { cla: 'android', title: 'Android', icon: require('../../assets/images/games/u1871.svg'), pageIndex: 1 },
-//     { cla: 'ipad', title: 'iPad', icon: require('../../assets/images/games/u1867.svg'), pageIndex: 1 },
-//     { cla: 'pc', title: 'PC', icon: require('../../assets/images/games/u1869.svg'), pageIndex: 1 }
-// ];
 
 var games = { totalPage: 0 },
     currentPlatformIndex = 0,
@@ -59,18 +54,27 @@ var renderMenu = () => {
     $('#menu_wrapper').append(tmpl);
 }
 
+var getData = (cb) => {
+    cb(mockData);
+    // comm.dd.Get('/GameGameItem/HotGameList', null,
+    //     (res) => {
+    //         console.log(JSON.stringify(res.message));
+    //         cb(res.message);
+    //     });
+}
 
 var loadData = () => {
-    comm.dd.Get('/GameGameItem/HotGameList', null,
-        function(res) {
-            games.data = res.message.filter((el) => {
-                return !!el.ImgUrl;
-            });
-            games.totalPage = Math.ceil(games.data.length / PageSize);
-            init();
-            gridItemHeight = parseFloat($('#grid_wrapper .grid-item').outerHeight());
-            initGridAction();
+    getData((data) => {
+        games.data = data.filter((el) => {
+            return !!el.ImgUrl;
         });
+
+        games.totalPage = Math.ceil(games.data.length / PageSize);
+        init();
+
+        gridItemHeight = parseFloat($('#grid_wrapper .grid-item').outerHeight());
+        initGridAction();
+    });
 }
 
 var init = () => {
@@ -186,11 +190,11 @@ ${data.map(el=>`
                 <img src="${pf.icon}">
                 <a href="#">下载游戏</a>
                 <img class="hline" src="${require('../../assets/images/games/u1893.png')}">
-                <img class="img-code" src="${require('../../assets/images/games/u1897.png')}">
+                <img class="img-code" src="${require('../../assets/imgs/down_code.png')}">
                 <a class="down-btn" href="#">二维码下载</a>
             </p>
             <div class="box">
-                <img class="code-big" src="${require('../../assets/images/index/u204.svg')}">
+                <img class="code-big" src="${require('../../assets/imgs/down_code.png')}">
                 <span class="sj"></span>
             </div>
         </article>

@@ -307,12 +307,13 @@
     padding: 5px;
 }
 
-.grid-item a {
+.grid-item a.btn-ec {
     margin-left: 20px;
     padding: 1px 15px;
     border: solid 1px #ccc;
     border-radius: 3px;
     color: #555;
+    cursor: pointer;
 }
 
 #tab_content_exchange_diamond .grid-item {

@@ -4,8 +4,9 @@ import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
 import pay from '../../commons/pay';
-import { loadLoginInfo,initLoginUserAction } from '../../commons/login';
+import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
 import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
+import mockData from './mock';
 
 $((e) => {
     initNav('mall');
@@ -27,8 +28,7 @@ var loadLogin = () => {
     });
 }
 
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-    PageSize = 4,
+const PageSize = 4,
     PageSize0 = 9;
 
 var getGoodTypeByGridIndex = (gridIndex) => {
@@ -113,33 +113,32 @@ var onTabGridSelect = () => {
     });
 }
 
+var getGoods = (cb) => {
+    cb(mockData);
+    // comm.dd.Get('/Goods/Goods', null, (res) => {
+    //     cb(res.message);
+    // });
+}
+
 var loadGoods = () => {
-    goods = arr.map((el, i) => {
-        var istr = '00' + el;
-        return {
-            ImgUrl: require('../../assets/goods/good-' + istr.substring(istr.length - 2, istr.length) + '.jpg'),
-            Price: 15,
-            type: i % 2 + 1,
-            Unit: '积分'
-        }
+    getGoods((goods) => {
+        DiamondGridState.data = goods;
+        DiamondGridState.totalPage = Math.ceil(goods.length / PageSize0);
+        renderExchangeByDiamondGrid(DiamondGridState);
+
+        var data = goods.slice();
+        GridState['grid1'].data = data;
+        GridState['grid1'].totalPage = Math.ceil(data.length / PageSize);
+        renderExchangeByPointGrid('grid1');
+
+        GridState['grid2'].data = getDataByGoodType(goods, 1);
+        GridState['grid2'].totalPage = Math.ceil(GridState['grid2'].data.length / PageSize);
+        renderExchangeByPointGrid('grid2');
+
+        GridState['grid3'].data = getDataByGoodType(goods, 2);
+        GridState['grid3'].totalPage = Math.ceil(GridState['grid3'].data.length / PageSize);
+        renderExchangeByPointGrid('grid3');
     });
-
-    DiamondGridState.data = goods;
-    DiamondGridState.totalPage = Math.ceil(goods.length / PageSize0);
-    renderExchangeByDiamondGrid(DiamondGridState);
-
-    var data = goods.slice();
-    GridState['grid1'].data = data;
-    GridState['grid1'].totalPage = Math.ceil(data.length / PageSize);
-    renderExchangeByPointGrid('grid1');
-
-    GridState['grid2'].data = getDataByGoodType(goods, 1);
-    GridState['grid2'].totalPage = Math.ceil(GridState['grid2'].data.length / PageSize);
-    renderExchangeByPointGrid('grid2');
-
-    GridState['grid3'].data = getDataByGoodType(goods, 2);
-    GridState['grid3'].totalPage = Math.ceil(GridState['grid3'].data.length / PageSize);
-    renderExchangeByPointGrid('grid3');
 }
 
 var renderExchangeByDiamondGrid = (state) => {
@@ -162,10 +161,10 @@ var renderExchangeByDiamondGrid = (state) => {
         items += `
         <li class="grid-item">
             <div class="panel">
-                <img src="${el.ImgUrl}">
+                <a href="#"><img src="${el.ImgUrl}"><a/>
                 <p>
-                    <span><span>${el.Price}</span>钻石</span>
-                    <a href="">兑换</a>
+                    <span>${el.Price}</span><span>钻石</span>
+                    <a class="btn-ec" href="#">兑换</a>
                 </p>
             </div>
         </li>`;
@@ -224,7 +223,7 @@ var initDiamondGridPagerAction = () => {
             cla = target.prop('class'),
             tp = DiamondGridState.totalPage,
             index = DiamondGridState.currGridIndex;
-            
+
         if (cla.indexOf('btn-pre') !== -1) {
             if (index <= 0) {
                 return;
@@ -305,9 +304,9 @@ var renderExchangeByPointGridBy = (data, gridIndex) => {
     var tmpl = data.map(el => `
     <li class="grid-item">
         <div class="panel clearfix">
-            <img src="${el.ImgUrl}">
+            <a href="#"><img src="${el.ImgUrl}"></a>
             <div class="info">
-                <p>物品名称</p>
+                <p>${el.name}</p>
                 <p class="price">${el.Price}</p>
             </div>
         </div>

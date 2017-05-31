@@ -5,6 +5,7 @@ import '../../commons/common';
 import * as comm from '../../commons/common';
 import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
 import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
+import news from './mock';
 
 $((e) => {
     initNav('news');
@@ -72,10 +73,9 @@ var byPager = (arr, pageIndex) => {
     });
 }
 
-var news = { pageIndex: 1 },
-    notices = { pageIndex: 1 },
-    acts = { pageIndex: 1 };
-
+var newsState = { pageIndex: 1 },
+    noticesState = { pageIndex: 1 },
+    actsState = { pageIndex: 1 };
 
 var renderNewsTab = () => {
     var getFirstLastBy = (length, i) => {
@@ -111,23 +111,31 @@ var renderNewsTab = () => {
     initTab();
 }
 
+var getNews = (cb) => {
+    cb(news);
+    // comm.dd.Get('/News/HotNewList', null,
+    //     (res) => {
+    //         console.log(JSON.stringify(res.message));
+    //         cb(res.message);
+    //     });
+}
+
 var renderNews = () => {
-    comm.dd.Get('/News/HotNewList', null,
-        (res) => {
-            // acts =Object.assign(acts, newsFilter(res.message, 1));      
-            news.data = newsFilter(res.message, 2);
-            news.totalPage = Math.ceil(news.data.length / pageSize);
-            notices.data = newsFilter(res.message, 1);
-            notices.totalPage = Math.ceil(notices.data.length / pageSize);
-            acts.data = newsFilter(res.message, 3);
-            acts.totalPage = Math.ceil(notices.data.length / pageSize);
+    getNews((data) => {
+        // actsState =Object.assign(actsState, newsFilter(data, 1));      
+        newsState.data = newsFilter(data, 2);
+        newsState.totalPage = Math.ceil(newsState.data.length / pageSize);
+        noticesState.data = newsFilter(data, 1);
+        noticesState.totalPage = Math.ceil(noticesState.data.length / pageSize);
+        actsState.data = newsFilter(data, 3);
+        actsState.totalPage = Math.ceil(actsState.data.length / pageSize);
 
-            renderItem('noticesBox', notices);
-            renderItem('newsBox', news);
-            renderItem('activitiesBox', acts);
+        renderItem('noticesBox', noticesState);
+        renderItem('newsBox', newsState);
+        renderItem('activitiesBox', actsState);
 
-            initNewsAction();
-        });
+        initNewsAction();
+    });
 }
 
 var initNewsAction = () => {
@@ -141,13 +149,13 @@ var initNewsAction = () => {
 
         switch (datafor) {
             case 'news':
-                go(datamark, 'newsBox', news);
+                go(datamark, 'newsBox', newsState);
                 break;
             case 'notices':
-                go(datamark, 'noticesBox', notices);
+                go(datamark, 'noticesBox', noticesState);
                 break;
             case 'acti':
-                go(datamark, 'activiesBox', acts);
+                go(datamark, 'activiesBox', actsState);
                 break;
             default:
                 break;

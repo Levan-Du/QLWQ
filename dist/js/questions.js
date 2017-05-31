@@ -1,13 +1,13 @@
-webpackJsonp([5],{
+webpackJsonp([6],{
 
-/***/ 22:
+/***/ 27:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 45:
+/***/ 47:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17,7 +17,7 @@ __webpack_require__(4);
 
 __webpack_require__(5);
 
-__webpack_require__(22);
+__webpack_require__(27);
 
 var _common = __webpack_require__(1);
 
@@ -34,8 +34,8 @@ $(function (e) {
     (0, _pages.initNavAction)();
     loadLogin();
     (0, _pages.initLoginAction)();
-    onQuesListItemChecked();
     (0, _login.initLoginUserAction)();
+    loadData();
 });
 
 var loadLogin = function loadLogin() {
@@ -74,8 +74,22 @@ var onQuesListItemChecked = function onQuesListItemChecked() {
         });
     });
 };
+
+var loadData = function loadData() {
+    comm.dd.Get('/News/GameIssueInfoList', null, function (res) {
+        renderIssueInfos(res.message);
+        onQuesListItemChecked();
+    });
+};
+
+var renderIssueInfos = function renderIssueInfos(data) {
+    var tmpl = data.map(function (el, i) {
+        return '\n    <li class="item' + (i === 0 ? ' checked' : '') + '">\n        <a class="title-btn"><span class="icon">Q</span><span class="title">' + el.IssueTitle + '</span></a>\n        <p class="cont">' + el.IssueContent + '</p>\n    </li>';
+    }).join('');
+    $('#ques_list').html(tmpl);
+};
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ })
 
-},[45]);
+},[47]);

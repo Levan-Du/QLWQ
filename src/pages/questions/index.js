@@ -2,16 +2,16 @@ import '../../commons/common.css';
 import '../../commons/pages.css';
 import './index.css';
 import * as comm from '../../commons/common';
-import { initLoginAction,initNav ,initNavAction} from '../../commons/pages';
-import { loadLoginInfo ,initLoginUserAction} from '../../commons/login';
+import { initLoginAction, initNav, initNavAction } from '../../commons/pages';
+import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
 
 $((e) => {
     initNav('questions');
     initNavAction();
     loadLogin();
     initLoginAction();
-    onQuesListItemChecked();
     initLoginUserAction();
+    loadData();
 });
 
 
@@ -54,4 +54,20 @@ var onQuesListItemChecked = () => {
 
 
     });
+}
+
+var loadData = () => {
+    comm.dd.Get('/News/GameIssueInfoList', null, (res) => {
+        renderIssueInfos(res.message);
+        onQuesListItemChecked();
+    });
+}
+
+var renderIssueInfos = (data) => {
+    var tmpl = data.map((el, i) => `
+    <li class="item${i===0?' checked':''}">
+        <a class="title-btn"><span class="icon">Q</span><span class="title">${el.IssueTitle}</span></a>
+        <p class="cont">${el.IssueContent}</p>
+    </li>`).join('');
+    $('#ques_list').html(tmpl);
 }
