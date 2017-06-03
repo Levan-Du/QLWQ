@@ -1,6 +1,9 @@
-var API_URL = 'http://localhost:9244/api';
+import { GetCodeUrl } from './WxHelper';
+
+// var API_URL = 'http://localhost:9244/api';
 // var API_URL = 'http://192.168.1.250/api';
 // var API_URL = 'http://117.78.46.33:8057/api';
+var API_URL = 'http://139.159.216.193:8030/api';
 
 Date.prototype.Format = function(fmt) { //author: meizz 
     var o = {
@@ -98,6 +101,7 @@ export var htmlDecode = (str) => {
     ele.innerHTML = str;
     return ele.textContent;
 }
+
 
 export var getBoxSize = (box, sizeType) => {
     var size = 0,
@@ -227,6 +231,12 @@ $.extend({
             submit_id = 'login_submit' + code,
             $submit_id = '#' + submit_id,
 
+            btn_wx_id = 'btn_wx_' + code,
+            $btn_wx_id = '#' + btn_wx_id,
+
+            ifrme_wx_id = 'ifrme_wx_' + code,
+            $ifrme_wx_id = '#' + ifrme_wx_id,
+
             logoiconUrl = require('../assets/imgs/logoicon.png'),
             tmpl = `        
 <div id="${modal_id}" class="modal lev-modal-login">
@@ -271,11 +281,15 @@ $.extend({
         <section class="login-other">
             <p>使用以下方式登录</p>
             <p>
-                <a class="qq"><span class="iconfont icon-iconfontqq"></span></a>
-                <a class="wx"><span class="iconfont icon-weixin"></span></a>
+                <a class="wx" id="${btn_wx_id}"><span class="iconfont icon-weixin"></span></a>
             </p>
         </section>
         </article>
+    </div>
+    <div class="modal-wx">
+        <iframe id=${ifrme_wx_id}>
+
+        </iframe>
     </div>
 </div>`;
         $('body').append(tmpl);
@@ -388,6 +402,13 @@ $.extend({
                     loadValidateImg();
                 });
             });
+        });
+
+        $($btn_wx_id).click((e) => {
+            $($modal_id + ' .modal-wx').addClass('visible');
+            var url = GetCodeUrl();
+            console.log(url);
+            $($ifrme_wx_id).prop('src', url);
         });
 
         return {

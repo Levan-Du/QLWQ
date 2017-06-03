@@ -112,12 +112,11 @@ var renderNewsTab = () => {
 }
 
 var getNews = (cb) => {
-    cb(news);
-    // comm.dd.Get('/News/HotNewList', null,
-    //     (res) => {
-    //         console.log(JSON.stringify(res.message));
-    //         cb(res.message);
-    //     });
+    // cb(news);
+    comm.dd.Get('/News/HotNewList', null,
+        (res) => {
+            cb(res.message);
+        });
 }
 
 var renderNews = () => {

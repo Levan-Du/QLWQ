@@ -114,10 +114,10 @@ var onTabGridSelect = () => {
 }
 
 var getGoods = (cb) => {
-    cb(mockData);
-    // comm.dd.Get('/Goods/Goods', null, (res) => {
-    //     cb(res.message);
-    // });
+    // cb(mockData);
+    comm.dd.Get('/Goods/Goods', null, (res) => {
+        cb(res.message);
+    });
 }
 
 var loadGoods = () => {

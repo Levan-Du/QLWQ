@@ -5,14 +5,16 @@ import * as comm from '../../commons/common';
 import move from '../../commons/move';
 import { initLoginAction, initTab, initNav, initNavAction } from '../../commons/pages';
 import carousel from '../../commons/carousel';
-import { loadLoginInfo, initLoginUserAction } from '../../commons/login';
+import { wxLogin, loadLoginInfo, initLoginUserAction } from '../../commons/login';
 import { news, goods } from './mock';
 
 
 $((e) => {
     initNav('index');
     initNavAction();
-    loadLogin();
+    wxLogin(() => {
+        loadLogin();
+    });
     initLoginAction();
     initTab();
     renderBarnerImage();
@@ -45,20 +47,20 @@ var renderBarnerImage = () => {
 }
 
 var getNews = (cb) => {
-    cb(news);
-    // var newsFilter = (arr, classId) => {
-    //     var arr2 = arr.filter((el, i) => {
-    //         return el.ClassID == classId;
-    //     });
-    //     return arr2.filter((el, i) => {
-    //         return i < 4;
-    //     });
-    // }
-    // comm.dd.Get('/News/HotNewList', null,
-    //     (res) => {
-    //         var news = newsFilter(res.message, 2);
-    //         cb(news);
-    //     });
+    // cb(news);
+    var newsFilter = (arr, classId) => {
+        var arr2 = arr.filter((el, i) => {
+            return el.ClassID == classId;
+        });
+        return arr2.filter((el, i) => {
+            return i < 4;
+        });
+    }
+    comm.dd.Get('/News/HotNewList', null,
+        (res) => {
+            var news = newsFilter(res.message, 2);
+            cb(news);
+        });
 }
 
 var renderNews = () => {
@@ -78,18 +80,18 @@ var renderNews = () => {
 }
 
 var getGoods = (cb) => {
-    cb(goods);
-    // comm.dd.Get('/GameGameItem/HotGameList', null,
-    //     (res) => {
-    //         var t = res.message.filter((el) => {
-    //                 return !!el.ImgUrl;
-    //             }),
-    //             data = t.filter((el, i) => {
-    //                 return i < 16;
-    //             });
-    //         console.log(JSON.stringify(data));
-    //         cb(data);
-    //     });
+    // cb(goods);
+    comm.dd.Get('/GameGameItem/HotGameList', null,
+        (res) => {
+            var t = res.message.filter((el) => {
+                    return !!el.ImgUrl;
+                }),
+                data = t.filter((el, i) => {
+                    return i < 16;
+                });
+
+            cb(data);
+        });
 }
 
 var renderGoodsImages = () => {

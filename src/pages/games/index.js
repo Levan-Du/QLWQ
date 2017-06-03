@@ -55,12 +55,11 @@ var renderMenu = () => {
 }
 
 var getData = (cb) => {
-    cb(mockData);
-    // comm.dd.Get('/GameGameItem/HotGameList', null,
-    //     (res) => {
-    //         console.log(JSON.stringify(res.message));
-    //         cb(res.message);
-    //     });
+    // cb(mockData);
+    comm.dd.Get('/GameGameItem/HotGameList', null,
+        (res) => {
+            cb(res.message);
+        });
 }
 
 var loadData = () => {

@@ -1,4 +1,21 @@
-import { dd, getCookie, clearCookie } from './common';
+import { dd, setCookie, getCookie, clearCookie, getQueryString } from './common';
+
+export var wxLogin = (cb) => {
+    var code = getQueryString()['code'];
+    if (code) {
+        dd.Post('/Login/userinfo', 'code=' + code, (res) => {
+            console.log(res);
+            if (res.status === 'success') {
+                setCookie('account', res.message.account);
+                cb && cb();
+            } else {
+                alert(res.message);
+            }
+        });
+    } else {
+        cb && cb();
+    }
+}
 
 export var loadLoginInfo = (cb) => {
     var account = getCookie('account'),
@@ -39,7 +56,15 @@ export var initLoginUserAction = () => {
         userEle.find('#login_user_setting').removeClass('visible');
     });
     exitEle.click((e) => {
+        e.preventDefault();
         clearCookie('account');
-        window.location.reload();
+        dd.Post('/Login/Logout', null,
+            (res) => {
+                window.location.reload();
+            },
+            (err) => {
+                window.location.reload();
+            }
+        );
     });
 }
