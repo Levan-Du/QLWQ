@@ -58,16 +58,16 @@ var getNews = (cb) => {
     }
     comm.dd.Get('/News/HotNewList', null,
         (res) => {
-            var news = newsFilter(res.message, 2);
+            var news = newsFilter(res.message, 1);
             cb(news);
         });
 }
 
 var renderNews = () => {
     var renderNewsItem = (data) => {
-        var tmpl = data.map((el) => {
+        var tmpl = data.map((el) => {console.log(el);
             return `<li class="item">
-                        <p>${el.Subject}</p>
+                        <p><a href="${el.LinkUrl}">${el.Subject}</a></p>
                         <p class="time">[${new Date(el.IssueDate).Format('MM/dd')}]</p>
                     </li>`;
         }).join('');

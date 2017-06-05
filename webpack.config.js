@@ -79,7 +79,8 @@ module.exports = {
         }),
         new TransferWebpackPlugin([
             { from: 'assets/games', to: 'images' },
-            { from: 'commons/vendors', to: 'js' }
+            { from: 'commons/vendors', to: 'js' },
+            { from: 'assets/files', to: 'files' }
         ], path.join(__dirname, 'src'))
     ].concat(plugins),
     devServer: {

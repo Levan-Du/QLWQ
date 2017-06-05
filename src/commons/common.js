@@ -262,7 +262,7 @@ $.extend({
                 <p class="row">
                     <label class="label" for="${pwd_id}">
                         <span class="iconfont icon-lock-fill"></span>
-                        <input id="${pwd_id}" type="text" name="pwd" placeholder="密码">
+                        <input id="${pwd_id}" type="password" name="pwd" placeholder="密码">
                     </label>
                 </p>
                 <p class="row vali clearfix">

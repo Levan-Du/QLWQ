@@ -122,9 +122,9 @@ var getNews = (cb) => {
 var renderNews = () => {
     getNews((data) => {
         // actsState =Object.assign(actsState, newsFilter(data, 1));      
-        newsState.data = newsFilter(data, 2);
+        newsState.data = newsFilter(data, 1);
         newsState.totalPage = Math.ceil(newsState.data.length / pageSize);
-        noticesState.data = newsFilter(data, 1);
+        noticesState.data = newsFilter(data, 2);
         noticesState.totalPage = Math.ceil(noticesState.data.length / pageSize);
         actsState.data = newsFilter(data, 3);
         actsState.totalPage = Math.ceil(actsState.data.length / pageSize);

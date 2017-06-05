@@ -58,13 +58,10 @@ export var initLoginUserAction = () => {
     exitEle.click((e) => {
         e.preventDefault();
         clearCookie('account');
+        // window.location.href = "index.html";
+        window.location.reload();
         dd.Post('/Login/Logout', null,
-            (res) => {
-                window.location.reload();
-            },
-            (err) => {
-                window.location.reload();
-            }
+            (res) => {}
         );
     });
 }

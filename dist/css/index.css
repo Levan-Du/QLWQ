@@ -65,6 +65,10 @@
 
 .news-wrapper .left .list .item p {
     line-height: 1.8;
+    word-break: keep-all;
+    /* 不换行 */
+    white-space: nowrap;
+    /* 不换行 */
 }
 
 .news-wrapper .left .list .item .time {

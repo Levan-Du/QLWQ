@@ -72,7 +72,8 @@ h2 {
 
 .content .tab .tab-page .tab-content aside {
     float: left;
-    width: 150px;
+    width: 180px;
+    margin-left: -30px;
     margin-right: 50px;
 }
 
@@ -92,11 +93,26 @@ h2 {
     font-weight: 900;
 }
 
-.content .tab .tab-page.shenqing .tab-content aside {
-    float: left;
-    width: 180px;
-    margin-left: -30px;
-    margin-right: 50px;
+.content .tab .tab-page .tab-content aside .files-wrapper {
+    margin-top: 50px;
+    background: #f3f4f6;
+}
+
+.content .tab .tab-page .tab-content aside .files-wrapper .title {
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    background: #e7e7e7;
+    color:#666;
+}
+
+.content .tab .tab-page .tab-content aside .files-wrapper .files {
+    margin: 5px 10px;
+    font-size: 14px;
+}
+
+.content .tab .tab-page .tab-content aside .files-wrapper .files .item {
+    padding: 10px 0;
 }
 
 .content .tab .tab-page .tab-content .main {
