@@ -4,7 +4,6 @@ export var wxLogin = (cb) => {
     var code = getQueryString()['code'];
     if (code) {
         dd.Post('/Login/userinfo', 'code=' + code, (res) => {
-            console.log(res);
             if (res.status === 'success') {
                 setCookie('account', res.message.account);
                 cb && cb();
@@ -31,6 +30,7 @@ export var loadLoginInfo = (cb) => {
     dd.Get('/Login/AccountInfo', qs,
         (res) => {
             if (res.status === 'success') {
+                console.log(res);
                 var u = res.message[0];
                 $('#show_user').text(u.NickName);
                 $('#login_mobile').text(u.Accounts);
@@ -58,10 +58,18 @@ export var initLoginUserAction = () => {
     exitEle.click((e) => {
         e.preventDefault();
         clearCookie('account');
-        // window.location.href = "index.html";
-        window.location.reload();
+        // window.location.reload();
         dd.Post('/Login/Logout', null,
-            (res) => {}
+            (res) => {
+                console.log(res);
+                var href = window.location.pathname;
+                window.location.href = href;
+            },
+            (err) => {
+                console.log(res);
+                var href = window.location.pathname;
+                window.location.href = href;
+            }
         );
     });
 }

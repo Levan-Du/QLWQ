@@ -65,9 +65,9 @@ var getNews = (cb) => {
 
 var renderNews = () => {
     var renderNewsItem = (data) => {
-        var tmpl = data.map((el) => {console.log(el);
+        var tmpl = data.map((el) => {
             return `<li class="item">
-                        <p><a href="${el.LinkUrl}">${el.Subject}</a></p>
+                        <p><a href="${el.LinkUrl}" target="_blank">${el.Subject}</a></p>
                         <p class="time">[${new Date(el.IssueDate).Format('MM/dd')}]</p>
                     </li>`;
         }).join('');

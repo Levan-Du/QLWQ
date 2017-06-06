@@ -12,49 +12,89 @@
 </head>
 
 <body>
-    #include('../../tmpls/header.html')
-    #include('../../tmpls/barner.html')
-    <article class="content">
-        <p class="line"></p>
-        <div class="content-wrapper clearfix">
-            <aside class="menu">
-                <h1 class="title">个人中心</h1>
-                <ul class="menu-wrapper">
-                    <li class="menu-item">账号信息</li>
-                    <li class="menu-item">游戏银行</li>
-                    <li class="menu-item">游戏充值</li>
-                    <li class="menu-item">消费记录</li>
-                </ul>
-            </aside>
-            <article class="main clearfix">
-                <section class="left">
-                    <div class="center">
-                        <p class="circle"><img class="img-touxiang" src="../../assets/images/index/u227.svg"></p>
-                        <p class="wrapper"><img class="img-message" src="../../assets/images/user/u758.svg"><span>我的消息</span></p>
-                    </div>
-                </section>
-                <section class="mid">
-                    <p>你好！<a class="btn-link">请登录</a></p>
-                    <p class="username"><span id="username" class="username">某某某</span>女士先生</p>
-                    <p>会员类型：<span class="viptype"></span></p>
-                    <p class="img-box">
-                        <img src="../../assets/images/user/u768.svg">
-                        <img src="../../assets/images/user/u770.svg">
-                        <img src="../../assets/images/user/u772.svg">
+    <header class="head">
+        <article class="container clearfix">
+            <section class="logo">
+                <a class="compony compony-icon" href="index.html">
+                    <img src="../../assets/imgs/logoicon.png">
+                </a>
+                <span class="compony compony-name">注册棋游账号
+                </span>
+            </section>
+            <section class="right">
+                <p>我已注册，现在就<a class="btn-login" href="user.html?showLoginDialog=true">登录</a></p>
+            </section>
+        </article>
+    </header>
+    <div class="content">
+        <article id="form_box" class="container clearfix">
+            <section class="form-box">
+                <form id="reg_form">
+                    <p class="row">
+                        <label>
+                            <span>用户名：</span>
+                            <input id="txt_account" class="form-input" type="text" name="account" placeholder="用户名">
+                            <span class="star">*</span>
+                            <span id="account_error" class="error"></span>
+                        </label>
                     </p>
-                </section>
-                <section class="right">
-                    <p><span>等级：</span><span id="grade" class="value">1</span></p>
-                    <p><span>金币：</span><span id="score" class="value">2</span></p>
-                    <p><span>钻石：</span><span id="diamond" class="value">3</span></p>
-                    <p><span>房卡：</span><span id="rcard" class="value">4</span></p>
-                    <p><span>积分：</span><span id="points" class="value">5</span></p>
-                </section>
-            </article>
-        </div>
-    </article>
-    #include('../../tmpls/module.html')
-    #include('../../tmpls/footer.html')
+                    <p class="row">
+                        <label>
+                            <span>密码：</span>
+                            <input id="txt_pwd" class="form-input" type="password" name="password" placeholder="密码">
+                            <span class="star">*</span>
+                            <span id="pwd_error" class="error"></span>
+                        </label>
+                    </p>
+                    <p class="row">
+                        <label>
+                            <span>确认密码：</span>
+                            <input id="txt_pwd2" class="form-input" type="password" name="password2" placeholder="确认密码">
+                            <span class="star">*</span>
+                            <span id="pwd2_error" class="error"></span>
+                        </label>
+                    </p>
+                    <p class="row">
+                        <label>
+                            <span>真实姓名：</span>
+                            <input class="form-input" type="text" name="realname" placeholder="真实姓名">
+                        </label>
+                    </p>
+                    <p class="row">
+                        <label>
+                            <span>身份证号码：</span>
+                            <input class="form-input" type="text" name="idcard" placeholder="身份证号码">
+                        </label>
+                    </p>
+                    <p class="row">
+                        <label>
+                            <span>手机号码：</span>
+                            <input class="form-input" type="text" name="mobile" placeholder="手机号码">
+                        </label>
+                    </p>
+                    <p class="row row-sm agree">
+                        <label>
+                            <input id="chk_agree" class="form-checkbox" type="checkbox" name="agree">阅读并接受 <a class="agree" href="agree.html" target="_blank">《棋游用户协议》</a>
+                            <span id="agree_error" class="error"></span>
+                        </label>
+                    </p>
+                    <p class="row submit-bar">
+                        <input type="submit" name="submit" value="提交">
+                    </p>
+                </form>
+            </section>
+            <section class="welcome-box clearfix">
+                <article class="welcome">
+                    <h3>欢迎注册棋游账号</h3>
+                    <p>注册后，就可以畅玩您喜欢的游戏了！</p>
+                </article>
+            </section>
+        </article>
+        <article id="success_box" class="container success">
+            <p><span class="iconfont icon-icon162"></span>恭喜用户<span id="success_account"></span>注册成功，<span id="success_seconds"></span>秒后跳转到用户中心或点击<a href="user.html">立即跳转</a></p>
+        </article>
+    </div>
+    <footer>2017 ©www.gzqykj.com</footer>
 </body>
 
 </html>

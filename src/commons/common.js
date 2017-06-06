@@ -273,8 +273,11 @@ $.extend({
                         <img id="${valiImg_id}" src="" alt="验证码">
                     </a>
                 </p>
-                <p for="${submit_id}" class="label label-submit">
+                <p id="${submit_id}" class="label label-submit">
                     <input id="${submit_id}" type="submit" name="logon" value="登录">
+                </p>
+                <p class="row register">
+                    <a href="register.html">注册</a>
                 </p>
             </form>
         </section>
@@ -287,9 +290,12 @@ $.extend({
         </article>
     </div>
     <div class="modal-wx">
-        <iframe id=${ifrme_wx_id}>
+        <article class="container">
+            <p class="close-bar"><a id="modal_wx_btnclose_${code}" class="btn btn-close"><span class="iconfont icon-cha"></span></a></p>
+            <iframe id=${ifrme_wx_id}>
 
-        </iframe>
+            </iframe>
+        </article>
     </div>
 </div>`;
         $('body').append(tmpl);
@@ -407,9 +413,12 @@ $.extend({
         $($btn_wx_id).click((e) => {
             $($modal_id + ' .modal-wx').addClass('visible');
             var url = GetCodeUrl();
-            console.log(url);
             $($ifrme_wx_id).prop('src', url);
         });
+
+        $('#modal_wx_btnclose_' + code).click((e) => {
+            $($modal_id + ' .modal-wx').removeClass('visible');
+        })
 
         return {
             close: () => {

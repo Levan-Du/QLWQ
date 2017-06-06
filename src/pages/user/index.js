@@ -15,12 +15,24 @@ $((e) => {
     initLoginAction2();
     initNavAction();
     initLoginUserAction();
+    ifShowLoginModal();
 });
 
 var loginModal = null;
+
+var showLoginModal = () => {
+    loginModal = $.showLoginModal();
+}
+
+var ifShowLoginModal = () => {
+    if (comm.getQueryString()['showLoginDialog']) {
+        showLoginModal();
+    }
+}
+
 var initLoginAction2 = () => {
     $('.main #btn_login_main').click((e) => {
-        loginModal = $.showLoginModal();
+        showLoginModal();
     });
 }
 
